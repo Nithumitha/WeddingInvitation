@@ -9,12 +9,12 @@ const TimelineItem = ({ index, image, title, text, highlightText, isVisible }) =
       initial={{ opacity: 0, y: 30 }}
       animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
-      className={`relative flex flex-col md:flex-row items-center justify-center w-full mb-12 md:mb-16 ${
+      className={`relative flex flex-col md:flex-row items-start md:items-center justify-center w-full mb-12 md:mb-16 ${
         isIllustrationLeft ? 'md:flex-row' : 'md:flex-row-reverse'
-      } gap-4 md:gap-0`}
+      } pl-16 md:pl-0 gap-6 md:gap-0`}
     >
       {/* Illustration Area */}
-      <div className={`w-full md:w-[45%] flex ${isIllustrationLeft ? 'justify-end md:pr-12' : 'justify-start md:pl-12'} px-4`}>
+      <div className={`w-full md:w-[45%] flex ${isIllustrationLeft ? 'justify-start md:justify-end md:pr-12' : 'justify-start md:pl-12'}`}>
         <div className="relative">
           <img 
             src={image} 
@@ -25,13 +25,11 @@ const TimelineItem = ({ index, image, title, text, highlightText, isVisible }) =
       </div>
 
       {/* Center Node on the path */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-1/2 story-line-node"></div>
+      <div className="absolute left-8 md:left-1/2 -translate-x-1/2 top-1/2 story-line-node"></div>
 
       {/* Text Area */}
-      <div className={`w-full md:w-[45%] flex flex-col ${
-        isIllustrationLeft ? 'items-start md:pl-12' : 'items-end md:pr-12'
-      } px-6 text-center md:text-left`}>
-        <div className={`max-w-[300px] ${isIllustrationLeft ? 'text-left' : 'text-left md:text-right'}`}>
+      <div className={`w-full md:w-[45%] flex flex-col items-start px-0 md:px-6`}>
+        <div className={`max-w-[300px] text-left ${isIllustrationLeft ? '' : 'md:text-right'}`}>
           {title && (
             <h3 className="font-playfair text-xl md:text-2xl text-story-text mb-2 flex items-center gap-2 opacity-90 font-bold uppercase tracking-wider">
               {title}

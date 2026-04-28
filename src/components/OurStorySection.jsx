@@ -74,8 +74,8 @@ const OurStorySection = () => {
       </div>
 
       <div className="relative w-full max-w-6xl mx-auto">
-        {/* Wiggly Dotted SVG Path - More delicate and thinner */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-[60px] bottom-0 w-[2px]">
+        {/* Wiggly Dotted SVG Path - Repositioned for mobile to avoid overlap */}
+        <div className="absolute left-8 md:left-1/2 -translate-x-1/2 top-[60px] bottom-0 w-[2px]">
           <svg width="400" height="100%" className="overflow-visible absolute left-1/2 -translate-x-1/2" style={{ top: 0 }}>
             <motion.path
               d="M 200 0 

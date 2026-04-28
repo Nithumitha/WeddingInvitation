@@ -181,11 +181,11 @@ function App() {
               animate={{ opacity: 1, scale: 1, x: 0 }}
               exit={{ opacity: 0, scale: 1.1, x: -100 }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="w-full flex justify-center relative h-full items-center"
+              className="w-full flex justify-center relative h-full items-center overflow-hidden"
             >
               <RosePetals />
-              <Section id="home" className="bg-transparent py-0 h-auto">
-                <div className="invite-card max-w-4xl w-full relative">
+              <Section id="home" className="bg-transparent py-0 h-full overflow-hidden flex items-center justify-center">
+                <div className="max-w-4xl w-full relative px-6">
 
 
                   <GaneshaIcon />
