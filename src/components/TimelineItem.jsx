@@ -25,7 +25,7 @@ const TimelineItem = ({ index, image, title, text, highlightText, isVisible }) =
       </div>
 
       {/* Center Node on the path */}
-      <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-1/2 story-line-node"></div>
+      <div className="absolute left-1/2 -translate-x-1/2 top-1/2 story-line-node"></div>
 
       {/* Text Area */}
       <div className={`w-full md:w-[45%] flex flex-col ${
