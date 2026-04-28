@@ -46,14 +46,18 @@ body {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
-  background-color: #f8f5ff;
+  background-color: #fbd9d3;
 }
 
-/* Watercolor Accents - Purple Theme */
+/* Watercolor Accents - Peach Blush Theme */
 .watercolor-bg {
-  background: 
-    radial-gradient(circle at 10% 10%, rgba(167, 139, 250, 0.15) 0%, transparent 40%),
-    radial-gradient(circle at 90% 90%, rgba(167, 139, 250, 0.15) 0%, transparent 40%);
+  background: radial-gradient(circle at top right, #fff1f0 0%, #fbd9d3 100%);
+}
+
+.invite-card {
+  box-shadow: 
+    0 20px 50px rgba(219, 139, 139, 0.15),
+    inset 0 0 100px rgba(255, 255, 255, 0.4);
 }
 
 /* Dotted Path for Story - More delicate */

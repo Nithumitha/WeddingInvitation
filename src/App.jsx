@@ -260,7 +260,7 @@ function App() {
               transition={{ duration: 0.8 }}
               className="w-full max-w-4xl h-[85vh] overflow-y-auto scrollbar-hide py-10 my-auto"
             >
-              <div className="invite-card w-full bg-white/40 backdrop-blur-md border-2 border-gold/10 p-8 md:p-16 relative">
+              <div className="invite-card w-full bg-orange-50/40 backdrop-blur-md border-2 border-gold/20 p-8 md:p-16 relative">
                 <DecorativeCorner className="top-0 left-0 opacity-20" />
                 <DecorativeCorner className="top-0 right-0 rotate-90 opacity-20" />
                 
