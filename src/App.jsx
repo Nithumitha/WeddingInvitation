@@ -113,6 +113,14 @@ function App() {
     if (currentStep > 0) setCurrentStep(prev => prev - 1);
   };
 
+  const handleOpen = () => {
+    if (!isPlaying && audioRef.current) {
+      audioRef.current.play().catch(e => console.log("Autoplay blocked:", e));
+      setIsPlaying(true);
+    }
+    nextStep();
+  };
+
   const toggleMusic = () => {
     if (isPlaying) {
       audioRef.current.pause();
@@ -204,7 +212,7 @@ function App() {
 
                     <div className="pt-12 flex flex-col items-center">
                       <button 
-                        onClick={nextStep}
+                        onClick={handleOpen}
                         className="relative group cursor-pointer"
                       >
                         {/* Pulsing Outer Rings */}

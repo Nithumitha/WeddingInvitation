@@ -19,7 +19,7 @@ const TimelineItem = ({ index, image, title, text, highlightText, isVisible }) =
           <img 
             src={image} 
             alt={`Story step ${index}`} 
-            className="w-full max-w-[280px] md:max-w-[380px] h-auto object-contain mix-blend-multiply opacity-95 transition-transform duration-1000 hover:scale-105"
+            className="w-full max-w-[200px] md:max-w-[300px] h-auto object-contain mix-blend-multiply opacity-95 transition-transform duration-1000 hover:scale-105"
           />
         </div>
       </div>
