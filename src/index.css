@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap');
+
+@theme {
+  --font-vibes: "Great Vibes", cursive;
+  --font-cormorant: "Cormorant Garamond", serif;
+  --font-playfair: "Playfair Display", serif;
+  --font-lato: "Lato", sans-serif;
+  
+  /* Fallbacks for previous classes if still in use */
+  --font-script: var(--font-vibes);
+  --font-serif: var(--font-cormorant);
+  --font-sans: var(--font-lato);
+  --font-display: var(--font-playfair);
+
+  --color-gold: #D4AF37;
+  --color-maroon: #4B0082;
+  --color-cream: #f9f7ff;
+}
+
+:root {
+  font-family: 'Cormorant Garamond', serif;
+  color: #1a1a1a;
+  scroll-behavior: smooth;
+}
+
+/* Explicit Font Classes to bypass Tailwind mapping issues */
+.font-vibes {
+  font-family: "Great Vibes", cursive !important;
+}
+
+.font-cormorant {
+  font-family: "Cormorant Garamond", serif !important;
+}
+
+.font-playfair {
+  font-family: "Playfair Display", serif !important;
+}
+
+.font-lato {
+  font-family: "Lato", sans-serif !important;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: #f8f5ff;
+}
+
+/* Watercolor Accents - Purple Theme */
+.watercolor-bg {
+  background: 
+    radial-gradient(circle at 10% 10%, rgba(167, 139, 250, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 90% 90%, rgba(167, 139, 250, 0.15) 0%, transparent 40%);
+}
+
+/* Dotted Path for Story - More delicate */
+.dotted-path {
+  stroke-dasharray: 4 8;
+  stroke-linecap: round;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes music {
+  0%, 100% { height: 4px; }
+  50% { height: 16px; }
+}
+
+@keyframes petal-fall {
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(110vh) translateX(100px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.petal {
+  position: fixed;
+  top: -10vh;
+  pointer-events: none;
+  z-index: 40;
+  background: linear-gradient(to bottom right, #ffb7c5, #ff69b4);
+  border-radius: 40% 60% 40% 60%;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  animation: petal-fall linear infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #fef8f5;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+}
+
+.story-line-node {
+  @apply w-2 h-2 border-[1px] border-[#b8a28e] bg-white rounded-full absolute -translate-x-1/2 -translate-y-1/2 z-20;
+}
