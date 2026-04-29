@@ -76,7 +76,7 @@ const OurStorySection = ({ scrollContainerRef }) => {
     <section
       id="story"
       ref={sectionRef}
-      className="bg-transparent py-32 px-4 relative flex flex-col items-center overflow-x-hidden"
+      className="bg-transparent pt-32 pb-10 px-4 relative flex flex-col items-center overflow-x-hidden"
     >
       {/* Header omitted for brevity */}
       <div className="max-w-4xl mx-auto text-center mb-[var(--section-gap)] relative z-10">
@@ -102,7 +102,7 @@ const OurStorySection = ({ scrollContainerRef }) => {
 
       <div className="relative w-full max-w-6xl mx-auto">
         {/* Minimalist Single Dotted Path */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[40px] md:w-[200px] pointer-events-none">
+        <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[60px] md:w-[200px] pointer-events-none">
           <svg
             viewBox="0 0 100 700"
             width="100%"
@@ -110,15 +110,15 @@ const OurStorySection = ({ scrollContainerRef }) => {
             preserveAspectRatio="none"
             className="overflow-visible"
           >
-            {/* Precise multi-segment path that hits DOTS at 50, 150, 250, 350, 450, 550, 650 */}
+            {/* Subtler multi-segment path to prevent overlap on mobile */}
             <motion.path
               d="M 50 50
-                 C 70 75, 70 125, 50 150
-                 C 30 175, 30 225, 50 250
-                 C 70 275, 70 325, 50 350
-                 C 30 375, 30 425, 50 450
-                 C 70 475, 70 525, 50 550
-                 C 30 575, 30 625, 50 650"
+                 C 60 75, 60 125, 50 150
+                 C 40 175, 40 225, 50 250
+                 C 60 275, 60 325, 50 350
+                 C 40 375, 40 425, 50 450
+                 C 60 475, 60 525, 50 550
+                 C 40 575, 40 625, 50 650"
               initial={{ pathLength: 0 }}
               fill="transparent"
               stroke="#D4AF37"

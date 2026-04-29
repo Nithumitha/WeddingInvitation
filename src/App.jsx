@@ -358,7 +358,7 @@ function App() {
               animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
               exit={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
               transition={{ duration: 1.2, ease: [0.43, 0.13, 0.23, 0.96] }}
-              className="w-full h-full overflow-y-auto scrollbar-hide py-[10vh]"
+              className="w-full h-full overflow-y-auto scrollbar-hide pt-[10vh] pb-0"
             >
               <div className="max-w-6xl mx-auto px-4">
                 <OurStorySection scrollContainerRef={scrollContainerRef} />
@@ -450,15 +450,15 @@ function App() {
                   </div>
                 </div>
 
-                <div className="max-w-4xl mx-auto relative bg-[#FFFBF0] rounded-[var(--border-radius-lg)] p-[var(--card-padding)] shadow-lg border border-gold/25 h-auto">
+                <div className="max-w-3xl mx-auto relative bg-[#FFFBF0] rounded-[var(--border-radius-lg)] p-[clamp(1.5rem,5vmin,3rem)] shadow-lg border border-gold/25 h-auto">
                   <div className="absolute -top-4 left-6 bg-gold text-white px-6 py-2 rounded-full fluid-label !text-[10px] !tracking-[0.2em] shadow-md z-20">
                     The Venue
                   </div>
 
-                  <div className="relative z-10 flex flex-col md:flex-row items-center gap-10">
-                    <div className="w-full md:w-2/5">
+                  <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
+                    <div className="w-full md:w-1/3">
                       <div className="relative p-2 border-2 border-gold/15 rounded-2xl bg-white shadow-lg">
-                        <div className="relative bg-[#FFFBF0] rounded-xl aspect-[4/3] flex items-center justify-center overflow-hidden">
+                        <div className="relative bg-[#FFFBF0] rounded-xl aspect-square flex items-center justify-center overflow-hidden">
                           <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity }} className="flex flex-col items-center">
                             <MapPin size={36} className="text-maroon mb-2" />
                             <div className="w-12 h-[1.5px] bg-gold/40 rounded-full"></div>
@@ -467,7 +467,7 @@ function App() {
                       </div>
                     </div>
 
-                    <div className="w-full md:w-3/5 flex flex-col items-center md:items-start text-center md:text-left">
+                    <div className="w-full md:w-2/3 flex flex-col items-center md:items-start text-center md:text-left">
                       <div className="mb-6">
                         <h3 className="flex flex-col leading-tight">
                           <span className="italic opacity-60 fluid-h3 !text-xl">The Grand</span>
@@ -490,9 +490,9 @@ function App() {
                 {/* Countdown Section */}
                 <div className="pt-[10vh] pb-[5vh]">
                   <div className="max-w-3xl mx-auto relative bg-[#FFFBF0] p-[clamp(2rem,8vmin,5rem)] rounded-[3rem] shadow-[0_20px_50px_rgba(212,175,55,0.15)] border border-gold/30">
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-white px-8 py-2 rounded-full border border-gold/40 shadow-lg flex items-center justify-center gap-3 z-20">
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-white px-6 py-2 rounded-full border border-gold/40 shadow-lg flex items-center justify-center gap-2 z-20 w-auto max-w-[90%]">
                       <Clock className="text-white" size={14} />
-                      <span className="font-lato text-[10px] tracking-[0.4em] font-bold uppercase whitespace-nowrap">Forever begins in</span>
+                      <span className="font-lato text-[9px] tracking-[0.2em] font-bold uppercase whitespace-nowrap">Forever begins in</span>
                     </div>
                     <div className="relative z-10 w-full">
                       <Countdown targetDate="2026-05-28T07:30:00" />
