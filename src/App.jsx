@@ -26,11 +26,11 @@ const DecorativeCorner = ({ className }) => (
 
 const GaneshaIcon = () => (
   <div className="flex justify-center mb-8">
-    <img 
-      src={vinayagarImage} 
-      alt="Vinayagar" 
+    <img
+      src={vinayagarImage}
+      alt="Vinayagar"
       className="w-20 h-auto mix-blend-multiply transition-all duration-1000 hover:scale-110"
-      style={{ 
+      style={{
         filter: 'contrast(1.2) brightness(1.1)',
         maskImage: 'radial-gradient(circle, black 40%, transparent 90%)',
         WebkitMaskImage: 'radial-gradient(circle, black 40%, transparent 90%)'
@@ -43,30 +43,30 @@ const CornerMotifs = () => (
   <>
     <div className="corner-motif corner-motif-tl">
       <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 20V2H20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        <circle cx="2" cy="2" r="1.5" fill="currentColor"/>
-        <path d="M6 14V6H14" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round"/>
+        <path d="M2 20V2H20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="2" cy="2" r="1.5" fill="currentColor" />
+        <path d="M6 14V6H14" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
       </svg>
     </div>
     <div className="corner-motif corner-motif-tr">
       <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 20V2H20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        <circle cx="2" cy="2" r="1.5" fill="currentColor"/>
-        <path d="M6 14V6H14" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round"/>
+        <path d="M2 20V2H20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="2" cy="2" r="1.5" fill="currentColor" />
+        <path d="M6 14V6H14" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
       </svg>
     </div>
     <div className="corner-motif corner-motif-bl">
       <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 20V2H20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        <circle cx="2" cy="2" r="1.5" fill="currentColor"/>
-        <path d="M6 14V6H14" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round"/>
+        <path d="M2 20V2H20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="2" cy="2" r="1.5" fill="currentColor" />
+        <path d="M6 14V6H14" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
       </svg>
     </div>
     <div className="corner-motif corner-motif-br">
       <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 20V2H20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        <circle cx="2" cy="2" r="1.5" fill="currentColor"/>
-        <path d="M6 14V6H14" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round"/>
+        <path d="M2 20V2H20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="2" cy="2" r="1.5" fill="currentColor" />
+        <path d="M6 14V6H14" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" />
       </svg>
     </div>
   </>
@@ -107,15 +107,15 @@ const Countdown = ({ targetDate }) => {
 const RosePetals = () => {
   const petalsCount = 12; // Premium, non-cluttered limit
   const petals = Array.from({ length: petalsCount });
-  
+
   return (
     <div className="fixed inset-0 pointer-events-none z-[45] overflow-hidden">
       {petals.map((_, i) => {
         // Create 3 layers of depth
         const layer = i % 3; // 0: Background, 1: Mid, 2: Front
-        
+
         let size, duration, blur, zIndex, opacity;
-        
+
         if (layer === 0) { // Background (Slow & Blurry)
           size = Math.random() * 8 + 8;
           duration = Math.random() * 10 + 20;
@@ -144,26 +144,26 @@ const RosePetals = () => {
           <motion.div
             key={i}
             initial={{ y: -100, x: 0, opacity: 0, rotate: 0 }}
-            animate={{ 
-              y: "110vh", 
+            animate={{
+              y: "110vh",
               x: drift,
               opacity: [0, opacity, opacity, 0],
-              rotate: [0, 180, 360, 540] 
+              rotate: [0, 180, 360, 540]
             }}
-            transition={{ 
-              duration: duration, 
-              delay: delay, 
-              repeat: Infinity, 
-              ease: "linear" 
+            transition={{
+              duration: duration,
+              delay: delay,
+              repeat: Infinity,
+              ease: "linear"
             }}
             className="absolute"
-            style={{ 
-              filter: blur, 
+            style={{
+              filter: blur,
               zIndex: zIndex,
               left: `${left}%`
             }}
           >
-            <div 
+            <div
               className="bg-gradient-to-br from-pink-200 to-pink-400 shadow-sm"
               style={{
                 width: `${size}px`,
@@ -224,20 +224,20 @@ function App() {
       {/* Elegant Corner Decorations & Cloud Background */}
       <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#fffaf5]">
         {/* Colorful Cloud Layer */}
-        <img 
-          src={cloudsBg} 
-          alt="" 
+        <img
+          src={cloudsBg}
+          alt=""
           className="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-multiply"
-          style={{ 
-            filter: 'sepia(0.6) hue-rotate(240deg) saturate(3) brightness(1.5)' 
+          style={{
+            filter: 'sepia(0.6) hue-rotate(240deg) saturate(3) brightness(1.5)'
           }}
         />
-        
+
         {/* Top Right Flower - Consistent across all pages */}
         <motion.img
           src={cornerFlower}
           alt=""
-          animate={{ 
+          animate={{
             scale: 1,
             x: 0,
             y: 0,
@@ -325,7 +325,7 @@ function App() {
                   <GaneshaIcon />
 
                   <div className="text-center space-y-4 md:space-y-6">
-                    <p className="font-cormorant italic text-maroon/70 text-lg md:text-2xl leading-relaxed font-semibold">We joyfully invite you to the wedding of</p>
+                    <p className="font-cormorant italic text-maroon/70 text-lg md:text-2xl leading-relaxed font-semibold">With hearts full of love, we invite you to witness the beginning of our forever.</p>
 
                     <h1 className="font-vibes text-maroon flex flex-col items-center leading-none py-2 md:py-8 font-normal">
                       <span style={{ fontSize: 'clamp(2.2rem, 14vw, 8.5rem)' }}>Krithick</span>
@@ -338,10 +338,6 @@ function App() {
                       <p className="font-lato text-maroon text-lg md:text-2xl tracking-widest uppercase">MAY 28, 2026</p>
                       <div className="h-[1px] w-6 md:w-12 bg-gold/50"></div>
                     </div>
-
-                    <p className="font-cormorant text-base md:text-3xl text-maroon/60 italic font-light tracking-wide px-4">
-                      "Where love found its forever..."
-                    </p>
 
                     <div className="pt-4 md:pt-8 flex flex-col items-center">
                       <button
@@ -438,7 +434,7 @@ function App() {
                         Reception <br />
                         <span className="text-2xl md:text-3xl font-light italic opacity-60">Ceremony</span>
                       </h3>
-                      
+
                       {/* Description */}
                       <p className="font-lato text-maroon/70 text-base md:text-lg mb-10 max-w-sm leading-relaxed">
                         Join us for an enchanting night of dinner, melodies and heartfelt toasts.
@@ -453,7 +449,7 @@ function App() {
                             <span className="font-playfair text-xl text-maroon font-semibold">Wed, 27 May 2026</span>
                           </div>
                         </div>
-                        
+
                         <div className="flex items-start gap-5">
                           <div className="mt-1 w-2 h-2 bg-gold rounded-full shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
                           <div className="flex flex-col">
@@ -494,7 +490,7 @@ function App() {
                         Divine <br />
                         <span className="text-2xl md:text-3xl font-light italic opacity-60">Muhurtham</span>
                       </h3>
-                      
+
                       {/* Description */}
                       <p className="font-lato text-maroon/70 text-base md:text-lg mb-10 max-w-sm leading-relaxed">
                         In the witness of the sacred fire and our loved ones, we unite as one.
@@ -509,7 +505,7 @@ function App() {
                             <span className="font-playfair text-xl text-maroon font-semibold">Thu, 28 May 2026</span>
                           </div>
                         </div>
-                        
+
                         <div className="flex items-start gap-5">
                           <div className="mt-1 w-2 h-2 bg-gold rounded-full shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
                           <div className="flex flex-col">
@@ -550,7 +546,7 @@ function App() {
                     <div className="w-full md:w-2/5">
                       <div className="relative p-2 border-2 border-gold/20 rounded-2xl bg-white shadow-xl group-hover:border-gold/40 transition-colors duration-500">
                         <div className="relative bg-[#FFFBF0] rounded-xl aspect-[4/3] flex items-center justify-center overflow-hidden">
-                          <motion.div 
+                          <motion.div
                             animate={{ y: [0, -8, 0] }}
                             transition={{ duration: 4, repeat: Infinity }}
                             className="flex flex-col items-center"
@@ -579,7 +575,7 @@ function App() {
                         <div className="w-1.5 h-1.5 bg-gold rounded-full shadow-[0_0_8px_rgba(212,175,55,0.8)]"></div>
                         <p className="font-lato text-maroon/70 text-base md:text-lg">Musiri - Trichy Main Road, Musiri.</p>
                       </div>
-                      
+
                       <motion.a
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.98 }}

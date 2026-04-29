@@ -12,13 +12,13 @@ import img7 from '../assets/ourStory7.png';
 import img8 from '../assets/ourStory8.png';
 
 const stories = [
-  { id: 1, image: img1, title: "2016", text: "He saw me…and proposed.", highlightText: "I was annoyed. But maybe, destiny had already began." },
-  { id: 2, image: img3, title: "The Friendship", text: "Months later… a simple “Hi” on Facebook.", highlightText: "One message became many… Somewhere in between we became friends." },
-  { id: 3, image: img4, title: "The Shift", text: "And slowly… without a moment to mark it—", highlightText: "What started as nothing…became everything." },
-  { id: 4, image: img5, title: "The Journey", text: "Years passed… Laughter. Fights. Memories.", highlightText: "Through it all—we stayed. And love… quietly grew." },
-  { id: 5, image: img6, title: "The Distance", text: "Then came the silence… 🌙", highlightText: "Life took us different ways. No calls. No conversations. Just distance… But somehow, destiny never let go." },
-  { id: 6, image: img7, title: "The Return", text: "And then… 🕊️", highlightText: "Without a plan, without a reason—We found our way back. Like we were always meant to." },
-  { id: 7, image: img8, title: "The Forever", text: "And this time… 💍", highlightText: "Two hearts, one story… Finally finding their forever. ❤️" },
+  { id: 1, image: img1, title: "2016", text: "He saw me. And proposed..", highlightText: "I was annoyed. But maybe, destiny had already began." },
+  { id: 2, image: img3, title: "The Friendship", text: "Months later.. a simple \"Hi\" on Facebook.", highlightText: "One message became many… Somewhere in between we became friends." },
+  { id: 3, image: img4, title: "The Shift", text: "And slowly..", highlightText: "What started as nothing, became everything." },
+  { id: 4, image: img5, title: "The Journey", text: "Years passed.. Laughter. Fights. Memories.", highlightText: "Through it all, we stayed. And our love quietly grew." },
+  { id: 5, image: img6, title: "The Distance", text: "Then came the silence..", highlightText: "Life took us different ways. No calls. No conversations. Just distance.. But somehow, destiny never let go." },
+  { id: 6, image: img7, title: "The Return", text: "And then..", highlightText: "Without a plan, without a reason—We found our way back. Like we were always meant to." },
+  { id: 7, image: img8, title: "The Forever", text: "And this time..", highlightText: "Two hearts, one story.. Finally finding their forever. ❤️" },
 ];
 
 const OurStorySection = ({ scrollContainerRef }) => {
@@ -62,11 +62,11 @@ const OurStorySection = ({ scrollContainerRef }) => {
       <div className="relative w-full max-w-6xl mx-auto">
         {/* Minimalist Single Dotted Path */}
         <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[40px] md:w-[200px] pointer-events-none">
-          <svg 
-            viewBox="0 0 100 4200" 
-            width="100%" 
-            height="100%" 
-            preserveAspectRatio="none" 
+          <svg
+            viewBox="0 0 100 4200"
+            width="100%"
+            height="100%"
+            preserveAspectRatio="none"
             className="overflow-visible"
           >
             {/* Single Fine Gold Thread - Precisely Aligned to Nodes */}
@@ -114,15 +114,15 @@ const OurStorySection = ({ scrollContainerRef }) => {
       {/* Background Watercolor & Kolam Decor */}
       <div className="absolute top-0 right-0 w-96 h-96 opacity-10 bg-gradient-to-bl from-gold/30 to-transparent pointer-events-none blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 opacity-10 bg-gradient-to-tr from-maroon/20 to-transparent pointer-events-none blur-3xl"></div>
-      
+
       {/* Kolam Watermarks */}
-      <motion.img 
+      <motion.img
         src="/kolam_pattern_gold_1777461678251.png"
         className="absolute top-40 -left-20 w-80 h-80 opacity-[0.03] pointer-events-none"
         animate={{ rotate: 360 }}
         transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
       />
-      <motion.img 
+      <motion.img
         src="/kolam_pattern_gold_1777461678251.png"
         className="absolute bottom-40 -right-20 w-96 h-96 opacity-[0.03] pointer-events-none"
         animate={{ rotate: -360 }}
