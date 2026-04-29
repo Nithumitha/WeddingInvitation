@@ -60,117 +60,39 @@ const OurStorySection = ({ scrollContainerRef }) => {
       </div>
 
       <div className="relative w-full max-w-6xl mx-auto">
-        {/* Curvy Dotted SVG Path - Premium Implementation */}
-        <div className="absolute left-8 md:left-1/2 -translate-x-1/2 top-0 bottom-0 w-[400px] pointer-events-none">
+        {/* Minimalist Single Dotted Path */}
+        <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[40px] md:w-[200px] pointer-events-none">
           <svg 
-            viewBox="0 0 400 4200" 
-            width="400" 
+            viewBox="0 0 100 4200" 
+            width="100%" 
             height="100%" 
             preserveAspectRatio="none" 
             className="overflow-visible"
           >
-            <defs>
-              <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#D4AF37" stopOpacity="0.2" />
-                <stop offset="20%" stopColor="#D4AF37" stopOpacity="1" />
-                <stop offset="80%" stopColor="#D4AF37" stopOpacity="1" />
-                <stop offset="100%" stopColor="#D4AF37" stopOpacity="0.2" />
-              </linearGradient>
-              
-              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="4" result="coloredBlur" />
-                <feMerge>
-                  <feMergeNode in="coloredBlur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-            </defs>
-
-            {/* Base Background Path (Static Dotted) */}
-            <path
-              d="M 200 0 
-                 C 280 75, 280 225, 200 300
-                 C 120 450, 120 750, 200 900
-                 C 280 1050, 280 1350, 200 1500
-                 C 120 1650, 120 1950, 200 2100
-                 C 280 2250, 280 2550, 200 2700
-                 C 120 2850, 120 3150, 200 3300
-                 C 280 3450, 280 3750, 200 3900
-                 C 120 4050, 120 4150, 200 4200"
+            {/* Single Fine Gold Thread - Precisely Aligned to Nodes */}
+            <motion.path
+              d="M 50 0 
+                 C 65 150, 65 150, 50 300
+                 C 35 600, 35 600, 50 900
+                 C 65 1200, 65 1200, 50 1500
+                 C 35 1800, 35 1800, 50 2100
+                 C 65 2400, 65 2400, 50 2700
+                 C 35 3000, 35 3000, 50 3300
+                 C 65 3600, 65 3600, 50 3900
+                 C 35 4100, 35 4100, 50 4200"
+              initial={{ pathLength: 0 }}
               fill="transparent"
               stroke="#D4AF37"
-              strokeWidth="4"
-              strokeDasharray="0.1 20"
-              strokeLinecap="round"
-              strokeOpacity="0.1"
-            />
-
-            {/* Intertwining Dotted Path (The Companion) */}
-            <motion.path
-              d="M 200 0 
-                 C 120 75, 120 225, 200 300
-                 C 280 450, 280 750, 200 900
-                 C 120 1050, 120 1350, 200 1500
-                 C 280 1650, 280 1950, 200 2100
-                 C 120 2250, 120 2550, 200 2700
-                 C 280 2850, 280 3150, 200 3300
-                 C 120 3450, 120 3750, 200 3900
-                 C 280 4050, 280 4150, 200 4200"
-              initial={{ pathLength: 0 }}
-              fill="transparent"
-              stroke="url(#goldGradient)"
-              strokeWidth="2"
-              strokeDasharray="0.1 12"
+              strokeWidth="1.2"
+              strokeDasharray="1 10"
               strokeLinecap="round"
               style={{ pathLength }}
-              strokeOpacity="0.4"
+              strokeOpacity="0.5"
             />
 
-            {/* Main Animated Dotted Path (Primary Trail) */}
-            <motion.path
-              d="M 200 0 
-                 C 280 75, 280 225, 200 300
-                 C 120 450, 120 750, 200 900
-                 C 280 1050, 280 1350, 200 1500
-                 C 120 1650, 120 1950, 200 2100
-                 C 280 2250, 280 2550, 200 2700
-                 C 120 2850, 120 3150, 200 3300
-                 C 280 3450, 280 3750, 200 3900
-                 C 120 4050, 120 4150, 200 4200"
-              initial={{ pathLength: 0 }}
-              fill="transparent"
-              stroke="url(#goldGradient)"
-              strokeWidth="5"
-              strokeDasharray="0.1 18"
-              strokeLinecap="round"
-              filter="url(#glow)"
-              style={{ pathLength }}
-            />
-
-            {/* Decorative Nodes at Intersections */}
-            {[0, 300, 900, 1500, 2100, 2700, 3300, 3900, 4200].map((y, i) => (
-              <motion.g key={y}>
-                <motion.circle
-                  cx="200"
-                  cy={y}
-                  r="4"
-                  fill="#D4AF37"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ delay: 0.1 }}
-                />
-                <motion.circle
-                  cx="200"
-                  cy={y}
-                  r="8"
-                  fill="transparent"
-                  stroke="#D4AF37"
-                  strokeWidth="0.5"
-                  animate={{ scale: [1, 2, 1], opacity: [0.5, 0, 0.5] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                />
-              </motion.g>
-            ))}
+            {/* Subtle start/end points */}
+            <circle cx="50" cy="0" r="1.5" fill="#D4AF37" opacity="0.5" />
+            <circle cx="50" cy="4200" r="1.5" fill="#D4AF37" opacity="0.5" />
           </svg>
         </div>
 
