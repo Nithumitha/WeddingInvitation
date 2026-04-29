@@ -88,7 +88,7 @@ body {
   min-height: 100vh;
   min-height: 100dvh; /* Handle mobile browser bars consistently */
   overflow-x: hidden;
-  background-color: #FFFBF5; /* Solid Cream */
+  background-color: #ffeded; /* Slightly deeper Pinkish-Cream */
   color: #4B0082; /* Solid Deep Violet */
   line-height: 1.5;
   -webkit-tap-highlight-color: transparent;

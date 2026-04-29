@@ -188,14 +188,14 @@ function App() {
     <div className="min-h-screen relative overflow-x-hidden">
 
       {/* Elegant Corner Decorations & Cloud Background */}
-      <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#fffaf5]">
+      <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#ffeded]">
         {/* Colorful Cloud Layer */}
         <img
           src={cloudsBg}
           alt=""
-          className="absolute inset-0 w-full h-full object-cover opacity-70 mix-blend-multiply"
+          className="absolute inset-0 w-full h-full object-cover opacity-40"
           style={{
-            filter: 'sepia(0.6) hue-rotate(240deg) saturate(2.5) brightness(1.1)'
+            filter: 'sepia(0.4) hue-rotate(240deg) saturate(1.5) brightness(1.2)'
           }}
         />
 
