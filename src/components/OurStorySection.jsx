@@ -43,7 +43,7 @@ const OurStorySection = ({ scrollContainerRef }) => {
     <section
       id="story"
       ref={sectionRef}
-      className="watercolor-bg py-32 px-4 relative overflow-hidden flex flex-col items-center"
+      className="bg-transparent py-32 px-4 relative overflow-hidden flex flex-col items-center"
     >
 
 

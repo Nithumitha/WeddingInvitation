@@ -20,11 +20,10 @@ const TimelineItem = ({ index, image, title, text, highlightText }) => {
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           className="relative group"
         >
-          <div className="absolute inset-0 bg-maroon/5 rounded-full blur-[40px] md:blur-[80px] group-hover:bg-maroon/10 transition-colors duration-1000"></div>
           <img
             src={image}
             alt={`Story step ${index}`}
-            className="relative w-full max-w-[200px] md:max-w-[360px] h-auto object-contain mix-blend-multiply opacity-90 transition-all duration-1000 group-hover:scale-105"
+            className="relative w-full max-w-[200px] md:max-w-[360px] h-auto object-contain mix-blend-multiply transition-all duration-1000 group-hover:scale-105"
           />
         </motion.div>
       </div>

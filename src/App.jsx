@@ -5,6 +5,8 @@ import bgMusic from './assets/bg-music.mp3';
 import OurStorySection from './components/OurStorySection';
 import cornerFlower from './assets/cornerFlowerImage.png';
 import coupleCorner from './assets/coupleCornerImage.png';
+import vinayagarImage from './assets/vinayagarImage.jpg';
+import cloudsBg from './assets/grayscaleClouds.png';
 
 // --- Sub-components ---
 
@@ -23,11 +25,12 @@ const DecorativeCorner = ({ className }) => (
 );
 
 const GaneshaIcon = () => (
-  <div className="flex justify-center mb-8 opacity-80">
-    <svg width="60" height="60" viewBox="0 0 100 100" className="text-maroon fill-current">
-      <path d="M50 10 C40 10 30 20 30 35 C30 50 40 60 50 60 C60 60 70 50 70 35 C70 20 60 10 50 10 M50 25 C45 25 42 28 42 32 C42 36 45 39 50 39 C55 39 58 36 58 32 C58 28 55 25 50 25 M30 70 Q50 90 70 70 Q90 60 90 40 Q90 20 70 10" stroke="currentColor" fill="none" strokeWidth="2" />
-      <circle cx="50" cy="50" r="2" />
-    </svg>
+  <div className="flex justify-center mb-8">
+    <img 
+      src={vinayagarImage} 
+      alt="Vinayagar" 
+      className="w-20 h-auto opacity-80 mix-blend-multiply transition-all duration-1000 hover:scale-110"
+    />
   </div>
 );
 
@@ -180,17 +183,27 @@ function App() {
   return (
     <div className="min-h-screen relative overflow-x-hidden">
 
-      {/* Elegant Corner Decorations - Persistent across all pages */}
+      {/* Elegant Corner Decorations & Cloud Background */}
       <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#fffaf5]">
+        {/* Colorful Cloud Layer */}
+        <img 
+          src={cloudsBg} 
+          alt="" 
+          className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-multiply"
+          style={{ 
+            filter: 'sepia(0.6) hue-rotate(240deg) saturate(3) brightness(1.2)' 
+          }}
+        />
+        
         <img
           src={cornerFlower}
           alt=""
-          className="absolute -top-5 -right-5 w-32 md:w-80 opacity-60 md:opacity-80"
+          className="absolute -top-5 -right-5 w-32 md:w-80 opacity-60 md:opacity-80 mix-blend-multiply"
         />
         <img
           src={coupleCorner}
           alt=""
-          className="absolute -bottom-5 -left-5 w-40 md:w-96 opacity-60 md:opacity-80"
+          className="absolute -bottom-5 -left-5 w-40 md:w-96 opacity-60 md:opacity-80 mix-blend-multiply"
         />
       </div>
 
@@ -237,7 +250,7 @@ function App() {
 
 
       {/* Page Content with Transitions */}
-      <main className="h-screen w-full flex items-center justify-center relative overflow-hidden bg-peach-blush">
+      <main className="h-screen w-full flex items-center justify-center relative overflow-hidden bg-transparent">
         <AnimatePresence mode="wait">
           {currentStep === 0 && (
             <motion.div
@@ -256,7 +269,7 @@ function App() {
                   <GaneshaIcon />
 
                   <div className="text-center space-y-6">
-                    <p className="font-lato text-gold tracking-[0.5em] uppercase text-[10px] md:text-xs mb-6 font-bold">Om</p>
+
                     <p className="font-cormorant italic text-maroon/70 text-xl md:text-3xl leading-relaxed font-semibold">We joyfully invite you to the wedding of</p>
 
                     <h1 className="font-vibes text-maroon flex flex-col items-center leading-none py-4 md:py-8 font-normal">
