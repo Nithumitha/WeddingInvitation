@@ -77,7 +77,7 @@ const OurStorySection = ({ scrollContainerRef, onNext }) => {
     <section
       id="story"
       ref={sectionRef}
-      className="bg-transparent pt-32 pb-10 px-4 relative flex flex-col items-center overflow-x-hidden"
+      className="bg-transparent pt-32 pb-0 px-4 relative flex flex-col items-center overflow-x-hidden"
     >
       {/* Header omitted for brevity */}
       <div className="max-w-4xl mx-auto text-center mb-[var(--section-gap)] relative z-10">
@@ -148,7 +148,7 @@ const OurStorySection = ({ scrollContainerRef, onNext }) => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-col items-center mt-12 mb-20 relative z-30"
+          className="flex flex-col items-center mt-12 mb-0 relative z-30"
         >
           <div className="h-20 w-[1px] bg-gradient-to-b from-gold/50 to-transparent mb-8"></div>
           <motion.button
