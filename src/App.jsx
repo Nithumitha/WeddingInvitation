@@ -411,10 +411,10 @@ function App() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
                   {/* Celebration Card 1: Reception */}
                   <div className="relative bg-[#FFFBF0] rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_50px_rgba(212,175,55,0.15)] border border-gold/30 group transition-all duration-700 hover:-translate-y-3">
-                    {/* Floating Pill Badge */}
-                    <div className="absolute -top-4 left-10 bg-white px-6 py-2 rounded-full border border-gold/40 shadow-lg flex items-center gap-3 z-20 group-hover:bg-gold group-hover:text-white transition-colors duration-500">
-                      <Music className="text-maroon group-hover:text-white" size={14} />
-                      <span className="font-lato text-[10px] tracking-[0.3em] text-maroon group-hover:text-white font-bold uppercase">The Reception</span>
+                    {/* Floating Pill Badge - Always highlighted on mobile */}
+                    <div className="absolute -top-4 left-10 bg-gold text-white md:bg-white md:text-maroon px-6 py-2 rounded-full border border-gold/40 shadow-lg flex items-center gap-3 z-20 md:group-hover:bg-gold md:group-hover:text-white transition-colors duration-500">
+                      <Music className="md:text-maroon md:group-hover:text-white text-white" size={14} />
+                      <span className="font-lato text-[10px] tracking-[0.3em] font-bold uppercase">The Reception</span>
                     </div>
 
                     {/* Clipping Layer for Background Elements */}
@@ -467,10 +467,10 @@ function App() {
 
                   {/* Celebration Card 2: Muhurtham */}
                   <div className="relative bg-[#FFFBF0] rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_50px_rgba(212,175,55,0.15)] border border-gold/30 group transition-all duration-700 hover:-translate-y-3">
-                    {/* Floating Pill Badge */}
-                    <div className="absolute -top-4 left-10 bg-white px-6 py-2 rounded-full border border-gold/40 shadow-lg flex items-center gap-3 z-20 group-hover:bg-gold group-hover:text-white transition-colors duration-500">
-                      <Heart className="text-maroon group-hover:text-white" size={14} />
-                      <span className="font-lato text-[10px] tracking-[0.3em] text-maroon group-hover:text-white font-bold uppercase">The Wedding</span>
+                    {/* Floating Pill Badge - Always highlighted on mobile */}
+                    <div className="absolute -top-4 left-10 bg-gold text-white md:bg-white md:text-maroon px-6 py-2 rounded-full border border-gold/40 shadow-lg flex items-center gap-3 z-20 md:group-hover:bg-gold md:group-hover:text-white transition-colors duration-500">
+                      <Heart className="md:text-maroon md:group-hover:text-white text-white" size={14} />
+                      <span className="font-lato text-[10px] tracking-[0.3em] font-bold uppercase">The Wedding</span>
                     </div>
 
                     {/* Clipping Layer for Background Elements */}
@@ -522,18 +522,18 @@ function App() {
                   </div>
                 </div>
 
-                {/* Venue Section - Designer Frame Style */}
-                <div className="max-w-4xl mx-auto relative bg-[#FFFBF0] rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_50px_rgba(212,175,55,0.15)] border border-gold/30 group transition-all duration-700">
-                  {/* Floating Pill Badge */}
-                  <div className="absolute -top-4 left-10 bg-white px-6 py-2 rounded-full border border-gold/40 shadow-lg flex items-center gap-3 z-20 group-hover:bg-gold group-hover:text-white transition-colors duration-500">
-                    <MapPin className="text-maroon group-hover:text-white" size={14} />
-                    <span className="font-lato text-[10px] tracking-[0.3em] text-maroon group-hover:text-white font-bold uppercase">The Venue</span>
+                {/* Venue Section - Scaled Down Designer Style */}
+                <div className="max-w-3xl mx-auto relative bg-[#FFFBF0] rounded-[2.5rem] p-6 md:p-8 shadow-[0_20px_50px_rgba(212,175,55,0.15)] border border-gold/30 group transition-all duration-700">
+                  {/* Floating Pill Badge - Always highlighted on mobile */}
+                  <div className="absolute -top-4 left-10 bg-gold text-white md:bg-white md:text-maroon px-6 py-2 rounded-full border border-gold/40 shadow-lg flex items-center gap-3 z-20 md:group-hover:bg-gold md:group-hover:text-white transition-colors duration-500">
+                    <MapPin className="md:text-maroon md:group-hover:text-white text-white" size={14} />
+                    <span className="font-lato text-[10px] tracking-[0.3em] font-bold uppercase">The Venue</span>
                   </div>
 
                   {/* Clipping Layer for Background Elements */}
                   <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden pointer-events-none">
                     {/* Subtle Background Mandala */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 opacity-[0.03] group-hover:rotate-45 transition-transform duration-1000">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 opacity-[0.03] group-hover:rotate-45 transition-transform duration-1000">
                       <svg viewBox="0 0 100 100" fill="currentColor" className="text-gold">
                         <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="0.5" fill="none" />
                         <path d="M50 5 L50 95 M5 50 L95 50" stroke="currentColor" strokeWidth="0.5" />
@@ -545,21 +545,21 @@ function App() {
                   {/* Inner Decorative Border */}
                   <div className="absolute inset-4 border border-gold/10 rounded-[1.8rem] pointer-events-none"></div>
 
-                  <div className="relative z-10 flex flex-col md:flex-row items-center gap-12">
+                  <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-10">
                     {/* Left: Styled Map Frame */}
                     <div className="w-full md:w-2/5">
-                      <div className="relative p-2 border-2 border-gold/20 rounded-2xl bg-white shadow-2xl group-hover:border-gold/40 transition-colors duration-500">
+                      <div className="relative p-2 border-2 border-gold/20 rounded-2xl bg-white shadow-xl group-hover:border-gold/40 transition-colors duration-500">
                         <div className="relative bg-[#FFFBF0] rounded-xl aspect-[4/3] flex items-center justify-center overflow-hidden">
                           <motion.div 
-                            animate={{ y: [0, -10, 0] }}
+                            animate={{ y: [0, -8, 0] }}
                             transition={{ duration: 4, repeat: Infinity }}
                             className="flex flex-col items-center"
                           >
-                            <MapPin size={48} className="text-maroon mb-3" />
-                            <div className="w-16 h-[2px] bg-gold/40 rounded-full"></div>
+                            <MapPin size={36} className="text-maroon mb-2" />
+                            <div className="w-12 h-[1.5px] bg-gold/40 rounded-full"></div>
                           </motion.div>
-                          <div className="absolute bottom-4 left-0 right-0 text-center">
-                            <span className="font-lato text-[8px] uppercase tracking-[0.4em] font-bold text-maroon/40">Musiri, Trichy</span>
+                          <div className="absolute bottom-3 left-0 right-0 text-center">
+                            <span className="font-lato text-[7px] uppercase tracking-[0.4em] font-bold text-maroon/40">Musiri, Trichy</span>
                           </div>
                         </div>
                       </div>
@@ -567,17 +567,17 @@ function App() {
 
                     {/* Right: Venue Details & Navigation */}
                     <div className="w-full md:w-3/5 flex flex-col items-center md:items-start">
-                      <div className="mb-10 text-center md:text-left">
+                      <div className="mb-6 text-center md:text-left">
                         <h3 className="flex flex-col leading-tight">
-                          <span className="font-playfair text-2xl md:text-3xl text-maroon/60 italic font-light">The Grand</span>
-                          <span className="font-playfair text-4xl md:text-7xl text-maroon font-bold tracking-tighter">Vaasan Mahal</span>
+                          <span className="font-playfair text-xl md:text-2xl text-maroon/60 italic font-light">The Grand</span>
+                          <span className="font-playfair text-3xl md:text-5xl text-maroon font-bold tracking-tighter">Vaasan Mahal</span>
                         </h3>
-                        <div className="h-[2px] w-24 bg-gold/30 mt-6 mx-auto md:mx-0"></div>
+                        <div className="h-[2px] w-20 bg-gold/30 mt-4 mx-auto md:mx-0"></div>
                       </div>
 
-                      <div className="flex items-center gap-4 mb-10">
-                        <div className="w-2 h-2 bg-gold rounded-full shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
-                        <p className="font-lato text-maroon/70 text-lg md:text-xl">Musiri - Trichy Main Road, Musiri.</p>
+                      <div className="flex items-center gap-4 mb-8">
+                        <div className="w-1.5 h-1.5 bg-gold rounded-full shadow-[0_0_8px_rgba(212,175,55,0.8)]"></div>
+                        <p className="font-lato text-maroon/70 text-base md:text-lg">Musiri - Trichy Main Road, Musiri.</p>
                       </div>
                       
                       <motion.a
@@ -586,26 +586,26 @@ function App() {
                         href="https://www.google.com/maps/search/The+Vaasan+Mahal+Musiri"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-12 py-5 bg-gold text-maroon rounded-full font-lato text-[11px] tracking-[0.4em] uppercase font-bold shadow-xl hover:shadow-gold/40 transition-all duration-500 border border-gold/20 flex items-center gap-3"
+                        className="px-10 py-3.5 bg-gold text-maroon rounded-full font-lato text-[10px] tracking-[0.4em] uppercase font-bold shadow-lg hover:shadow-gold/40 transition-all duration-500 border border-gold/20 flex items-center gap-3"
                       >
                         Locate on Map
-                        <ChevronRight size={16} />
+                        <ChevronRight size={14} />
                       </motion.a>
                     </div>
                   </div>
                 </div>
 
                 {/* Countdown Section - Designer Frame Style */}
-                <div className="pt-32 text-center pb-20">
-                  <div className="relative inline-block bg-[#FFFBF0] p-10 md:p-16 rounded-[3rem] shadow-[0_20px_50px_rgba(212,175,55,0.15)] border border-gold/30 group">
-                    {/* Floating Pill Badge */}
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white px-8 py-2 rounded-full border border-gold/40 shadow-lg flex items-center gap-3 z-20 group-hover:bg-gold group-hover:text-white transition-colors duration-500">
-                      <Clock className="text-maroon group-hover:text-white" size={14} />
-                      <span className="font-lato text-[10px] tracking-[0.4em] text-maroon group-hover:text-white font-bold uppercase whitespace-nowrap">Forever begins in</span>
+                <div className="pt-32 px-4 pb-20">
+                  <div className="max-w-3xl mx-auto relative bg-[#FFFBF0] p-6 md:p-16 rounded-[2.5rem] md:rounded-[3rem] shadow-[0_20px_50px_rgba(212,175,55,0.15)] border border-gold/30 group">
+                    {/* Floating Pill Badge - Always highlighted on mobile */}
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-white md:bg-white md:text-maroon px-8 py-2 rounded-full border border-gold/40 shadow-lg flex items-center gap-3 z-20 md:group-hover:bg-gold md:group-hover:text-white transition-colors duration-500">
+                      <Clock className="md:text-maroon md:group-hover:text-white text-white" size={14} />
+                      <span className="font-lato text-[10px] tracking-[0.4em] font-bold uppercase whitespace-nowrap">Forever begins in</span>
                     </div>
 
                     {/* Clipping Layer for Mandala & Texture */}
-                    <div className="absolute inset-0 rounded-[3rem] overflow-hidden pointer-events-none">
+                    <div className="absolute inset-0 rounded-[2.5rem] md:rounded-[3rem] overflow-hidden pointer-events-none">
                       {/* Subtle Background Mandala */}
                       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-[0.03] group-hover:rotate-45 transition-transform duration-1000">
                         <svg viewBox="0 0 100 100" fill="currentColor" className="text-gold">
@@ -618,9 +618,9 @@ function App() {
                     </div>
 
                     {/* Inner Decorative Border */}
-                    <div className="absolute inset-5 border border-gold/10 rounded-[2.2rem] pointer-events-none"></div>
+                    <div className="absolute inset-4 md:inset-5 border border-gold/10 rounded-[1.8rem] md:rounded-[2.2rem] pointer-events-none"></div>
 
-                    <div className="relative z-10">
+                    <div className="relative z-10 w-full">
                       <Countdown targetDate="2026-05-28T07:30:00" />
                     </div>
                   </div>
