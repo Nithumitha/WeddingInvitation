@@ -10,11 +10,11 @@ const TimelineItem = ({ index, image, title, text, highlightText }) => {
       whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 1.5, ease: [0.43, 0.13, 0.23, 0.96] }}
-      className={`relative flex items-center justify-between w-full h-[clamp(350px,70vh,600px)] ${isIllustrationLeft ? 'flex-row' : 'flex-row-reverse'
-        } gap-[5vmin]`}
+      className={`relative flex flex-col md:flex-row ${isIllustrationLeft ? 'md:flex-row' : 'md:flex-row-reverse'
+        } items-center md:justify-between w-full h-auto md:h-[clamp(350px,70vh,600px)] gap-8 md:gap-[5vmin] pb-16 md:pb-0`}
     >
       {/* Illustration Area - Floating Effect */}
-      <div className="w-1/2 flex items-center justify-center">
+      <div className="w-full md:w-1/2 flex items-center justify-center pl-12 md:pl-0">
         <motion.div
           animate={{ y: [0, -15, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -34,8 +34,8 @@ const TimelineItem = ({ index, image, title, text, highlightText }) => {
         </motion.div>
       </div>
 
-      {/* Center Node on the path - Decorative Motif */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-1/2 z-20">
+      {/* Center Node on the path - Fixed to the left on mobile */}
+      <div className="absolute left-6 md:left-1/2 -translate-x-1/2 top-0 md:top-1/2 z-20">
         <motion.div
           initial={{ scale: 0, rotate: 45 }}
           whileInView={{ scale: 1, rotate: 45 }}
@@ -56,8 +56,8 @@ const TimelineItem = ({ index, image, title, text, highlightText }) => {
       </div>
 
       {/* Text Area - Emotional Typography */}
-      <div className={`w-1/2 flex flex-col items-start px-10 md:px-0`}>
-        <div className={`max-w-[45vmin] ${isIllustrationLeft ? 'text-left items-start' : 'text-right items-end'} flex flex-col`}>
+      <div className="w-full md:w-1/2 flex flex-col items-start pl-12 md:px-0">
+        <div className={`w-full max-w-none md:max-w-[45vmin] ${isIllustrationLeft ? 'text-left md:items-start' : 'text-left md:text-right md:items-end'} flex flex-col`}>
           {title && (
             <span className="fluid-label text-gold mb-2 md:mb-4 block">
               {title}

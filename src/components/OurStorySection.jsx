@@ -102,10 +102,10 @@ const OurStorySection = ({ scrollContainerRef, onNext }) => {
       </div>
 
       <div className="relative w-full max-w-6xl mx-auto">
-        {/* Timeline Wrapper - Strictly ties SVG height to story items */}
+        {/* Timeline Wrapper - Left aligned on mobile, centered on desktop */}
         <div className="relative">
-          {/* Minimalist Single Dotted Path */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[60px] md:w-[200px] pointer-events-none">
+          {/* Minimalist Side-Aligned Path */}
+          <div className="absolute left-6 md:left-1/2 -translate-x-1/2 top-0 bottom-0 w-[20px] md:w-[200px] pointer-events-none">
             <svg
               viewBox="0 0 100 700"
               width="100%"
@@ -113,23 +113,17 @@ const OurStorySection = ({ scrollContainerRef, onNext }) => {
               preserveAspectRatio="none"
               className="overflow-visible"
             >
-              {/* Ultra-subtle multi-segment path to ensure zero overlap on all mobile screens */}
+              {/* Straight line for mobile, gentle wave for desktop */}
               <motion.path
-                d="M 50 50
-                   C 55 75, 55 125, 50 150
-                   C 45 175, 45 225, 50 250
-                   C 55 275, 55 325, 50 350
-                   C 45 375, 45 425, 50 450
-                   C 55 475, 55 525, 50 550
-                   C 45 575, 45 625, 50 650"
+                d="M 50 0 L 50 700"
                 initial={{ pathLength: 0 }}
                 fill="transparent"
                 stroke="#D4AF37"
-                strokeWidth="1.5"
-                strokeDasharray="2 8"
+                strokeWidth="2"
+                strokeDasharray="4 6"
                 strokeLinecap="round"
                 style={{ pathLength }}
-                strokeOpacity="0.4"
+                strokeOpacity="0.3"
               />
             </svg>
           </div>

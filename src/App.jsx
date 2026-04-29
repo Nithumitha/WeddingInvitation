@@ -505,7 +505,7 @@ function App() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1.2 }}
-                  className="text-center pb-[5vh] px-6"
+                  className="text-center pb-0 px-6"
                 >
                   <p className="fluid-body italic text-maroon/80 whitespace-pre-line leading-relaxed">
                     {"We can't wait\nto celebrate this beautiful moment\nwith you. ❤️"}
