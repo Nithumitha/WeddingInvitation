@@ -1,107 +1,81 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 
-const TimelineItem = ({ index, image, title, text, highlightText, containerRef }) => {
-  const itemRef = useRef(null);
-  const isEven = index % 2 === 0;
-
-  // Track scroll progress for this specific item
-  const { scrollYProgress } = useScroll({
-    target: itemRef,
-    container: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Parallax effects
-  // 1. Vertical movement
-  const y = useTransform(scrollYProgress, [0, 1], [80, -80]);
-  const physicsY = useSpring(y, { stiffness: 100, damping: 30 });
-
-  // 2. Opacity and Scale
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.9, 1, 1, 0.9]);
-  const blur = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], ["blur(10px)", "blur(0px)", "blur(0px)", "blur(10px)"]);
-
-  // 3. Side movement - reduced for mobile to avoid horizontal scroll
-  const x = useTransform(
-    scrollYProgress, 
-    [0, 1], 
-    [isEven ? 20 : -20, isEven ? -10 : 10]
-  );
+const TimelineItem = ({ index, image, title, text, highlightText }) => {
+  const isIllustrationLeft = index % 2 !== 0;
 
   return (
-    <div 
-      ref={itemRef} 
-      className={`relative w-full min-h-[60vh] md:min-h-[80vh] flex items-center justify-center py-12 md:py-20 overflow-hidden`}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8, filter: "blur(20px)" }}
+      whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 1.5, ease: [0.43, 0.13, 0.23, 0.96] }}
+      className={`relative flex flex-col md:flex-row items-center justify-between w-full h-[500px] md:h-[600px] ${isIllustrationLeft ? 'md:flex-row' : 'md:flex-row-reverse'
+        } gap-12 md:gap-32 pl-20 md:pl-0`}
     >
-      {/* Large Background Year/Title - Wrapped to prevent overflow */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Illustration Area - Floating Effect */}
+      <div className="w-full md:w-1/2 flex items-center justify-center md:justify-center">
         <motion.div
-          style={{ 
-            opacity: useTransform(scrollYProgress, [0, 0.5, 1], [0, 0.04, 0]),
-            x: useTransform(scrollYProgress, [0, 1], [isEven ? -50 : 50, isEven ? 50 : -50]),
-            scale: 1.2
-          }}
-          className="absolute inset-0 flex items-center justify-center z-0 select-none"
+          animate={{ y: [0, -15, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="relative group"
         >
-          <span className="font-playfair text-[10rem] md:text-[20rem] text-maroon font-bold whitespace-nowrap opacity-50">
-            {title || index}
-          </span>
+          <img
+            src={image}
+            alt={`Story step ${index}`}
+            className="relative w-full max-w-[200px] md:max-w-[360px] h-auto object-contain mix-blend-multiply transition-all duration-1000 group-hover:scale-105"
+            style={{ 
+              filter: 'contrast(1.2) brightness(1.1)',
+              maskImage: 'radial-gradient(circle, black 50%, transparent 95%)',
+              WebkitMaskImage: 'radial-gradient(circle, black 50%, transparent 95%)'
+            }}
+          />
         </motion.div>
       </div>
 
-      <motion.div
-        style={{ 
-          y: physicsY, 
-          x: typeof window !== 'undefined' && window.innerWidth < 768 ? 0 : x, // Disable X on mobile
-          opacity, 
-          scale,
-          filter: blur
-        }}
-        className={`relative z-10 w-full max-w-5xl flex flex-col ${isEven ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-8 md:gap-16 px-8 md:px-16`}
-      >
-        {/* Image Side */}
-        <div className="w-full md:w-1/2 flex justify-center">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="relative w-full max-w-[220px] md:max-w-full"
-          >
-            <div className="absolute inset-0 bg-gold/5 blur-3xl rounded-full -z-10 transform scale-110"></div>
-            <img
-              src={image}
-              alt={title}
-              className="w-full h-auto max-h-[350px] md:max-h-[450px] object-contain mix-blend-multiply drop-shadow-xl"
-              style={{ 
-                filter: 'contrast(1.1) brightness(1.05)',
-                maskImage: 'radial-gradient(circle, black 70%, transparent 100%)',
-                WebkitMaskImage: 'radial-gradient(circle, black 70%, transparent 100%)'
-              }}
-            />
-          </motion.div>
-        </div>
+      {/* Center Node on the path - Decorative Motif */}
+      <div className="absolute left-8 md:left-1/2 -translate-x-1/2 top-1/2 z-20">
+        <motion.div
+          initial={{ scale: 0, rotate: 45 }}
+          whileInView={{ scale: 1, rotate: 45 }}
+          viewport={{ once: false }}
+          className="w-4 h-4 bg-white border-2 border-gold relative"
+        >
+          {/* Inner Glow */}
+          <div className="absolute inset-0 bg-gold/20 animate-pulse"></div>
+          
+          {/* Outer Ring */}
+          <motion.div 
+            animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="absolute -inset-2 border border-gold/30 rounded-full"
+          ></motion.div>
+        </motion.div>
+      </div>
 
-        {/* Text Side */}
-        <div className={`w-full md:w-1/2 text-center ${isEven ? 'md:text-right' : 'md:text-left'}`}>
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            <span className="font-lato text-[9px] md:text-[10px] tracking-[0.5em] text-gold uppercase font-bold mb-3 md:mb-4 block">
+      {/* Text Area - Emotional Typography */}
+      <div className={`w-full md:w-1/2 flex flex-col items-start px-0 md:px-0`}>
+        <div className={`max-w-[400px] text-left ${isIllustrationLeft ? 'md:text-left md:items-start' : 'md:text-right md:items-end'} flex flex-col`}>
+          {title && (
+            <span className="font-lato text-[10px] tracking-[0.6em] text-gold uppercase font-bold mb-4 block">
               {title}
             </span>
-            <h3 className="font-playfair text-2xl md:text-5xl text-maroon mb-4 md:mb-6 leading-tight font-bold">
-              {text}
-            </h3>
-            <p className="font-cormorant text-lg md:text-2xl text-maroon/60 italic leading-relaxed px-4 md:px-0">
+          )}
+          <h3 className="font-playfair text-2xl md:text-5xl text-maroon mb-6 leading-tight opacity-90 font-bold">
+            {text}
+          </h3>
+          {highlightText && (
+            <p className="font-cormorant text-xl md:text-3xl text-maroon/50 italic font-light leading-relaxed">
               {highlightText}
             </p>
-            
-            <div className={`mt-6 md:mt-8 h-[1px] w-12 bg-gold/30 ${isEven ? 'ml-auto' : 'mr-auto'}`}></div>
-          </motion.div>
+          )}
+
+          {/* Decorative line - Desktop Only */}
+          <div className={`hidden md:block h-[1px] w-8 bg-maroon/10 mt-3 ${isIllustrationLeft ? '' : 'md:ml-auto'
+            }`}></div>
         </div>
-      </motion.div>
-    </div>
+      </div>
+    </motion.div>
   );
 };
 
