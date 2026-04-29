@@ -4,7 +4,6 @@ import TimelineItem from './TimelineItem';
 
 // Import images
 import img1 from '../assets/ourStory1.png';
-import img2 from '../assets/ourStory2.png';
 import img3 from '../assets/ourStory3.png';
 import img4 from '../assets/ourStory4.png';
 import img5 from '../assets/ourStory5.png';
@@ -13,14 +12,13 @@ import img7 from '../assets/ourStory7.png';
 import img8 from '../assets/ourStory8.png';
 
 const stories = [
-  { id: 1, image: img1, title: "2016", text: "A chance encounter, a stolen glance.", highlightText: "He saw her for the first time." },
-  { id: 2, image: img2, title: "The Spark", text: "In a crowded room, everything else faded.", highlightText: "She walked past, but stayed in his heart." },
-  { id: 3, image: img3, title: "The Connection", text: "Quiet conversations that lasted until dawn.", highlightText: "But something deeper stayed." },
-  { id: 4, image: img4, title: "The Realization", text: "Friendship bloomed into a gentle, steady light.", highlightText: "Not every story begins with love—but this one did." },
-  { id: 5, image: img5, title: "2019-2022", text: "Through the storms and the sunshine, side by side.", highlightText: "Laughter, fights, memories—Love stayed." },
-  { id: 6, image: img6, title: "The Distance", text: "Miles couldn't touch what we had built.", highlightText: "Never a distance between our hearts." },
-  { id: 7, image: img7, title: "The Return", text: "Destiny brought us back to where it all began.", highlightText: "They found their way back to each other." },
-  { id: 8, image: img8, title: "2026", text: "Two souls, one destiny, a thousand lifetimes.", highlightText: "And this time—forever felt right." },
+  { id: 1, image: img1, title: "2016", text: "He saw me…and proposed.", highlightText: "I was annoyed. But maybe, destiny had already began." },
+  { id: 2, image: img3, title: "The Friendship", text: "Months later… a simple “Hi” on Facebook.", highlightText: "One message became many… Somewhere in between we became friends." },
+  { id: 3, image: img4, title: "The Shift", text: "And slowly… without a moment to mark it—", highlightText: "What started as nothing…became everything." },
+  { id: 4, image: img5, title: "The Journey", text: "Years passed… Laughter. Fights. Memories.", highlightText: "Through it all—we stayed. And love… quietly grew." },
+  { id: 5, image: img6, title: "The Distance", text: "Then came the silence… 🌙", highlightText: "Life took us different ways. No calls. No conversations. Just distance… But somehow, destiny never let go." },
+  { id: 6, image: img7, title: "The Return", text: "And then… 🕊️", highlightText: "Without a plan, without a reason—We found our way back. Like we were always meant to." },
+  { id: 7, image: img8, title: "The Forever", text: "And this time… 💍", highlightText: "Two hearts, one story… Finally finding their forever. ❤️" },
 ];
 
 import { useScroll, useSpring, useTransform } from 'framer-motion';
