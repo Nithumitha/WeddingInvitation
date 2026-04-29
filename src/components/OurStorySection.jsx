@@ -38,20 +38,20 @@ const OurStorySection = ({ scrollContainerRef }) => {
       className="bg-transparent py-32 px-4 relative flex flex-col items-center overflow-x-hidden"
     >
       {/* Header */}
-      <div className="max-w-4xl mx-auto text-center mb-24 relative z-10">
+      <div className="max-w-4xl mx-auto text-center mb-[var(--section-gap)] relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           className="flex flex-col items-center gap-4"
         >
-          <span className="font-lato text-[11px] md:text-xs text-gold tracking-[0.6em] uppercase font-bold opacity-60">The Narrative</span>
-          <h2 className="font-playfair text-5xl md:text-8xl text-maroon tracking-tight font-bold">
+          <span className="fluid-label text-gold opacity-60">The Narrative</span>
+          <h2 className="fluid-h2 text-maroon font-bold">
             Our Story
           </h2>
           <div className="flex items-center gap-6 mt-8">
             <div className="h-[1px] w-12 bg-gold/30"></div>
-            <p className="font-cormorant italic text-xl md:text-2xl text-maroon/50 leading-relaxed">
+            <p className="fluid-body italic text-maroon/50">
               A journey written in time, sealed in love
             </p>
             <div className="h-[1px] w-12 bg-gold/30"></div>

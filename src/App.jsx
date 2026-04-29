@@ -8,35 +8,14 @@ import coupleCorner from './assets/coupleCornerImage.png';
 import vinayagarImage from './assets/vinayagarImage.jpg';
 import cloudsBg from './assets/grayscaleClouds.png';
 
-// --- Sub-components ---
-
-const Section = ({ children, className = "", id = "" }) => (
-  <section id={id} className={`flex flex-col items-center relative py-12 md:py-20 px-4 ${className}`}>
-    {children}
-  </section>
-);
+// --- Sub-components (Moved to bottom or removed duplicates) ---
 
 const DecorativeCorner = ({ className }) => (
-  <svg className={`absolute w-16 h-16 md:w-32 md:h-32 text-gold/40 ${className}`} viewBox="0 0 100 100">
+  <svg className={`absolute text-gold/40 ${className}`} style={{ width: 'clamp(4rem, 15vmin, 8rem)', height: 'clamp(4rem, 15vmin, 8rem)' }} viewBox="0 0 100 100">
     <path d="M0 0 L100 0 L100 5 L5 5 L5 100 L0 100 Z" fill="currentColor" />
     <circle cx="15" cy="15" r="5" fill="currentColor" />
     <path d="M30 0 Q30 30 0 30" stroke="currentColor" fill="none" strokeWidth="2" />
   </svg>
-);
-
-const GaneshaIcon = () => (
-  <div className="flex justify-center mb-8">
-    <img
-      src={vinayagarImage}
-      alt="Vinayagar"
-      className="w-20 h-auto mix-blend-multiply transition-all duration-1000 hover:scale-110"
-      style={{
-        filter: 'contrast(1.2) brightness(1.1)',
-        maskImage: 'radial-gradient(circle, black 40%, transparent 90%)',
-        WebkitMaskImage: 'radial-gradient(circle, black 40%, transparent 90%)'
-      }}
-    />
-  </div>
 );
 
 const CornerMotifs = () => (
@@ -74,35 +53,6 @@ const CornerMotifs = () => (
 
 
 
-const Countdown = ({ targetDate }) => {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = new Date(targetDate).getTime() - now;
-      if (distance < 0) { clearInterval(timer); return; }
-      setTimeLeft({
-        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-        seconds: Math.floor((distance % (1000 * 60)) / 1000)
-      });
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [targetDate]);
-
-  return (
-    <div className="flex gap-2 md:gap-8 justify-center w-full max-w-4xl mx-auto px-2">
-      {Object.entries(timeLeft).map(([label, value]) => (
-        <div key={label} className="bg-[#FFFBF0] border border-gold/40 flex-1 min-w-[22%] md:min-w-0 p-3 md:p-8 rounded-2xl md:rounded-[2rem] flex flex-col items-center group shadow-lg transition-transform hover:scale-105">
-          <span className="text-2xl md:text-6xl font-playfair text-maroon mb-1 group-hover:scale-110 transition-transform duration-500 font-bold">{value}</span>
-          <span className="text-[8px] md:text-[11px] uppercase tracking-[0.1em] md:tracking-[0.4em] text-maroon/70 font-bold">{label}</span>
-        </div>
-      ))}
-    </div>
-  );
-};
 
 const RosePetals = () => {
   const petalsCount = 12; // Premium, non-cluttered limit
@@ -249,7 +199,7 @@ function App() {
           }}
         />
 
-        {/* Top Right Flower - Consistent across all pages */}
+        {/* Top Right Flower - Proportional Scaling */}
         <motion.img
           src={cornerFlower}
           alt=""
@@ -259,10 +209,11 @@ function App() {
             y: 0,
             opacity: 0.8
           }}
-          className="absolute -top-5 -right-5 w-52 md:w-[28rem] mix-blend-multiply pointer-events-none"
+          className="absolute -top-[2vmin] -right-[2vmin] mix-blend-multiply pointer-events-none"
+          style={{ width: 'clamp(200px, 45vmin, 550px)' }}
         />
 
-        {/* Bottom Left Couple - Only on Home Page */}
+        {/* Bottom Left Couple - Proportional Scaling */}
         <AnimatePresence>
           {currentStep === 0 && (
             <motion.img
@@ -280,7 +231,8 @@ function App() {
               }}
               exit={{ opacity: 0, scale: 0.8, x: -20, y: 20 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="absolute -bottom-5 -left-5 w-52 md:w-[28rem] mix-blend-multiply pointer-events-none"
+              className="absolute -bottom-[2vmin] -left-[2vmin] mix-blend-multiply pointer-events-none"
+              style={{ width: 'clamp(200px, 45vmin, 550px)' }}
             />
           )}
         </AnimatePresence>
@@ -289,14 +241,21 @@ function App() {
       {/* Audio Element */}
       <audio ref={audioRef} src={bgMusic} loop />
 
-      {/* Minimal Navigation & Music - Pinned to Corners */}
-      <div className="fixed top-4 md:top-6 left-4 md:left-6 right-4 md:right-6 z-[100] flex justify-between items-center pointer-events-none">
+      {/* Minimal Navigation & Music - Fluid Spacing */}
+      <div 
+        className="fixed z-[100] flex justify-between items-center pointer-events-none w-full"
+        style={{ 
+          top: 'clamp(1rem, 4vmin, 2.5rem)', 
+          paddingLeft: 'clamp(1rem, 4vmin, 2.5rem)', 
+          paddingRight: 'clamp(1rem, 4vmin, 2.5rem)' 
+        }}
+      >
         {/* Top Left: Back Arrow */}
         <div className="pointer-events-auto">
           {currentStep > 0 && (
             <button
               onClick={prevStep}
-              className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-maroon/60 hover:text-maroon hover:scale-110 transition-all shadow-lg"
+              className="w-[clamp(2.5rem,8vmin,3.5rem)] h-[clamp(2.5rem,8vmin,3.5rem)] bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-maroon/60 hover:text-maroon hover:scale-110 transition-all shadow-lg"
               aria-label="Previous Page"
             >
               <ChevronLeft size={20} />
@@ -304,12 +263,12 @@ function App() {
           )}
         </div>
 
-        {/* Top Right: Next Arrow & Music */}
+        {/* Top Right: Next Arrow */}
         <div className="flex items-center gap-3 pointer-events-auto">
           {currentStep > 0 && currentStep < steps.length - 1 && (
             <button
               onClick={nextStep}
-              className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-maroon/60 hover:text-maroon hover:scale-110 transition-all shadow-lg"
+              className="w-[clamp(2.5rem,8vmin,3.5rem)] h-[clamp(2.5rem,8vmin,3.5rem)] bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-maroon/60 hover:text-maroon hover:scale-110 transition-all shadow-lg"
               aria-label="Next Page"
             >
               <ChevronRight size={20} />
@@ -319,98 +278,87 @@ function App() {
       </div>
 
       {/* Bottom Right: Music Control */}
-      <div className="fixed bottom-6 right-6 z-[100] pointer-events-none">
+      <div 
+        className="fixed z-[100] pointer-events-none"
+        style={{ 
+          bottom: 'clamp(1rem, 4vmin, 2.5rem)', 
+          right: 'clamp(1rem, 4vmin, 2.5rem)' 
+        }}
+      >
         <button
           onClick={toggleMusic}
-          className="pointer-events-auto w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-maroon hover:scale-110 transition-all ripple-effect overflow-hidden shadow-lg"
+          className="pointer-events-auto w-[clamp(2.5rem,8vmin,3.5rem)] h-[clamp(2.5rem,8vmin,3.5rem)] bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-maroon hover:scale-110 transition-all ripple-effect overflow-hidden shadow-lg"
           aria-label="Toggle Music"
         >
           {isPlaying ? <Volume2 size={20} className="animate-pulse" /> : <VolumeX size={20} className="opacity-40" />}
         </button>
       </div>
 
-
-
       {/* Page Content with Transitions */}
-      <main className={`min-h-dvh w-full flex relative overflow-hidden bg-transparent fixed inset-0 ${currentStep === 0 ? 'items-center justify-center touch-none' : 'items-start justify-start'}`}>
+      <main className="min-h-dvh w-full relative overflow-hidden bg-transparent fixed inset-0">
         <AnimatePresence mode="wait">
           {currentStep === 0 && (
-            <motion.div
-              key="front"
-              initial={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
-              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
-              transition={{ duration: 1.2, ease: [0.43, 0.13, 0.23, 0.96] }}
-              className="w-full flex justify-center relative h-full items-center overflow-hidden"
+            <motion.div 
+              key="front" 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              exit={{ opacity: 0 }} 
+              className="w-full h-full flex flex-col items-center justify-start pt-[25vh] pb-[10vh] px-6 gap-[4vh] overflow-y-auto overflow-x-hidden relative"
             >
               <RosePetals />
-              <Section id="home" className="bg-transparent py-0 h-full overflow-hidden flex items-center justify-center">
-                <div className="max-w-4xl w-full relative px-6 -top-12 md:-top-20">
+              
+              {/* Branding Section - Proportional to reference */}
+              <div className="w-full max-w-4xl flex flex-col items-center gap-[clamp(1.5rem,4vh,3rem)] relative z-10 shrink-0">
+                <GaneshaIcon />
+                
+                <div className="text-center space-y-[clamp(1.5rem,4vh,3rem)]">
+                  <p className="fluid-body italic text-maroon/70 font-semibold max-w-lg mx-auto leading-relaxed">
+                    With hearts full of love, we invite you to witness the beginning of our forever.
+                  </p>
 
+                  <h1 className="fluid-h1 text-maroon flex flex-col items-center">
+                    <span>Krithick</span>
+                    <span className="opacity-40 text-[0.45em] my-[1vh] leading-none">&</span>
+                    <span>Nithu</span>
+                  </h1>
 
-                  <GaneshaIcon />
-
-                  <div className="text-center space-y-4 md:space-y-6">
-                    <p className="font-cormorant italic text-maroon/70 text-lg md:text-2xl leading-relaxed font-semibold">With hearts full of love, we invite you to witness the beginning of our forever.</p>
-
-                    <h1
-                      className="font-vibes text-maroon flex flex-col items-center leading-none py-2 md:py-8 font-medium"
-                      style={{ textShadow: '0.4px 0 currentColor' }}
-                    >
-                      <span style={{ fontSize: 'clamp(2.2rem, 14vw, 8.5rem)' }}>Krithick</span>
-                      <span className="opacity-40" style={{ fontSize: 'clamp(1.2rem, 6vw, 4.5rem)' }}>&</span>
-                      <span style={{ fontSize: 'clamp(2.2rem, 14vw, 8.5rem)' }}>Nithu</span>
-                    </h1>
-
-                    <div className="flex items-center justify-center gap-4 py-1 md:py-4">
-                      <div className="h-[1px] w-6 md:w-12 bg-gold/50"></div>
-                      <p className="font-lato text-maroon text-lg md:text-2xl tracking-widest uppercase">MAY 28, 2026</p>
-                      <div className="h-[1px] w-6 md:w-12 bg-gold/50"></div>
-                    </div>
-
+                  <div className="flex items-center justify-center gap-4">
+                    <div className="h-[1px] w-[8vmin] bg-gold/30"></div>
+                    <p className="fluid-label text-maroon font-bold">MAY 28, 2026</p>
+                    <div className="h-[1px] w-[8vmin] bg-gold/30"></div>
                   </div>
                 </div>
+              </div>
 
+              {/* Open Button - Naturally follows the content with a guaranteed gap */}
+              <div className="relative z-20 pb-10 shrink-0">
+                <button onClick={handleOpen} className="relative group cursor-pointer">
+                  <div className="absolute inset-0 bg-gold/20 rounded-full animate-ping scale-150 opacity-10"></div>
+                  <div className="absolute inset-0 bg-gold/10 rounded-full animate-pulse scale-125"></div>
 
-                {/* Open Button Pushed to Bottom */}
-                <div className="absolute bottom-12 md:bottom-16 left-1/2 -translate-x-1/2 z-20">
-                  <button
-                    onClick={handleOpen}
-                    className="relative group cursor-pointer"
-                  >
-                    {/* Interactive Aura */}
-                    <div className="absolute inset-0 bg-gold/20 rounded-full animate-ping scale-150 opacity-10"></div>
-                    <div className="absolute inset-0 bg-gold/10 rounded-full animate-pulse scale-125"></div>
+                  <div className="relative group/btn">
+                    <div className="absolute inset-[-8px] bg-gold/20 rounded-full blur-lg group-hover/btn:bg-gold/40 transition-all duration-700 animate-pulse"></div>
 
-                    {/* Modern Enhanced Open Button - Smaller Scale */}
-                    <div className="relative group/btn">
-                      {/* Pulsing Halo Background */}
-                      <div className="absolute inset-[-8px] bg-gold/20 rounded-full blur-lg group-hover/btn:bg-gold/40 transition-all duration-700 animate-pulse"></div>
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                      className="absolute inset-[-5px] border border-gold/30 rounded-full border-dashed"
+                    ></motion.div>
 
-                      {/* Rotating Decorative Outer Ring */}
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                        className="absolute inset-[-5px] border border-gold/30 rounded-full border-dashed"
-                      ></motion.div>
-
-                      <div className="relative w-20 h-20 bg-gradient-to-br from-maroon to-[#3B0066] rounded-full flex items-center justify-center overflow-hidden shadow-[0_10px_30px_rgba(75,0,130,0.4)] border border-gold/40 group-hover/btn:scale-110 transition-transform duration-500">
-                        <div className="flex flex-col items-center z-10">
-                          <Sparkles className="text-gold/80 mb-1 animate-pulse" size={16} />
-                          <span className="font-lato text-[8px] tracking-[0.3em] text-white font-bold uppercase ml-1">Open</span>
-                        </div>
-
-                        {/* Shimmer Sweep Animation */}
-                        <motion.div
-                          animate={{ x: ["-200%", "200%"] }}
-                          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
-                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
-                        />
+                    <div className="relative w-[clamp(5rem,15vmin,6rem)] h-[clamp(5rem,15vmin,6rem)] bg-gradient-to-br from-maroon to-[#3B0066] rounded-full flex items-center justify-center overflow-hidden shadow-[0_10px_30px_rgba(75,0,130,0.4)] border border-gold/40 group-hover/btn:scale-110 transition-transform duration-500">
+                      <div className="flex flex-col items-center z-10">
+                        <Sparkles className="text-gold/80 mb-1 animate-pulse" size={16} />
+                        <span className="font-lato text-[8px] tracking-[0.3em] text-white font-bold uppercase ml-1">Open</span>
                       </div>
+                      <motion.div
+                        animate={{ x: ["-200%", "200%"] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
+                      />
                     </div>
-                  </button>
-                </div>
-              </Section>
+                  </div>
+                </button>
+              </div>
             </motion.div>
           )}
 
@@ -422,7 +370,7 @@ function App() {
               animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
               exit={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
               transition={{ duration: 1.2, ease: [0.43, 0.13, 0.23, 0.96] }}
-              className="w-full h-full overflow-y-auto scrollbar-hide py-20"
+              className="w-full h-full overflow-y-auto scrollbar-hide py-[10vh]"
             >
               <div className="max-w-6xl mx-auto px-4">
                 <OurStorySection scrollContainerRef={scrollContainerRef} />
@@ -437,66 +385,43 @@ function App() {
               animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
               exit={{ opacity: 0, scale: 0.9, filter: "blur(15px)" }}
               transition={{ duration: 1.4, ease: [0.43, 0.13, 0.23, 0.96] }}
-              className="absolute inset-0 overflow-y-auto scrollbar-hide py-32 px-4"
+              className="absolute inset-0 overflow-y-auto scrollbar-hide py-[15vh] px-4"
             >
-              <div className="max-w-4xl mx-auto px-6">
-                <header className="text-center mb-24">
-                  <span className="font-lato text-[10px] tracking-[0.5em] text-gold uppercase font-bold mb-4 block">Save The Date</span>
-                  <h2 className="font-playfair text-5xl md:text-7xl text-maroon mb-6">Celebration</h2>
-                  <div className="h-[1px] w-32 bg-gold/30 mx-auto"></div>
+              <div className="max-w-5xl mx-auto px-4">
+                <header className="text-center mb-[var(--section-gap)]">
+                  <span className="fluid-label text-gold mb-4 block">Save The Date</span>
+                  <h2 className="fluid-h2 text-maroon font-bold">Celebration</h2>
+                  <div className="h-[1px] w-32 bg-gold/30 mx-auto mt-6"></div>
                 </header>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--section-gap)] mb-[var(--section-gap)]">
                   {/* Celebration Card 1: Reception */}
-                  <div className="relative bg-[#FFFBF0] rounded-[2.5rem] p-8 md:p-12 shadow-[0_15px_40px_rgba(212,175,55,0.12)] border border-gold/25 group transition-all duration-700 hover:-translate-y-2 h-auto">
-                    {/* Floating Pill Badge - Always highlighted on mobile */}
-                    <div className="absolute -top-4 left-10 bg-gold text-white md:bg-white md:text-maroon px-6 py-2 rounded-full border border-gold/40 shadow-lg flex items-center gap-3 z-20 md:group-hover:bg-gold md:group-hover:text-white transition-colors duration-500">
-                      <Music className="md:text-maroon md:group-hover:text-white text-white" size={14} />
-                      <span className="font-lato text-[10px] tracking-[0.3em] font-bold uppercase">The Reception</span>
+                  <div className="relative bg-[#FFFBF0] rounded-[var(--border-radius-lg)] p-[var(--card-padding)] shadow-lg border border-gold/25 group transition-all duration-700 hover:-translate-y-2 h-auto">
+                    <div className="absolute -top-4 left-6 bg-gold text-white px-6 py-2 rounded-full fluid-label !text-[10px] !tracking-[0.2em] shadow-md z-20">
+                      The Reception
                     </div>
-
-                    {/* Clipping Layer for Background Elements */}
-                    <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden pointer-events-none">
-                      {/* Subtle Background Mandala */}
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 opacity-[0.03] group-hover:rotate-45 transition-transform duration-1000">
-                        <svg viewBox="0 0 100 100" fill="currentColor" className="text-gold">
-                          <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="0.5" fill="none" />
-                          <path d="M50 5 L50 95 M5 50 L95 50" stroke="currentColor" strokeWidth="0.5" />
-                          <circle cx="50" cy="50" r="20" stroke="currentColor" strokeWidth="0.5" fill="none" strokeDasharray="2 2" />
-                        </svg>
-                      </div>
-                    </div>
-
-                    {/* Inner Decorative Border */}
-                    <div className="absolute inset-4 border border-gold/10 rounded-[1.8rem] pointer-events-none"></div>
 
                     <div className="relative z-10">
-                      {/* Title */}
-                      <h3 className="font-playfair text-4xl md:text-6xl text-maroon mb-6 font-bold leading-tight">
+                      <h3 className="fluid-h3 text-maroon mb-6 font-bold">
                         Reception <br />
-                        <span className="text-2xl md:text-3xl font-light italic opacity-60">Ceremony</span>
+                        <span className="italic opacity-60 text-[0.7em]">Ceremony</span>
                       </h3>
-
-                      {/* Description */}
-                      <p className="font-lato text-maroon/70 text-base md:text-lg mb-10 max-w-sm leading-relaxed">
+                      <p className="fluid-body text-maroon/70 mb-10 max-w-sm">
                         Join us for an enchanting night of dinner, melodies and heartfelt toasts.
                       </p>
-
-                      {/* Info Section */}
                       <div className="space-y-6 pt-6 border-t border-gold/20">
-                        <div className="flex items-start gap-5">
-                          <div className="mt-1 w-2 h-2 bg-gold rounded-full shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
+                        <div className="flex items-center gap-5">
+                          <div className="w-2 h-2 bg-gold rounded-full"></div>
                           <div className="flex flex-col">
-                            <span className="font-lato text-[9px] uppercase tracking-widest text-gold font-bold mb-1">Day & Date</span>
-                            <span className="font-playfair text-xl text-maroon font-semibold">Wed, 27 May 2026</span>
+                            <span className="fluid-label !text-[9px] !tracking-wider text-gold">Day & Date</span>
+                            <span className="fluid-h3 !text-xl text-maroon font-semibold">Wed, 27 May 2026</span>
                           </div>
                         </div>
-
-                        <div className="flex items-start gap-5">
-                          <div className="mt-1 w-2 h-2 bg-gold rounded-full shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
+                        <div className="flex items-center gap-5">
+                          <div className="w-2 h-2 bg-gold rounded-full"></div>
                           <div className="flex flex-col">
-                            <span className="font-lato text-[9px] uppercase tracking-widest text-gold font-bold mb-1">Time</span>
-                            <span className="font-playfair text-xl text-maroon font-semibold">06:30 PM Onwards</span>
+                            <span className="fluid-label !text-[9px] !tracking-wider text-gold">Time</span>
+                            <span className="fluid-h3 !text-xl text-maroon font-semibold">06:30 PM Onwards</span>
                           </div>
                         </div>
                       </div>
@@ -504,55 +429,32 @@ function App() {
                   </div>
 
                   {/* Celebration Card 2: Muhurtham */}
-                  <div className="relative bg-[#FFFBF0] rounded-[2.5rem] p-8 md:p-12 shadow-[0_15px_40px_rgba(212,175,55,0.12)] border border-gold/25 group transition-all duration-700 hover:-translate-y-2 h-auto">
-                    {/* Floating Pill Badge - Always highlighted on mobile */}
-                    <div className="absolute -top-4 left-10 bg-gold text-white md:bg-white md:text-maroon px-6 py-2 rounded-full border border-gold/40 shadow-lg flex items-center gap-3 z-20 md:group-hover:bg-gold md:group-hover:text-white transition-colors duration-500">
-                      <Heart className="md:text-maroon md:group-hover:text-white text-white" size={14} />
-                      <span className="font-lato text-[10px] tracking-[0.3em] font-bold uppercase">The Wedding</span>
+                  <div className="relative bg-[#FFFBF0] rounded-[var(--border-radius-lg)] p-[var(--card-padding)] shadow-lg border border-gold/25 group transition-all duration-700 hover:-translate-y-2 h-auto">
+                    <div className="absolute -top-4 left-6 bg-gold text-white px-6 py-2 rounded-full fluid-label !text-[10px] !tracking-[0.2em] shadow-md z-20">
+                      The Wedding
                     </div>
-
-                    {/* Clipping Layer for Background Elements */}
-                    <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden pointer-events-none">
-                      {/* Subtle Background Mandala */}
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 opacity-[0.03] group-hover:rotate-45 transition-transform duration-1000">
-                        <svg viewBox="0 0 100 100" fill="currentColor" className="text-gold">
-                          <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="0.5" fill="none" />
-                          <path d="M50 5 L50 95 M5 50 L95 50" stroke="currentColor" strokeWidth="0.5" />
-                          <circle cx="50" cy="50" r="20" stroke="currentColor" strokeWidth="0.5" fill="none" strokeDasharray="2 2" />
-                        </svg>
-                      </div>
-                    </div>
-
-                    {/* Inner Decorative Border */}
-                    <div className="absolute inset-4 border border-gold/10 rounded-[1.8rem] pointer-events-none"></div>
 
                     <div className="relative z-10">
-                      {/* Title */}
-                      <h3 className="font-playfair text-4xl md:text-6xl text-maroon mb-6 font-bold leading-tight">
+                      <h3 className="fluid-h3 text-maroon mb-6 font-bold">
                         Divine <br />
-                        <span className="text-2xl md:text-3xl font-light italic opacity-60">Muhurtham</span>
+                        <span className="italic opacity-60 text-[0.7em]">Muhurtham</span>
                       </h3>
-
-                      {/* Description */}
-                      <p className="font-lato text-maroon/70 text-base md:text-lg mb-10 max-w-sm leading-relaxed">
+                      <p className="fluid-body text-maroon/70 mb-10 max-w-sm">
                         In the witness of the sacred fire and our loved ones, we unite as one.
                       </p>
-
-                      {/* Info Section */}
                       <div className="space-y-6 pt-6 border-t border-gold/20">
-                        <div className="flex items-start gap-5">
-                          <div className="mt-1 w-2 h-2 bg-gold rounded-full shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
+                        <div className="flex items-center gap-5">
+                          <div className="w-2 h-2 bg-gold rounded-full"></div>
                           <div className="flex flex-col">
-                            <span className="font-lato text-[9px] uppercase tracking-widest text-gold font-bold mb-1">Day & Date</span>
-                            <span className="font-playfair text-xl text-maroon font-semibold">Thu, 28 May 2026</span>
+                            <span className="fluid-label !text-[9px] !tracking-wider text-gold">Day & Date</span>
+                            <span className="fluid-h3 !text-xl text-maroon font-semibold">Thu, 28 May 2026</span>
                           </div>
                         </div>
-
-                        <div className="flex items-start gap-5">
-                          <div className="mt-1 w-2 h-2 bg-gold rounded-full shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
+                        <div className="flex items-center gap-5">
+                          <div className="w-2 h-2 bg-gold rounded-full"></div>
                           <div className="flex flex-col">
-                            <span className="font-lato text-[9px] uppercase tracking-widest text-gold font-bold mb-1">Time</span>
-                            <span className="font-playfair text-xl text-maroon font-semibold">07:31 AM - 09:00 AM</span>
+                            <span className="fluid-label !text-[9px] !tracking-wider text-gold">Time</span>
+                            <span className="fluid-h3 !text-xl text-maroon font-semibold">07:31 AM - 09:00 AM</span>
                           </div>
                         </div>
                       </div>
@@ -560,103 +462,50 @@ function App() {
                   </div>
                 </div>
 
-                {/* Venue Section - Content Based Height */}
-                <div className="max-w-3xl mx-auto relative bg-[#FFFBF0] rounded-[2.5rem] p-6 md:p-8 shadow-[0_15px_40px_rgba(212,175,55,0.12)] border border-gold/25 group transition-all duration-700 h-auto">
-                  {/* Floating Pill Badge - Always highlighted on mobile */}
-                  <div className="absolute -top-4 left-10 bg-gold text-white md:bg-white md:text-maroon px-6 py-2 rounded-full border border-gold/40 shadow-lg flex items-center gap-3 z-20 md:group-hover:bg-gold md:group-hover:text-white transition-colors duration-500">
-                    <MapPin className="md:text-maroon md:group-hover:text-white text-white" size={14} />
-                    <span className="font-lato text-[10px] tracking-[0.3em] font-bold uppercase">The Venue</span>
+                <div className="max-w-4xl mx-auto relative bg-[#FFFBF0] rounded-[var(--border-radius-lg)] p-[var(--card-padding)] shadow-lg border border-gold/25 h-auto">
+                  <div className="absolute -top-4 left-6 bg-gold text-white px-6 py-2 rounded-full fluid-label !text-[10px] !tracking-[0.2em] shadow-md z-20">
+                    The Venue
                   </div>
 
-                  {/* Clipping Layer for Background Elements */}
-                  <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden pointer-events-none">
-                    {/* Subtle Background Mandala */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 opacity-[0.03] group-hover:rotate-45 transition-transform duration-1000">
-                      <svg viewBox="0 0 100 100" fill="currentColor" className="text-gold">
-                        <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="0.5" fill="none" />
-                        <path d="M50 5 L50 95 M5 50 L95 50" stroke="currentColor" strokeWidth="0.5" />
-                        <circle cx="50" cy="50" r="20" stroke="currentColor" strokeWidth="0.5" fill="none" strokeDasharray="2 2" />
-                      </svg>
-                    </div>
-                  </div>
-
-                  {/* Inner Decorative Border */}
-                  <div className="absolute inset-4 border border-gold/10 rounded-[1.8rem] pointer-events-none"></div>
-
-                  <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-10">
-                    <div className="w-full md:w-2/5 h-auto">
-                      <div className="relative p-2 border-2 border-gold/15 rounded-2xl bg-white shadow-lg group-hover:border-gold/30 transition-colors duration-500">
-                        <div className="relative bg-[#FFFBF0] rounded-xl aspect-[4/3] max-h-[220px] md:max-h-none flex items-center justify-center overflow-hidden">
-                          <motion.div
-                            animate={{ y: [0, -8, 0] }}
-                            transition={{ duration: 4, repeat: Infinity }}
-                            className="flex flex-col items-center"
-                          >
+                  <div className="relative z-10 flex flex-col md:flex-row items-center gap-10">
+                    <div className="w-full md:w-2/5">
+                      <div className="relative p-2 border-2 border-gold/15 rounded-2xl bg-white shadow-lg">
+                        <div className="relative bg-[#FFFBF0] rounded-xl aspect-[4/3] flex items-center justify-center overflow-hidden">
+                          <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity }} className="flex flex-col items-center">
                             <MapPin size={36} className="text-maroon mb-2" />
                             <div className="w-12 h-[1.5px] bg-gold/40 rounded-full"></div>
                           </motion.div>
-                          <div className="absolute bottom-3 left-0 right-0 text-center">
-                            <span className="font-lato text-[7px] uppercase tracking-[0.4em] font-bold text-maroon/40">Musiri, Trichy</span>
-                          </div>
                         </div>
                       </div>
                     </div>
 
-                    {/* Right: Venue Details & Navigation */}
-                    <div className="w-full md:w-3/5 flex flex-col items-center md:items-start">
-                      <div className="mb-6 text-center md:text-left">
+                    <div className="w-full md:w-3/5 flex flex-col items-center md:items-start text-center md:text-left">
+                      <div className="mb-6">
                         <h3 className="flex flex-col leading-tight">
-                          <span className="font-playfair text-xl md:text-2xl text-maroon/60 italic font-light">The Grand</span>
-                          <span className="font-playfair text-3xl md:text-5xl text-maroon font-bold">Vaasan Mahal</span>
+                          <span className="italic opacity-60 fluid-h3 !text-xl">The Grand</span>
+                          <span className="fluid-h3 text-maroon font-bold">Vaasan Mahal</span>
                         </h3>
                         <div className="h-[2px] w-20 bg-gold/30 mt-4 mx-auto md:mx-0"></div>
                       </div>
-
-                      <div className="flex items-center gap-4 mb-8">
-                        <div className="w-1.5 h-1.5 bg-gold rounded-full shadow-[0_0_8px_rgba(212,175,55,0.8)]"></div>
-                        <p className="font-lato text-maroon/70 text-base md:text-lg">T - Pettai Road, Musiri.</p>
-                      </div>
-
+                      <p className="fluid-body text-maroon/70 mb-8">T - Pettai Road, Musiri.</p>
                       <motion.a
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.98 }}
-                        href="https://www.google.com/maps/search/The+Vaasan+Mahal+Musiri"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-10 py-3.5 bg-gold text-maroon rounded-full font-lato text-[10px] tracking-[0.4em] uppercase font-bold shadow-lg hover:shadow-gold/40 transition-all duration-500 border border-gold/20 flex items-center gap-3"
+                        whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}
+                        href="https://www.google.com/maps/search/The+Vaasan+Mahal+Musiri" target="_blank" rel="noopener noreferrer"
+                        className="px-10 py-3.5 bg-gold text-maroon rounded-full fluid-label !text-[10px] !tracking-[0.3em] shadow-lg border border-gold/20 flex items-center gap-3"
                       >
-                        Locate on Map
-                        <ChevronRight size={14} />
+                        Locate on Map <ChevronRight size={14} />
                       </motion.a>
                     </div>
                   </div>
                 </div>
 
-                {/* Countdown Section - Designer Frame Style */}
-                <div className="pt-32 px-4 pb-20">
-                  <div className="max-w-3xl mx-auto relative bg-[#FFFBF0] p-6 md:p-16 rounded-[2.5rem] md:rounded-[3rem] shadow-[0_20px_50px_rgba(212,175,55,0.15)] border border-gold/30 group">
-                    {/* Floating Pill Badge - Always highlighted on mobile */}
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-white md:bg-white md:text-maroon px-8 py-2 rounded-full border border-gold/40 shadow-lg flex items-center justify-center gap-3 z-20 md:group-hover:bg-gold md:group-hover:text-white transition-colors duration-500">
-                      <Clock className="md:text-maroon md:group-hover:text-white text-white" size={14} />
+                {/* Countdown Section */}
+                <div className="pt-[10vh] pb-[5vh]">
+                  <div className="max-w-3xl mx-auto relative bg-[#FFFBF0] p-[clamp(2rem,8vmin,5rem)] rounded-[3rem] shadow-[0_20px_50px_rgba(212,175,55,0.15)] border border-gold/30">
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-white px-8 py-2 rounded-full border border-gold/40 shadow-lg flex items-center justify-center gap-3 z-20">
+                      <Clock className="text-white" size={14} />
                       <span className="font-lato text-[10px] tracking-[0.4em] font-bold uppercase whitespace-nowrap">Forever begins in</span>
                     </div>
-
-                    {/* Clipping Layer for Mandala & Texture */}
-                    <div className="absolute inset-0 rounded-[2.5rem] md:rounded-[3rem] overflow-hidden pointer-events-none">
-                      {/* Subtle Background Mandala */}
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-[0.03] group-hover:rotate-45 transition-transform duration-1000">
-                        <svg viewBox="0 0 100 100" fill="currentColor" className="text-gold">
-                          <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="0.5" fill="none" />
-                          <path d="M50 5 L50 95 M5 50 L95 50" stroke="currentColor" strokeWidth="0.5" />
-                          <circle cx="50" cy="50" r="20" stroke="currentColor" strokeWidth="0.5" fill="none" strokeDasharray="2 2" />
-                        </svg>
-                      </div>
-                      <div className="silk-texture"></div>
-                    </div>
-
-                    {/* Inner Decorative Border */}
-                    <div className="absolute inset-4 md:inset-5 border border-gold/10 rounded-[1.8rem] md:rounded-[2.2rem] pointer-events-none"></div>
-
                     <div className="relative z-10 w-full">
                       <Countdown targetDate="2026-05-28T07:30:00" />
                     </div>
@@ -667,13 +516,60 @@ function App() {
           )}
         </AnimatePresence>
       </main>
-
-
-
-
-
     </div>
   );
 }
+
+const Section = ({ children, className = "", id = "" }) => (
+  <section id={id} className={`flex flex-col items-center relative py-[var(--section-gap)] px-[4vmin] ${className}`}>
+    {children}
+  </section>
+);
+
+const GaneshaIcon = () => (
+  <div className="flex justify-center mb-[4vh]">
+    <img
+      src={vinayagarImage}
+      alt="Vinayagar"
+      className="h-auto mix-blend-multiply transition-all duration-1000 hover:scale-110"
+      style={{
+        width: 'clamp(5rem, 15vmin, 8rem)',
+        filter: 'contrast(1.2) brightness(1.1)',
+        maskImage: 'radial-gradient(circle, black 40%, transparent 90%)',
+        WebkitMaskImage: 'radial-gradient(circle, black 40%, transparent 90%)'
+      }}
+    />
+  </div>
+);
+
+const Countdown = ({ targetDate }) => {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = new Date(targetDate).getTime() - now;
+      if (distance < 0) { clearInterval(timer); return; }
+      setTimeLeft({
+        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((distance % (1000 * 60)) / 1000)
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [targetDate]);
+
+  return (
+    <div className="flex gap-[2vmin] justify-center w-full max-w-4xl mx-auto">
+      {Object.entries(timeLeft).map(([label, value]) => (
+        <div key={label} className="bg-[#FFFBF0] border border-gold/40 flex-1 p-[2vmin] rounded-[2vmin] flex flex-col items-center group shadow-lg transition-transform hover:scale-105">
+          <span className="fluid-h1 !text-maroon group-hover:scale-110 transition-transform duration-500 font-bold" style={{ fontSize: 'clamp(1.5rem, 5vmin, 4rem)' }}>{value}</span>
+          <span className="fluid-label !text-[clamp(0.5rem,1.2vmin,0.8rem)] !text-maroon/70">{label}</span>
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export default App;

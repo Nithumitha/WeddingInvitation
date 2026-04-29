@@ -1,6 +1,26 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap');
+:root {
+  /* Design Tokens - Colors */
+  --color-gold: #D4AF37;
+  --color-gold-light: rgba(212, 175, 55, 0.3);
+  --color-maroon: #4B0082;
+  --color-maroon-soft: rgba(75, 0, 130, 0.6);
+  --color-cream: #FFFBF5;
+  --color-cream-dark: #f9f7ff;
+
+  /* Font Smoothing */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+
+  /* Fluid Sizing Scale */
+  --fluid-px: clamp(1rem, 4vmin, 2.5rem);
+  --section-gap: clamp(2rem, 8vh, 6rem);
+  --card-padding: clamp(1.5rem, 5vmin, 3.5rem);
+  --border-radius-lg: clamp(1.5rem, 4vmin, 3rem);
+}
 
 @theme {
   --font-vibes: "Great Vibes", cursive;
@@ -8,15 +28,9 @@
   --font-playfair: "Playfair Display", serif;
   --font-lato: "Lato", sans-serif;
 
-  /* Fallbacks for previous classes if still in use */
-  --font-script: var(--font-vibes);
-  --font-serif: var(--font-cormorant);
-  --font-sans: var(--font-lato);
-  --font-display: var(--font-playfair);
-
-  --color-gold: #D4AF37;
-  --color-maroon: #4B0082;
-  --color-cream: #f9f7ff;
+  --color-gold: var(--color-gold);
+  --color-maroon: var(--color-maroon);
+  --color-cream: var(--color-cream);
 }
 
 :root {
@@ -28,23 +42,44 @@
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   -webkit-text-size-adjust: 100%;
+
+  /* Fluid Sizing Variables */
+  --fluid-px: clamp(1rem, 4vmin, 2.5rem);
+  --section-py: clamp(4rem, 10vh, 12rem);
 }
 
-/* Explicit Font Classes to bypass Tailwind mapping issues */
-.font-vibes {
-  font-family: "Great Vibes", cursive !important;
+/* Fluid Typography System */
+.fluid-h1 {
+  font-family: var(--font-vibes);
+  font-size: clamp(2.5rem, 12vmin, 8rem);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
 }
 
-.font-cormorant {
-  font-family: "Cormorant Garamond", serif !important;
+.fluid-h2 {
+  font-family: var(--font-playfair);
+  font-size: clamp(2.5rem, 8vmin, 5.5rem);
+  line-height: 1.1;
 }
 
-.font-playfair {
-  font-family: "Playfair Display", serif !important;
+.fluid-h3 {
+  font-family: var(--font-playfair);
+  font-size: clamp(1.8rem, 5vmin, 3.2rem);
+  line-height: 1.2;
 }
 
-.font-lato {
-  font-family: "Lato", sans-serif !important;
+.fluid-body {
+  font-family: var(--font-lato);
+  font-size: clamp(0.9rem, 2vmin, 1.1rem);
+  line-height: 1.6;
+}
+
+.fluid-label {
+  font-family: var(--font-lato);
+  font-size: clamp(0.6rem, 1.2vmin, 0.8rem);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 body {
@@ -56,6 +91,8 @@ body {
   color: #4B0082; /* Solid Deep Violet */
   line-height: 1.5;
   -webkit-tap-highlight-color: transparent;
+  /* Fluid font base */
+  font-size: clamp(0.9rem, 1.5vmin, 1.1rem);
 }
 
 /* Depth & Glassmorphism */
