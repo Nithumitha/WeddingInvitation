@@ -549,11 +549,15 @@ const Countdown = ({ targetDate }) => {
   }, [targetDate]);
 
   return (
-    <div className="flex gap-[2vmin] justify-center w-full max-w-4xl mx-auto">
+    <div className="flex gap-[1.5vmin] justify-center w-full max-w-4xl mx-auto">
       {Object.entries(timeLeft).map(([label, value]) => (
-        <div key={label} className="bg-[#FFFBF0] border border-gold/40 flex-1 p-[2vmin] rounded-[2vmin] flex flex-col items-center group shadow-lg transition-transform hover:scale-105">
-          <span className="fluid-h1 !text-maroon group-hover:scale-110 transition-transform duration-500 font-bold" style={{ fontSize: 'clamp(1.5rem, 5vmin, 4rem)' }}>{value}</span>
-          <span className="fluid-label !text-[clamp(0.5rem,1.2vmin,0.8rem)] !text-maroon/70">{label}</span>
+        <div key={label} className="bg-[#FFFBF0] border border-gold/40 flex-1 py-[3vmin] px-[1vmin] rounded-[2vmin] flex flex-col items-center group shadow-md transition-all hover:shadow-xl hover:-translate-y-1">
+          <span className="fluid-h3 text-maroon font-bold leading-none mb-2">
+            {value}
+          </span>
+          <span className="fluid-label !text-[clamp(0.6rem,1.5vmin,0.85rem)] text-maroon/60 font-bold">
+            {label}
+          </span>
         </div>
       ))}
     </div>
