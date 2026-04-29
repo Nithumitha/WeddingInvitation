@@ -52,11 +52,11 @@ const Countdown = ({ targetDate }) => {
   }, [targetDate]);
 
   return (
-    <div className="flex gap-4 md:gap-8 justify-center">
+    <div className="flex gap-2 md:gap-8 justify-center flex-wrap md:flex-nowrap">
       {Object.entries(timeLeft).map(([label, value]) => (
-        <div key={label} className="bg-white/20 backdrop-blur-xl p-6 md:p-8 rounded-[2rem] border border-white/30 shadow-2xl flex flex-col items-center min-w-[90px] md:min-w-[120px] group hover:scale-105 transition-all duration-500">
-          <span className="text-4xl md:text-6xl font-playfair text-maroon mb-2 animate-pulse">{value}</span>
-          <span className="text-[10px] uppercase tracking-[0.4em] text-gold font-bold">{label}</span>
+        <div key={label} className="bg-white/20 backdrop-blur-xl p-4 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border border-white/30 shadow-2xl flex flex-col items-center min-w-[75px] md:min-w-[120px] group hover:scale-105 transition-all duration-500">
+          <span className="text-3xl md:text-6xl font-playfair text-maroon mb-1 animate-pulse">{value}</span>
+          <span className="text-[8px] md:text-[10px] uppercase tracking-[0.4em] text-gold font-bold">{label}</span>
         </div>
       ))}
     </div>
@@ -151,53 +151,41 @@ function App() {
       {/* Audio Element */}
       <audio ref={audioRef} src={bgMusic} loop />
 
-      {/* Minimal Top-Right Music Toggle with Ripple */}
-      <button 
-        onClick={toggleMusic}
-        className="fixed top-8 right-8 z-[100] w-12 h-12 bg-white/20 backdrop-blur-xl border border-white/30 rounded-full flex items-center justify-center text-maroon hover:scale-110 transition-all ripple-effect overflow-hidden shadow-xl"
-        aria-label="Toggle Music"
-      >
-        {isPlaying ? <Volume2 size={20} className="animate-pulse" /> : <VolumeX size={20} className="opacity-40" />}
-      </button>
-
-      {/* Consolidated Minimal Control Bar - Now cleaner */}
-      <div className="fixed bottom-12 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-6 bg-white/20 backdrop-blur-2xl border border-white/30 px-8 py-4 rounded-full shadow-2xl">
-        {/* Navigation - Prev */}
-        {currentStep > 0 && (
-          <button
-            onClick={prevStep}
-            className="p-2 text-maroon/60 hover:text-maroon hover:scale-110 transition-all active:scale-95"
-            aria-label="Previous Page"
-          >
-            <ChevronLeft size={20} />
-          </button>
-        )}
-
-        {/* Page Indicator */}
-        <div className="flex flex-col items-center min-w-[80px]">
-          <span className="font-lato text-[8px] tracking-[0.3em] text-maroon/40 uppercase font-bold">Chapter</span>
-          <span className="font-playfair text-xs text-maroon font-bold">0{currentStep + 1}</span>
+      {/* Minimal Navigation & Music - Pinned to Corners */}
+      <div className="fixed top-6 left-6 right-6 z-[100] flex justify-between items-center pointer-events-none">
+        {/* Top Left: Back Arrow */}
+        <div className="pointer-events-auto">
+          {currentStep > 0 && (
+            <button 
+              onClick={prevStep}
+              className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-maroon/60 hover:text-maroon hover:scale-110 transition-all shadow-lg"
+              aria-label="Previous Page"
+            >
+              <ChevronLeft size={20} />
+            </button>
+          )}
         </div>
 
-        {/* Music Toggle */}
-        <button
-          onClick={toggleMusic}
-          className="p-2 text-maroon/60 hover:text-maroon hover:scale-110 transition-all active:scale-95"
-          aria-label="Toggle Music"
-        >
-          {isPlaying ? <Volume2 size={20} className="animate-pulse" /> : <VolumeX size={20} />}
-        </button>
-
-        {/* Navigation - Next */}
-        {currentStep > 0 && currentStep < steps.length - 1 && (
-          <button
-            onClick={nextStep}
-            className="p-2 text-maroon/60 hover:text-maroon hover:scale-110 transition-all active:scale-95"
-            aria-label="Next Page"
+        {/* Top Right: Next Arrow & Music */}
+        <div className="flex items-center gap-3 pointer-events-auto">
+          {currentStep > 0 && currentStep < steps.length - 1 && (
+            <button 
+              onClick={nextStep}
+              className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-maroon/60 hover:text-maroon hover:scale-110 transition-all shadow-lg"
+              aria-label="Next Page"
+            >
+              <ChevronRight size={20} />
+            </button>
+          )}
+          
+          <button 
+            onClick={toggleMusic}
+            className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-maroon hover:scale-110 transition-all ripple-effect overflow-hidden shadow-lg"
+            aria-label="Toggle Music"
           >
-            <ChevronRight size={20} />
+            {isPlaying ? <Volume2 size={20} className="animate-pulse" /> : <VolumeX size={20} className="opacity-40" />}
           </button>
-        )}
+        </div>
       </div>
 
 
