@@ -60,11 +60,11 @@ const Countdown = ({ targetDate }) => {
   }, [targetDate]);
 
   return (
-    <div className="flex gap-2 md:gap-8 justify-center flex-nowrap">
+    <div className="flex gap-2 md:gap-8 justify-center w-full max-w-4xl mx-auto px-2">
       {Object.entries(timeLeft).map(([label, value]) => (
-        <div key={label} className="glass-card p-4 md:p-8 rounded-2xl md:rounded-[2.5rem] flex flex-col items-center min-w-[70px] md:min-w-[130px] group">
-          <span className="text-3xl md:text-6xl font-playfair text-maroon mb-1 group-hover:scale-110 transition-transform duration-500">{value}</span>
-          <span className="text-[8px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.4em] text-gold font-bold">{label}</span>
+        <div key={label} className="glass-card flex-1 p-2 md:p-8 rounded-xl md:rounded-[2.5rem] flex flex-col items-center min-w-0 group">
+          <span className="text-xl md:text-6xl font-playfair text-maroon mb-1 group-hover:scale-110 transition-transform duration-500">{value}</span>
+          <span className="text-[7px] md:text-[11px] uppercase tracking-[0.1em] md:tracking-[0.4em] text-gold font-bold">{label}</span>
         </div>
       ))}
     </div>
@@ -357,61 +357,61 @@ function App() {
                   <div className="h-[1px] w-32 bg-gold/30 mx-auto"></div>
                 </header>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
                   {/* Reception Card */}
-                  <div className="glass-card p-8 md:p-12 rounded-[2.5rem] flex flex-col items-center text-center group">
-                    <div className="w-16 h-16 md:w-24 md:h-24 bg-maroon/5 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                      <Music className="text-maroon" size={32} />
+                  <div className="glass-card p-6 md:p-10 rounded-[2rem] flex flex-col items-center text-center group">
+                    <div className="w-14 h-14 md:w-20 md:h-20 bg-maroon/5 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                      <Music className="text-maroon" size={28} />
                     </div>
-                    <h3 className="font-vibes text-4xl md:text-5xl text-maroon mb-4">Reception</h3>
-                    <p className="font-cormorant text-xl text-maroon/70 mb-2">May 27, 2026</p>
-                    <p className="font-lato text-gold tracking-widest text-[10px] font-bold uppercase">6:30 PM Onwards</p>
+                    <h3 className="font-vibes text-3xl md:text-4xl text-maroon mb-3">Reception</h3>
+                    <p className="font-cormorant text-lg text-maroon/70 mb-1">May 27, 2026</p>
+                    <p className="font-lato text-gold tracking-widest text-[9px] font-bold uppercase">6:30 PM Onwards</p>
                   </div>
 
                   {/* Muhurtham Card */}
-                  <div className="glass-card p-8 md:p-12 rounded-[2.5rem] flex flex-col items-center text-center group">
-                    <div className="w-16 h-16 md:w-24 md:h-24 bg-maroon/5 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
-                      <Heart className="text-maroon" size={32} />
+                  <div className="glass-card p-6 md:p-10 rounded-[2rem] flex flex-col items-center text-center group">
+                    <div className="w-14 h-14 md:w-20 md:h-20 bg-maroon/5 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                      <Heart className="text-maroon" size={28} />
                     </div>
-                    <h3 className="font-vibes text-4xl md:text-5xl text-maroon mb-4">Muhurtham</h3>
-                    <p className="font-cormorant text-xl text-maroon/70 mb-2">May 28, 2026</p>
-                    <p className="font-lato text-gold tracking-widest text-[10px] font-bold uppercase">7:30 AM - 9:00 AM</p>
+                    <h3 className="font-vibes text-3xl md:text-4xl text-maroon mb-3">Muhurtham</h3>
+                    <p className="font-cormorant text-lg text-maroon/70 mb-1">May 28, 2026</p>
+                    <p className="font-lato text-gold tracking-widest text-[9px] font-bold uppercase">7:30 AM - 9:00 AM</p>
                   </div>
                 </div>
 
-                {/* Venue Section - Compact & Elegant */}
-                <div className="max-w-3xl mx-auto glass-card p-6 md:p-10 rounded-[2.5rem] mb-24 relative overflow-hidden group reveal-on-scroll">
+                {/* Venue Section - More Compact */}
+                <div className="max-w-2xl mx-auto glass-card p-5 md:p-8 rounded-[2rem] mb-20 relative overflow-hidden group reveal-on-scroll">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
                   
-                  <div className="relative z-10 flex flex-col md:flex-row items-center gap-10">
+                  <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
                     {/* Left: Styled Map Frame */}
-                    <div className="w-full md:w-1/2">
+                    <div className="w-full md:w-2/5">
                       <div className="relative group/map">
-                        <div className="relative bg-white/5 backdrop-blur-sm rounded-[2rem] aspect-[4/3] flex items-center justify-center border border-white/10 overflow-hidden">
+                        <div className="relative bg-white/5 backdrop-blur-sm rounded-xl aspect-[4/3] flex items-center justify-center border border-white/10 overflow-hidden">
                           <motion.div 
                             animate={{ scale: [1, 1.05, 1] }}
                             transition={{ duration: 4, repeat: Infinity }}
                             className="flex flex-col items-center"
                           >
-                            <MapPin size={48} className="text-maroon mb-2 opacity-60" />
-                            <div className="w-16 h-[1px] bg-gold/30 rounded-full"></div>
+                            <MapPin size={40} className="text-maroon mb-2 opacity-60" />
+                            <div className="w-12 h-[1px] bg-gold/30 rounded-full"></div>
                           </motion.div>
-                          <div className="absolute bottom-3 left-0 right-0 text-center">
-                            <span className="font-lato text-[7px] uppercase tracking-[0.4em] font-bold text-maroon/30">Musiri, Trichy</span>
+                          <div className="absolute bottom-2 left-0 right-0 text-center">
+                            <span className="font-lato text-[6px] uppercase tracking-[0.4em] font-bold text-maroon/30">Musiri, Trichy</span>
                           </div>
                         </div>
                       </div>
                     </div>
 
                     {/* Right: Venue Details & Navigation */}
-                    <div className="w-full md:w-1/2 flex flex-col items-center md:items-start">
-                      <div className="mb-8 text-center md:text-left">
-                        <span className="font-lato text-[9px] tracking-[0.5em] text-gold uppercase font-bold mb-1 block opacity-60">Venue</span>
+                    <div className="w-full md:w-3/5 flex flex-col items-center md:items-start">
+                      <div className="mb-6 text-center md:text-left">
+                        <span className="font-lato text-[8px] tracking-[0.5em] text-gold uppercase font-bold mb-1 block opacity-60">Venue</span>
                         <h3 className="flex flex-col leading-tight">
-                          <span className="font-playfair text-xl md:text-2xl text-maroon/60 italic">The</span>
-                          <span className="font-playfair text-4xl md:text-5xl text-maroon font-bold tracking-tight">Vaasan Mahal</span>
+                          <span className="font-playfair text-lg md:text-xl text-maroon/60 italic">The</span>
+                          <span className="font-playfair text-3xl md:text-4xl text-maroon font-bold tracking-tight">Vaasan Mahal</span>
                         </h3>
-                        <div className="h-[2px] w-12 bg-gold/30 mt-4 mx-auto md:mx-0"></div>
+                        <div className="h-[1px] w-10 bg-gold/30 mt-3 mx-auto md:mx-0"></div>
                       </div>
                       
                       <motion.a
@@ -420,7 +420,7 @@ function App() {
                         href="https://www.google.com/maps/search/The+Vaasan+Mahal+Musiri"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-10 py-4 bg-maroon text-gold rounded-full font-lato text-[10px] tracking-[0.4em] uppercase font-bold shadow-xl hover:shadow-maroon/20 transition-all duration-500 ripple-effect"
+                        className="px-8 py-3 bg-maroon text-gold rounded-full font-lato text-[9px] tracking-[0.4em] uppercase font-bold shadow-xl hover:shadow-maroon/20 transition-all duration-500 ripple-effect"
                       >
                         Navigate
                       </motion.a>
@@ -428,10 +428,10 @@ function App() {
                   </div>
                 </div>
 
-                {/* Countdown Section - Glass UI */}
-                <div className="pt-20 border-t border-gold/10 text-center">
-                  <span className="font-lato text-[8px] tracking-[0.6em] text-gold uppercase font-bold mb-12 block">The Celebration Begins In</span>
-                  <div className="inline-block glass-card p-4 md:p-12 rounded-[2rem] md:rounded-[3rem] glow-shadow">
+                {/* Countdown Section - More Compact */}
+                <div className="pt-16 border-t border-gold/10 text-center">
+                  <span className="font-lato text-[7px] tracking-[0.6em] text-gold uppercase font-bold mb-8 block">The Celebration Begins In</span>
+                  <div className="inline-block glass-card p-3 md:p-8 rounded-[1.5rem] md:rounded-[2rem] glow-shadow">
                     <Countdown targetDate="2026-05-28T07:30:00" />
                   </div>
                 </div>
