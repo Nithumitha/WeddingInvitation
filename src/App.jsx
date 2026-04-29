@@ -200,16 +200,34 @@ function App() {
           }}
         />
         
-        <img
+        {/* Top Right Flower - Smaller on inner pages */}
+        <motion.img
           src={cornerFlower}
           alt=""
-          className="absolute -top-10 -right-10 w-24 md:w-80 opacity-40 md:opacity-80 mix-blend-multiply"
+          animate={{ 
+            scale: currentStep === 0 ? 1 : 0.8,
+            x: currentStep === 0 ? 0 : 20,
+            y: currentStep === 0 ? 0 : -20,
+            opacity: currentStep === 0 ? 0.8 : 0.6
+          }}
+          className="absolute -top-5 -right-5 w-32 md:w-80 mix-blend-multiply pointer-events-none"
         />
-        <img
-          src={coupleCorner}
-          alt=""
-          className="absolute -bottom-10 -left-10 w-32 md:w-96 opacity-40 md:opacity-80 mix-blend-multiply"
-        />
+
+        {/* Bottom Left Couple - Only on Home Page */}
+        <AnimatePresence>
+          {currentStep === 0 && (
+            <motion.img
+              key="coupleCorner"
+              src={coupleCorner}
+              alt=""
+              initial={{ opacity: 0, scale: 0.8, x: -20, y: 20 }}
+              animate={{ opacity: 0.8, scale: 1, x: 0, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, x: -20, y: 20 }}
+              transition={{ duration: 0.8 }}
+              className="absolute -bottom-5 -left-5 w-40 md:w-96 mix-blend-multiply pointer-events-none"
+            />
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Audio Element */}
