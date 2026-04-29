@@ -317,7 +317,7 @@ function App() {
 
 
       {/* Page Content with Transitions */}
-      <main className="h-screen w-full flex items-center justify-center relative overflow-hidden bg-transparent">
+      <main className="h-dvh w-full flex items-center justify-center relative overflow-hidden bg-transparent fixed inset-0">
         <AnimatePresence mode="wait">
           {currentStep === 0 && (
             <motion.div
