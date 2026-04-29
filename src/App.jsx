@@ -64,29 +64,74 @@ const Countdown = ({ targetDate }) => {
 };
 
 const RosePetals = () => {
-  const petals = Array.from({ length: 25 });
+  const petalsCount = 12; // Premium, non-cluttered limit
+  const petals = Array.from({ length: petalsCount });
+  
   return (
     <div className="fixed inset-0 pointer-events-none z-[45] overflow-hidden">
       {petals.map((_, i) => {
-        const size = Math.random() * 15 + 10;
+        // Create 3 layers of depth
+        const layer = i % 3; // 0: Background, 1: Mid, 2: Front
+        
+        let size, duration, blur, zIndex, opacity;
+        
+        if (layer === 0) { // Background (Slow & Blurry)
+          size = Math.random() * 8 + 8;
+          duration = Math.random() * 10 + 20;
+          blur = "blur(3px)";
+          zIndex = 10;
+          opacity = 0.4;
+        } else if (layer === 1) { // Mid
+          size = Math.random() * 10 + 12;
+          duration = Math.random() * 8 + 14;
+          blur = "none";
+          zIndex = 20;
+          opacity = 0.7;
+        } else { // Front (Large & Fast)
+          size = Math.random() * 12 + 18;
+          duration = Math.random() * 6 + 10;
+          blur = "none";
+          zIndex = 30;
+          opacity = 0.9;
+        }
+
         const left = Math.random() * 100;
-        const delay = Math.random() * 1.5;
-        const duration = Math.random() * 10 + 10;
-        const opacity = Math.random() * 0.5 + 0.3;
+        const delay = Math.random() * -20; // Negative delay starts the animation mid-way
+        const drift = Math.random() * 150 - 75; // Horizontal drift range
 
         return (
-          <div
+          <motion.div
             key={i}
-            className="petal"
-            style={{
-              width: `${size}px`,
-              height: `${size * 0.8}px`,
-              left: `${left}%`,
-              animationDelay: `${delay}s`,
-              animationDuration: `${duration}s`,
-              opacity: opacity
+            initial={{ y: -100, x: 0, opacity: 0, rotate: 0 }}
+            animate={{ 
+              y: "110vh", 
+              x: drift,
+              opacity: [0, opacity, opacity, 0],
+              rotate: [0, 180, 360, 540] 
             }}
-          />
+            transition={{ 
+              duration: duration, 
+              delay: delay, 
+              repeat: Infinity, 
+              ease: "linear" 
+            }}
+            className="absolute"
+            style={{ 
+              filter: blur, 
+              zIndex: zIndex,
+              left: `${left}%`
+            }}
+          >
+            <div 
+              className="bg-gradient-to-br from-pink-200 to-pink-400 shadow-sm"
+              style={{
+                width: `${size}px`,
+                height: `${size * 0.8}px`,
+                borderRadius: '50% 0 50% 50%',
+                transform: 'skewX(-10deg)'
+              }}
+            />
+          </motion.div>
         );
       })}
     </div>
@@ -231,31 +276,31 @@ function App() {
                     </p>
 
                     <div className="pt-8 md:pt-12 flex flex-col items-center">
-                    <button 
-                      onClick={handleOpen}
-                      className="relative group cursor-pointer"
-                    >
-                      {/* Interactive Aura */}
-                      <div className="absolute inset-0 bg-gold/20 rounded-full animate-ping scale-150 opacity-10"></div>
-                      <div className="absolute inset-0 bg-gold/10 rounded-full animate-pulse scale-125"></div>
+                      <button
+                        onClick={handleOpen}
+                        className="relative group cursor-pointer"
+                      >
+                        {/* Interactive Aura */}
+                        <div className="absolute inset-0 bg-gold/20 rounded-full animate-ping scale-150 opacity-10"></div>
+                        <div className="absolute inset-0 bg-gold/10 rounded-full animate-pulse scale-125"></div>
 
-                      {/* Redesigned Glass Seal Button */}
-                      <div className="relative w-24 h-24 md:w-32 md:h-32 bg-maroon/90 backdrop-blur-md rounded-full flex flex-col items-center justify-center border-4 border-gold/40 shadow-[0_20px_50px_rgba(74,4,78,0.3)] group-hover:scale-110 group-active:scale-95 transition-all duration-500 overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-white/10"></div>
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.2)_0%,transparent_70%)]"></div>
-                        
-                        <Sparkles className="text-gold mb-2 animate-pulse" size={24} />
-                        <span className="font-lato text-[9px] tracking-[0.3em] text-gold font-bold uppercase">Open</span>
-                        
-                        {/* Shimmer sweep */}
-                        <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[200%] animate-[shimmer_3s_infinite]"></div>
-                      </div>
-                      
-                      {/* Label */}
-                      <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-48 text-center pointer-events-none">
-                        <p className="font-lato text-[9px] tracking-[0.5em] text-maroon/40 uppercase animate-bounce">Reveal The Invite</p>
-                      </div>
-                    </button>
+                        {/* Redesigned Glass Seal Button */}
+                        <div className="relative w-24 h-24 md:w-32 md:h-32 bg-maroon/90 backdrop-blur-md rounded-full flex flex-col items-center justify-center border-4 border-gold/40 shadow-[0_20px_50px_rgba(74,4,78,0.3)] group-hover:scale-110 group-active:scale-95 transition-all duration-500 overflow-hidden">
+                          <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-white/10"></div>
+                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.2)_0%,transparent_70%)]"></div>
+
+                          <Sparkles className="text-gold mb-2 animate-pulse" size={24} />
+                          <span className="font-lato text-[9px] tracking-[0.3em] text-gold font-bold uppercase">Open</span>
+
+                          {/* Shimmer sweep */}
+                          <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[200%] animate-[shimmer_3s_infinite]"></div>
+                        </div>
+
+                        {/* Label */}
+                        <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-48 text-center pointer-events-none">
+                          <p className="font-lato text-[9px] tracking-[0.5em] text-maroon/40 uppercase animate-bounce">Reveal The Invite</p>
+                        </div>
+                      </button>
                     </div>
                   </div>
                 </div>

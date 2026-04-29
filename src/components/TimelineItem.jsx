@@ -10,21 +10,20 @@ const TimelineItem = ({ index, image, title, text, highlightText }) => {
       whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 1.5, ease: [0.43, 0.13, 0.23, 0.96] }}
-      className={`relative flex flex-col md:flex-row items-center justify-between w-full mb-32 md:mb-56 ${
-        isIllustrationLeft ? 'md:flex-row' : 'md:flex-row-reverse'
-      } gap-12 md:gap-32 pl-20 md:pl-0`}
+      className={`relative flex flex-col md:flex-row items-center justify-between w-full mb-32 md:mb-56 ${isIllustrationLeft ? 'md:flex-row' : 'md:flex-row-reverse'
+        } gap-12 md:gap-32 pl-20 md:pl-0`}
     >
       {/* Illustration Area - Floating Effect */}
       <div className="w-full md:w-1/2 flex items-center justify-center md:justify-center">
-        <motion.div 
+        <motion.div
           animate={{ y: [0, -15, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           className="relative group"
         >
           <div className="absolute inset-0 bg-maroon/5 rounded-full blur-[40px] md:blur-[80px] group-hover:bg-maroon/10 transition-colors duration-1000"></div>
-          <img 
-            src={image} 
-            alt={`Story step ${index}`} 
+          <img
+            src={image}
+            alt={`Story step ${index}`}
             className="relative w-full max-w-[200px] md:max-w-[360px] h-auto object-contain mix-blend-multiply opacity-90 transition-all duration-1000 group-hover:scale-105"
           />
         </motion.div>
@@ -38,7 +37,7 @@ const TimelineItem = ({ index, image, title, text, highlightText }) => {
         <div className={`max-w-[400px] text-left ${isIllustrationLeft ? 'md:text-left md:items-start' : 'md:text-right md:items-end'} flex flex-col`}>
           {title && (
             <span className="font-lato text-[10px] tracking-[0.6em] text-gold uppercase font-bold mb-4 block">
-               {title}
+              {title}
             </span>
           )}
           <h3 className="font-playfair text-2xl md:text-5xl text-maroon mb-6 leading-tight opacity-90">
@@ -49,11 +48,10 @@ const TimelineItem = ({ index, image, title, text, highlightText }) => {
               {highlightText}
             </p>
           )}
-          
+
           {/* Decorative line - Desktop Only */}
-          <div className={`hidden md:block h-[1px] w-8 bg-maroon/10 mt-3 ${
-            isIllustrationLeft ? '' : 'md:ml-auto'
-          }`}></div>
+          <div className={`hidden md:block h-[1px] w-8 bg-maroon/10 mt-3 ${isIllustrationLeft ? '' : 'md:ml-auto'
+            }`}></div>
         </div>
       </div>
     </motion.div>

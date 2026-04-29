@@ -32,7 +32,7 @@ const OurStorySection = ({ scrollContainerRef }) => {
     container: scrollContainerRef,
     offset: ["start start", "end end"]
   });
-  
+
   const pathLength = useSpring(scrollYProgress, { stiffness: 400, damping: 90, restDelta: 0.001 });
 
   // Map scroll progress to the dot's position (roughly 0-100% of the path)
@@ -40,8 +40,8 @@ const OurStorySection = ({ scrollContainerRef }) => {
 
 
   return (
-    <section 
-      id="story" 
+    <section
+      id="story"
       ref={sectionRef}
       className="watercolor-bg py-32 px-4 relative overflow-hidden flex flex-col items-center"
     >
