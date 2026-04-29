@@ -455,7 +455,7 @@ function App() {
                     The Venue
                   </div>
 
-                  <div className="relative z-10 flex flex-col md:flex-row items-center gap-4 md:gap-8">
+                  <div className="relative z-10 flex flex-col md:flex-row items-center gap-4 md:gap-8 pt-6 md:pt-0">
                     <div className="w-full md:w-1/3">
                       <div className="relative p-1 md:p-2 border-2 border-gold/15 rounded-xl md:rounded-2xl bg-white shadow-md">
                         <div className="relative bg-[#FFFBF0] rounded-lg aspect-[16/9] md:aspect-square flex items-center justify-center overflow-hidden">
