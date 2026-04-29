@@ -70,7 +70,7 @@ const RosePetals = () => {
       {petals.map((_, i) => {
         const size = Math.random() * 15 + 10;
         const left = Math.random() * 100;
-        const delay = Math.random() * 10;
+        const delay = Math.random() * 1.5;
         const duration = Math.random() * 10 + 10;
         const opacity = Math.random() * 0.5 + 0.3;
 
@@ -156,7 +156,7 @@ function App() {
         {/* Top Left: Back Arrow */}
         <div className="pointer-events-auto">
           {currentStep > 0 && (
-            <button 
+            <button
               onClick={prevStep}
               className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-maroon/60 hover:text-maroon hover:scale-110 transition-all shadow-lg"
               aria-label="Previous Page"
@@ -169,7 +169,7 @@ function App() {
         {/* Top Right: Next Arrow & Music */}
         <div className="flex items-center gap-3 pointer-events-auto">
           {currentStep > 0 && currentStep < steps.length - 1 && (
-            <button 
+            <button
               onClick={nextStep}
               className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-maroon/60 hover:text-maroon hover:scale-110 transition-all shadow-lg"
               aria-label="Next Page"
@@ -177,8 +177,8 @@ function App() {
               <ChevronRight size={20} />
             </button>
           )}
-          
-          <button 
+
+          <button
             onClick={toggleMusic}
             className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-maroon hover:scale-110 transition-all ripple-effect overflow-hidden shadow-lg"
             aria-label="Toggle Music"
@@ -279,7 +279,7 @@ function App() {
               animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
               exit={{ opacity: 0, scale: 0.9, filter: "blur(15px)" }}
               transition={{ duration: 1.4, ease: [0.43, 0.13, 0.23, 0.96] }}
-              className="w-full h-full overflow-y-auto scrollbar-hide py-32"
+              className="absolute inset-0 overflow-y-auto scrollbar-hide py-32 px-4"
             >
               <div className="max-w-4xl mx-auto px-6">
                 <header className="text-center mb-24">
@@ -288,49 +288,49 @@ function App() {
                   <div className="h-[1px] w-32 bg-gold/30 mx-auto"></div>
                 </header>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-24">
                   {/* Reception Card */}
-                  <div className="glass-card p-10 rounded-[2rem] flex flex-col items-center text-center group hover:translate-y-[-10px] transition-all duration-500">
-                    <div className="w-20 h-20 bg-maroon/5 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                      <Music className="text-maroon" size={32} />
+                  <div className="glass-card p-6 md:p-10 rounded-[2rem] flex flex-col items-center text-center group hover:translate-y-[-10px] transition-all duration-500">
+                    <div className="w-16 h-16 md:w-20 md:h-20 bg-maroon/5 rounded-2xl flex items-center justify-center mb-6 md:mb-8 group-hover:scale-110 transition-transform">
+                      <Music className="text-maroon" size={28} md:size={32} />
                     </div>
-                    <h3 className="font-vibes text-5xl text-maroon mb-4">Reception</h3>
+                    <h3 className="font-vibes text-4xl md:text-5xl text-maroon mb-4">Reception</h3>
                     <p className="font-cormorant text-xl text-maroon/70 mb-2">May 27, 2026</p>
                     <p className="font-lato text-gold tracking-widest text-[10px] font-bold uppercase">6:30 PM Onwards</p>
                   </div>
 
                   {/* Muhurtham Card */}
-                  <div className="glass-card p-10 rounded-[2rem] flex flex-col items-center text-center group hover:translate-y-[-10px] transition-all duration-500">
-                    <div className="w-20 h-20 bg-maroon/5 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                      <Heart className="text-maroon" size={32} />
+                  <div className="glass-card p-6 md:p-10 rounded-[2rem] flex flex-col items-center text-center group hover:translate-y-[-10px] transition-all duration-500">
+                    <div className="w-16 h-16 md:w-20 md:h-20 bg-maroon/5 rounded-2xl flex items-center justify-center mb-6 md:mb-8 group-hover:scale-110 transition-transform">
+                      <Heart className="text-maroon" size={28} md:size={32} />
                     </div>
-                    <h3 className="font-vibes text-5xl text-maroon mb-4">Muhurtham</h3>
+                    <h3 className="font-vibes text-4xl md:text-5xl text-maroon mb-4">Muhurtham</h3>
                     <p className="font-cormorant text-xl text-maroon/70 mb-2">May 28, 2026</p>
                     <p className="font-lato text-gold tracking-widest text-[10px] font-bold uppercase">7:30 AM - 9:00 AM</p>
                   </div>
                 </div>
 
                 {/* Venue Section - Redesigned as a Wide Scene */}
-                <div className="glass-card p-12 rounded-[3rem] mb-24 relative overflow-hidden group">
+                <div className="glass-card p-6 md:p-12 rounded-[2rem] md:rounded-[3rem] mb-24 relative overflow-hidden group">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
                   <div className="relative z-10 flex flex-col md:flex-row items-center gap-12">
                     <div className="w-full md:w-1/2">
                       <div className="bg-maroon/5 rounded-2xl aspect-video flex items-center justify-center border border-maroon/10 mb-6 overflow-hidden">
-                         <div className="flex flex-col items-center opacity-30">
-                            <MapPin size={48} className="mb-2" />
-                            <span className="font-lato text-[8px] uppercase tracking-widest font-bold">Interactive Map Preview</span>
-                         </div>
+                        <div className="flex flex-col items-center opacity-30">
+                          <MapPin size={48} className="mb-2" />
+                          <span className="font-lato text-[8px] uppercase tracking-widest font-bold">Interactive Map Preview</span>
+                        </div>
                       </div>
                       <h3 className="font-vibes text-6xl text-maroon mb-4">The Vaasan Mahal</h3>
                       <p className="font-lato text-maroon/50 text-[10px] tracking-[0.2em] uppercase">Musiri, Trichy</p>
                     </div>
                     <div className="w-full md:w-1/2 flex flex-col items-center md:items-start">
-                       <p className="font-cormorant text-2xl text-maroon/70 italic mb-10 text-center md:text-left leading-relaxed">
-                          "In a setting as timeless as our love, we await your presence to grace our union."
-                       </p>
-                       <a 
-                        href="https://www.google.com/maps/search/The+Vaasan+Mahal+Musiri" 
-                        target="_blank" 
+                      <p className="font-cormorant text-2xl text-maroon/70 italic mb-10 text-center md:text-left leading-relaxed">
+                        "In a setting as timeless as our love, we await your presence to grace our union."
+                      </p>
+                      <a
+                        href="https://www.google.com/maps/search/The+Vaasan+Mahal+Musiri"
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="px-12 py-5 bg-maroon text-gold rounded-full font-lato text-[11px] tracking-[0.4em] uppercase font-bold hover:scale-110 active:scale-95 transition-all shadow-2xl glow-shadow glow-text"
                       >
