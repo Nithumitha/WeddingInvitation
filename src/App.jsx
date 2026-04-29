@@ -202,6 +202,21 @@ function App() {
     if (currentStep > 0) setCurrentStep(prev => prev - 1);
   };
 
+  // Lock scroll on Home Page
+  useEffect(() => {
+    if (currentStep === 0) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+    } else {
+      document.body.style.overflow = 'unset';
+      document.body.style.touchAction = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.body.style.touchAction = 'unset';
+    };
+  }, [currentStep]);
+
   const handleOpen = () => {
     if (!isPlaying && audioRef.current) {
       audioRef.current.play().catch(e => console.log("Autoplay blocked:", e));
@@ -317,7 +332,7 @@ function App() {
 
 
       {/* Page Content with Transitions */}
-      <main className="h-dvh w-full flex items-center justify-center relative overflow-hidden bg-transparent fixed inset-0">
+      <main className={`h-dvh w-full flex items-center justify-center relative overflow-hidden bg-transparent fixed inset-0 ${currentStep === 0 ? 'touch-none' : ''}`}>
         <AnimatePresence mode="wait">
           {currentStep === 0 && (
             <motion.div
@@ -362,16 +377,31 @@ function App() {
                         <div className="absolute inset-0 bg-gold/20 rounded-full animate-ping scale-150 opacity-10"></div>
                         <div className="absolute inset-0 bg-gold/10 rounded-full animate-pulse scale-125"></div>
 
-                        {/* Redesigned Glass Seal Button */}
-                        <div className="relative w-24 h-24 md:w-32 md:h-32 bg-maroon/90 backdrop-blur-md rounded-full flex flex-col items-center justify-center border-4 border-gold/40 shadow-[0_20px_50px_rgba(74,4,78,0.3)] group-hover:scale-110 group-active:scale-95 transition-all duration-500 overflow-hidden">
-                          <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-white/10"></div>
-                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.2)_0%,transparent_70%)]"></div>
+                        {/* Modern Enhanced Open Button */}
+                        <div className="relative group/btn">
+                          {/* Pulsing Halo Background */}
+                          <div className="absolute inset-[-10px] bg-gold/20 rounded-full blur-xl group-hover/btn:bg-gold/40 transition-all duration-700 animate-pulse"></div>
+                          
+                          {/* Rotating Decorative Outer Ring */}
+                          <motion.div 
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-[-6px] border border-gold/30 rounded-full border-dashed"
+                          ></motion.div>
 
-                          <Sparkles className="text-gold mb-2 animate-pulse" size={24} />
-                          <span className="font-lato text-[9px] tracking-[0.3em] text-gold font-bold uppercase">Open</span>
+                          <div className="relative w-24 h-24 bg-gradient-to-br from-maroon to-[#3B0066] rounded-full flex items-center justify-center overflow-hidden shadow-[0_10px_30px_rgba(75,0,130,0.4)] border border-gold/40 group-hover/btn:scale-110 transition-transform duration-500">
+                            <div className="flex flex-col items-center z-10">
+                              <Sparkles className="text-gold/80 mb-1.5 animate-pulse" size={18} />
+                              <span className="font-lato text-[9px] tracking-[0.4em] text-white font-bold uppercase ml-1">Open</span>
+                            </div>
 
-                          {/* Shimmer sweep */}
-                          <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[200%] animate-[shimmer_3s_infinite]"></div>
+                            {/* Shimmer Sweep Animation */}
+                            <motion.div 
+                              animate={{ x: ["-200%", "200%"] }}
+                              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
+                              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
+                            />
+                          </div>
                         </div>
 
 
