@@ -67,11 +67,10 @@ const OurStorySection = ({ scrollContainerRef }) => {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    container: scrollContainerRef,
-    offset: ["start start", "end end"]
+    offset: ["start 20%", "end 95%"]
   });
 
-  const pathLength = useSpring(scrollYProgress, { stiffness: 400, damping: 90, restDelta: 0.001 });
+  const pathLength = useSpring(scrollYProgress, { stiffness: 50, damping: 20, restDelta: 0.001 });
 
   return (
     <section
@@ -79,7 +78,7 @@ const OurStorySection = ({ scrollContainerRef }) => {
       ref={sectionRef}
       className="bg-transparent py-32 px-4 relative flex flex-col items-center overflow-x-hidden"
     >
-      {/* Header */}
+      {/* Header omitted for brevity */}
       <div className="max-w-4xl mx-auto text-center mb-[var(--section-gap)] relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -105,41 +104,36 @@ const OurStorySection = ({ scrollContainerRef }) => {
         {/* Minimalist Single Dotted Path */}
         <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[40px] md:w-[200px] pointer-events-none">
           <svg
-            viewBox="0 0 100 4200"
+            viewBox="0 0 100 700"
             width="100%"
             height="100%"
             preserveAspectRatio="none"
             className="overflow-visible"
           >
-            {/* Single Fine Gold Thread - Precisely Aligned to Nodes */}
+            {/* Precise multi-segment path that hits DOTS at 50, 150, 250, 350, 450, 550, 650 */}
             <motion.path
-              d="M 50 0 
-                 C 65 150, 65 150, 50 300
-                 C 35 600, 35 600, 50 900
-                 C 65 1200, 65 1200, 50 1500
-                 C 35 1800, 35 1800, 50 2100
-                 C 65 2400, 65 2400, 50 2700
-                 C 35 3000, 35 3000, 50 3300
-                 C 65 3600, 65 3600, 50 3900
-                 C 35 4100, 35 4100, 50 4200"
+              d="M 50 50
+                 C 70 75, 70 125, 50 150
+                 C 30 175, 30 225, 50 250
+                 C 70 275, 70 325, 50 350
+                 C 30 375, 30 425, 50 450
+                 C 70 475, 70 525, 50 550
+                 C 30 575, 30 625, 50 650"
               initial={{ pathLength: 0 }}
               fill="transparent"
               stroke="#D4AF37"
-              strokeWidth="1.2"
-              strokeDasharray="1 10"
+              strokeWidth="1.5"
+              strokeDasharray="2 8"
               strokeLinecap="round"
               style={{ pathLength }}
-              strokeOpacity="0.5"
+              strokeOpacity="0.4"
             />
 
-            {/* Subtle start/end points */}
-            <circle cx="50" cy="0" r="1.5" fill="#D4AF37" opacity="0.5" />
-            <circle cx="50" cy="4200" r="1.5" fill="#D4AF37" opacity="0.5" />
           </svg>
         </div>
 
         {/* Timeline Items */}
-        <div className="relative z-10">
+        <div className="flex flex-col relative z-10">
           {stories.map((story, index) => (
             <TimelineItem
               key={story.id}

@@ -188,7 +188,7 @@ function App() {
     <div className="min-h-screen relative overflow-x-hidden">
 
       {/* Elegant Corner Decorations & Cloud Background */}
-      <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#ffeded]">
+      <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#ffdede]">
         {/* Colorful Cloud Layer */}
         <img
           src={cloudsBg}
@@ -242,12 +242,12 @@ function App() {
       <audio ref={audioRef} src={bgMusic} loop />
 
       {/* Minimal Navigation & Music - Fluid Spacing */}
-      <div 
+      <div
         className="fixed z-[100] flex justify-between items-center pointer-events-none w-full"
-        style={{ 
-          top: 'clamp(1rem, 4vmin, 2.5rem)', 
-          paddingLeft: 'clamp(1rem, 4vmin, 2.5rem)', 
-          paddingRight: 'clamp(1rem, 4vmin, 2.5rem)' 
+        style={{
+          top: 'clamp(1rem, 4vmin, 2.5rem)',
+          paddingLeft: 'clamp(1rem, 4vmin, 2.5rem)',
+          paddingRight: 'clamp(1rem, 4vmin, 2.5rem)'
         }}
       >
         {/* Top Left: Back Arrow */}
@@ -286,19 +286,19 @@ function App() {
       <main className={`min-h-dvh w-full flex relative overflow-hidden bg-transparent fixed inset-0`}>
         <AnimatePresence mode="wait">
           {currentStep === 0 && (
-            <motion.div 
-              key="front" 
-              initial={{ opacity: 0 }} 
-              animate={{ opacity: 1 }} 
-              exit={{ opacity: 0 }} 
+            <motion.div
+              key="front"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               className="w-full h-full flex flex-col items-center px-6 overflow-hidden relative"
             >
               <RosePetals />
-              
+
               {/* Branding Section - Centered in the available space above the button */}
               <div className="mt-auto mb-auto w-full max-w-4xl flex flex-col items-center gap-[clamp(1rem,3vh,2rem)] relative z-10 shrink-0 pb-[4vh]">
                 <GaneshaIcon />
-                
+
                 <div className="text-center space-y-[clamp(1rem,3vh,2.5rem)]">
                   <p className="fluid-body italic text-maroon/70 font-semibold max-w-lg mx-auto leading-relaxed">
                     With hearts full of love, we invite you to witness the beginning of our forever.
@@ -551,8 +551,8 @@ const Countdown = ({ targetDate }) => {
   return (
     <div className="flex gap-[1.5vmin] justify-center w-full max-w-4xl mx-auto px-2">
       {Object.entries(timeLeft).map(([label, value]) => (
-        <div 
-          key={label} 
+        <div
+          key={label}
           className="bg-[#FFFBF0] border border-gold/40 flex-1 rounded-[2vmin] flex flex-col items-center group shadow-md transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden"
           style={{ padding: 'clamp(0.75rem, 3vmin, 1.5rem) 0' }}
         >
