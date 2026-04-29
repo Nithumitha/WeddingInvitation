@@ -11,7 +11,7 @@ import cloudsBg from './assets/grayscaleClouds.png';
 // --- Sub-components ---
 
 const Section = ({ children, className = "", id = "" }) => (
-  <section id={id} className={`min-h-screen flex flex-col items-center justify-center relative py-20 px-4 ${className}`}>
+  <section id={id} className={`flex flex-col items-center relative py-12 md:py-20 px-4 ${className}`}>
     {children}
   </section>
 );
@@ -332,7 +332,7 @@ function App() {
 
 
       {/* Page Content with Transitions */}
-      <main className={`h-dvh w-full flex items-center justify-center relative overflow-hidden bg-transparent fixed inset-0 ${currentStep === 0 ? 'touch-none' : ''}`}>
+      <main className={`min-h-dvh w-full flex relative overflow-hidden bg-transparent fixed inset-0 ${currentStep === 0 ? 'items-center justify-center touch-none' : 'items-start justify-start'}`}>
         <AnimatePresence mode="wait">
           {currentStep === 0 && (
             <motion.div
@@ -448,7 +448,7 @@ function App() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
                   {/* Celebration Card 1: Reception */}
-                  <div className="relative bg-[#FFFBF0] rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_50px_rgba(212,175,55,0.15)] border border-gold/30 group transition-all duration-700 hover:-translate-y-3">
+                  <div className="relative bg-[#FFFBF0] rounded-[2.5rem] p-8 md:p-12 shadow-[0_15px_40px_rgba(212,175,55,0.12)] border border-gold/25 group transition-all duration-700 hover:-translate-y-2 h-auto">
                     {/* Floating Pill Badge - Always highlighted on mobile */}
                     <div className="absolute -top-4 left-10 bg-gold text-white md:bg-white md:text-maroon px-6 py-2 rounded-full border border-gold/40 shadow-lg flex items-center gap-3 z-20 md:group-hover:bg-gold md:group-hover:text-white transition-colors duration-500">
                       <Music className="md:text-maroon md:group-hover:text-white text-white" size={14} />
@@ -504,7 +504,7 @@ function App() {
                   </div>
 
                   {/* Celebration Card 2: Muhurtham */}
-                  <div className="relative bg-[#FFFBF0] rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_50px_rgba(212,175,55,0.15)] border border-gold/30 group transition-all duration-700 hover:-translate-y-3">
+                  <div className="relative bg-[#FFFBF0] rounded-[2.5rem] p-8 md:p-12 shadow-[0_15px_40px_rgba(212,175,55,0.12)] border border-gold/25 group transition-all duration-700 hover:-translate-y-2 h-auto">
                     {/* Floating Pill Badge - Always highlighted on mobile */}
                     <div className="absolute -top-4 left-10 bg-gold text-white md:bg-white md:text-maroon px-6 py-2 rounded-full border border-gold/40 shadow-lg flex items-center gap-3 z-20 md:group-hover:bg-gold md:group-hover:text-white transition-colors duration-500">
                       <Heart className="md:text-maroon md:group-hover:text-white text-white" size={14} />
@@ -560,8 +560,8 @@ function App() {
                   </div>
                 </div>
 
-                {/* Venue Section - Scaled Down Designer Style */}
-                <div className="max-w-3xl mx-auto relative bg-[#FFFBF0] rounded-[2.5rem] p-6 md:p-8 shadow-[0_20px_50px_rgba(212,175,55,0.15)] border border-gold/30 group transition-all duration-700">
+                {/* Venue Section - Content Based Height */}
+                <div className="max-w-3xl mx-auto relative bg-[#FFFBF0] rounded-[2.5rem] p-6 md:p-8 shadow-[0_15px_40px_rgba(212,175,55,0.12)] border border-gold/25 group transition-all duration-700 h-auto">
                   {/* Floating Pill Badge - Always highlighted on mobile */}
                   <div className="absolute -top-4 left-10 bg-gold text-white md:bg-white md:text-maroon px-6 py-2 rounded-full border border-gold/40 shadow-lg flex items-center gap-3 z-20 md:group-hover:bg-gold md:group-hover:text-white transition-colors duration-500">
                     <MapPin className="md:text-maroon md:group-hover:text-white text-white" size={14} />
@@ -584,10 +584,9 @@ function App() {
                   <div className="absolute inset-4 border border-gold/10 rounded-[1.8rem] pointer-events-none"></div>
 
                   <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-10">
-                    {/* Left: Styled Map Frame */}
-                    <div className="w-full md:w-2/5">
-                      <div className="relative p-2 border-2 border-gold/20 rounded-2xl bg-white shadow-xl group-hover:border-gold/40 transition-colors duration-500">
-                        <div className="relative bg-[#FFFBF0] rounded-xl aspect-[4/3] flex items-center justify-center overflow-hidden">
+                    <div className="w-full md:w-2/5 h-auto">
+                      <div className="relative p-2 border-2 border-gold/15 rounded-2xl bg-white shadow-lg group-hover:border-gold/30 transition-colors duration-500">
+                        <div className="relative bg-[#FFFBF0] rounded-xl aspect-[4/3] max-h-[220px] md:max-h-none flex items-center justify-center overflow-hidden">
                           <motion.div
                             animate={{ y: [0, -8, 0] }}
                             transition={{ duration: 4, repeat: Infinity }}
