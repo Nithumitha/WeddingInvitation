@@ -56,7 +56,7 @@ const TimelineItem = ({ index, image, title, text, highlightText }) => {
       </div>
 
       {/* Text Area - Emotional Typography */}
-      <div className={`w-1/2 flex flex-col items-start px-4 md:px-0`}>
+      <div className={`w-1/2 flex flex-col items-start px-10 md:px-0`}>
         <div className={`max-w-[45vmin] ${isIllustrationLeft ? 'text-left items-start' : 'text-right items-end'} flex flex-col`}>
           {title && (
             <span className="fluid-label text-gold mb-2 md:mb-4 block">

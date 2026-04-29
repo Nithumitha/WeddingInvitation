@@ -63,8 +63,9 @@ const stories = [
   },
 ];
 
-const OurStorySection = ({ scrollContainerRef }) => {
+const OurStorySection = ({ scrollContainerRef, onNext }) => {
   const sectionRef = useRef(null);
+  // ... rest of useScroll logic ...
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start 20%", "end 95%"]
@@ -101,50 +102,70 @@ const OurStorySection = ({ scrollContainerRef }) => {
       </div>
 
       <div className="relative w-full max-w-6xl mx-auto">
-        {/* Minimalist Single Dotted Path */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[60px] md:w-[200px] pointer-events-none">
-          <svg
-            viewBox="0 0 100 700"
-            width="100%"
-            height="100%"
-            preserveAspectRatio="none"
-            className="overflow-visible"
+        {/* Timeline Wrapper - Strictly ties SVG height to story items */}
+        <div className="relative">
+          {/* Minimalist Single Dotted Path */}
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[60px] md:w-[200px] pointer-events-none">
+            <svg
+              viewBox="0 0 100 700"
+              width="100%"
+              height="100%"
+              preserveAspectRatio="none"
+              className="overflow-visible"
+            >
+              {/* Ultra-subtle multi-segment path to ensure zero overlap on all mobile screens */}
+              <motion.path
+                d="M 50 50
+                   C 55 75, 55 125, 50 150
+                   C 45 175, 45 225, 50 250
+                   C 55 275, 55 325, 50 350
+                   C 45 375, 45 425, 50 450
+                   C 55 475, 55 525, 50 550
+                   C 45 575, 45 625, 50 650"
+                initial={{ pathLength: 0 }}
+                fill="transparent"
+                stroke="#D4AF37"
+                strokeWidth="1.5"
+                strokeDasharray="2 8"
+                strokeLinecap="round"
+                style={{ pathLength }}
+                strokeOpacity="0.4"
+              />
+            </svg>
+          </div>
+
+          {/* Timeline Items */}
+          <div className="flex flex-col relative z-10">
+            {stories.map((story, index) => (
+              <TimelineItem
+                key={story.id}
+                index={index + 1}
+                image={story.image}
+                title={story.title}
+                text={story.text}
+                highlightText={story.highlightText}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Proceed Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center mt-12 mb-20 relative z-30"
+        >
+          <div className="h-20 w-[1px] bg-gradient-to-b from-gold/50 to-transparent mb-8"></div>
+          <motion.button
+            onClick={onNext}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-8 py-4 bg-white border border-gold text-maroon rounded-full fluid-label !text-[10px] !tracking-[0.3em] shadow-lg flex items-center gap-3 hover:bg-gold hover:text-white transition-all duration-500"
           >
-            {/* Subtler multi-segment path to prevent overlap on mobile */}
-            <motion.path
-              d="M 50 50
-                 C 60 75, 60 125, 50 150
-                 C 40 175, 40 225, 50 250
-                 C 60 275, 60 325, 50 350
-                 C 40 375, 40 425, 50 450
-                 C 60 475, 60 525, 50 550
-                 C 40 575, 40 625, 50 650"
-              initial={{ pathLength: 0 }}
-              fill="transparent"
-              stroke="#D4AF37"
-              strokeWidth="1.5"
-              strokeDasharray="2 8"
-              strokeLinecap="round"
-              style={{ pathLength }}
-              strokeOpacity="0.4"
-            />
-
-          </svg>
-        </div>
-
-        {/* Timeline Items */}
-        <div className="flex flex-col relative z-10">
-          {stories.map((story, index) => (
-            <TimelineItem
-              key={story.id}
-              index={index + 1}
-              image={story.image}
-              title={story.title}
-              text={story.text}
-              highlightText={story.highlightText}
-            />
-          ))}
-        </div>
+            Continue to Celebration
+          </motion.button>
+        </motion.div>
       </div>
 
       {/* Background Watercolor & Kolam Decor */}
