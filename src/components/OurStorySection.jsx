@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import TimelineItem from './TimelineItem';
 
 // Import images
@@ -21,104 +21,80 @@ const stories = [
   { id: 7, image: img8, title: "The Forever", text: "And this time… 💍", highlightText: "Two hearts, one story… Finally finding their forever. ❤️" },
 ];
 
-import { useScroll, useSpring, useTransform } from 'framer-motion';
-
 const OurStorySection = ({ scrollContainerRef }) => {
-  const sectionRef = React.useRef(null);
+  const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     container: scrollContainerRef,
     offset: ["start start", "end end"]
   });
 
-  const pathLength = useSpring(scrollYProgress, { stiffness: 400, damping: 90, restDelta: 0.001 });
-
-  // Map scroll progress to the dot's position (roughly 0-100% of the path)
-  const dotY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-
+  // Floating decorative elements parallax
+  const decorY1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const decorY2 = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const decorRotate = useTransform(scrollYProgress, [0, 1], [0, 45]);
 
   return (
     <section
       id="story"
       ref={sectionRef}
-      className="bg-transparent py-32 px-4 relative overflow-hidden flex flex-col items-center"
+      className="bg-transparent py-32 px-4 relative flex flex-col items-center overflow-x-hidden"
     >
-
-
+      {/* Decorative Floating Elements */}
+      <motion.div 
+        style={{ y: decorY1, rotate: decorRotate }}
+        className="absolute top-1/4 -left-20 w-64 h-64 bg-gold/5 rounded-full blur-[100px] pointer-events-none"
+      />
+      <motion.div 
+        style={{ y: decorY2, rotate: -decorRotate }}
+        className="absolute bottom-1/4 -right-20 w-80 h-80 bg-maroon/5 rounded-full blur-[120px] pointer-events-none"
+      />
 
       {/* Header */}
-      {/* Header */}
-      <div className="max-w-4xl mx-auto text-center mb-24 relative z-10">
+      <div className="max-w-4xl mx-auto text-center mb-40 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="flex flex-col items-center gap-4"
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="flex flex-col items-center gap-6"
         >
-          <span className="font-lato text-[11px] md:text-xs text-gold tracking-[0.6em] uppercase font-bold opacity-60">The Narrative</span>
-          <h2 className="font-playfair text-5xl md:text-8xl text-maroon tracking-tight font-bold">
+          <span className="font-lato text-[11px] md:text-xs text-gold tracking-[0.8em] uppercase font-bold opacity-70">
+            A Journey Through Time
+          </span>
+          <h2 className="font-playfair text-6xl md:text-9xl text-maroon tracking-tighter font-bold">
             Our Story
           </h2>
-          <div className="flex items-center gap-6 mt-8">
-            <div className="h-[1px] w-12 bg-gold/30"></div>
-            <p className="font-cormorant italic text-xl md:text-2xl text-maroon/50 leading-relaxed">
-              A journey written in time, sealed in love
-            </p>
-            <div className="h-[1px] w-12 bg-gold/30"></div>
-          </div>
+          <motion.div 
+            initial={{ width: 0 }}
+            whileInView={{ width: 120 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="h-[1px] bg-gold/40 mt-4"
+          />
         </motion.div>
       </div>
 
-      <div className="relative w-full max-w-6xl mx-auto">
-        {/* Wiggly Dotted SVG Path - Repositioned for mobile to avoid overlap */}
-        <div className="absolute left-8 md:left-1/2 -translate-x-1/2 top-[60px] bottom-0 w-[4px]">
-          <svg width="400" height="100%" className="overflow-visible absolute left-1/2 -translate-x-1/2" style={{ top: 0 }}>
-            <motion.path
-              d="M 200 0 
-                 C 280 120, 120 220, 200 320 
-                 C 280 440, 120 540, 200 640 
-                 C 280 760, 120 860, 200 960 
-                 C 280 1080, 120 1180, 200 1280 
-                 C 280 1400, 120 1500, 200 1600
-                 C 280 1720, 120 1820, 200 1920
-                 C 280 2040, 120 2140, 200 2240
-                 C 280 2360, 120 2460, 200 2560
-                 C 280 2680, 120 2780, 200 2880
-                 C 280 3000, 120 3100, 200 3200
-                 C 280 3320, 120 3420, 200 3520
-                 C 280 3640, 120 3740, 200 3840
-                 C 280 3960, 120 4060, 200 4160"
-              initial={{ pathLength: 0 }}
-              fill="transparent"
-              stroke="#D4AF37"
-              strokeWidth="2"
-              strokeDasharray="8 12"
-              strokeLinecap="round"
-              style={{ pathLength }}
-            />
-          </svg>
-        </div>
-
-        {/* Timeline Items */}
-        <div className="relative z-10">
-          {stories.map((story, index) => (
-            <TimelineItem
-              key={story.id}
-              index={index + 1}
-              image={story.image}
-              title={story.title}
-              text={story.text}
-              highlightText={story.highlightText}
-            />
-          ))}
-        </div>
+      {/* Timeline Items Container */}
+      <div className="relative w-full max-w-7xl mx-auto space-y-32 md:space-y-0">
+        {stories.map((story, index) => (
+          <TimelineItem
+            key={story.id}
+            index={index + 1}
+            image={story.image}
+            title={story.title}
+            text={story.text}
+            highlightText={story.highlightText}
+            containerRef={scrollContainerRef}
+          />
+        ))}
       </div>
 
-
-
       {/* Background Watercolor Sprinkles */}
-      <div className="absolute top-0 right-0 w-96 h-96 opacity-10 bg-gradient-to-bl from-purple-200 to-transparent pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 opacity-10 bg-gradient-to-tr from-purple-200 to-transparent pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-full h-full opacity-20 pointer-events-none overflow-hidden">
+        <div className="absolute top-[10%] left-[5%] w-1 h-1 bg-gold rounded-full shadow-[0_0_20px_#D4AF37]"></div>
+        <div className="absolute top-[30%] right-[10%] w-2 h-2 bg-maroon/20 rounded-full"></div>
+        <div className="absolute top-[60%] left-[15%] w-1.5 h-1.5 bg-gold/30 rounded-full"></div>
+        <div className="absolute top-[80%] right-[5%] w-1 h-1 bg-maroon/40 rounded-full"></div>
+      </div>
     </section>
   );
 };
