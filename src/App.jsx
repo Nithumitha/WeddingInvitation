@@ -185,6 +185,7 @@ function App() {
   const [currentStep, setCurrentStep] = useState(0); // 0: Front, 1: Story, 2: Event, 3: Venue
   const scrollContainerRef = React.useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [coupleImgLoaded, setCoupleImgLoaded] = useState(false);
   const audioRef = useRef(null);
 
   const steps = [
@@ -243,7 +244,7 @@ function App() {
             y: 0,
             opacity: 0.8
           }}
-          className="absolute -top-5 -right-5 w-40 md:w-96 mix-blend-multiply pointer-events-none"
+          className="absolute -top-5 -right-5 w-52 md:w-[28rem] mix-blend-multiply pointer-events-none"
         />
 
         {/* Bottom Left Couple - Only on Home Page */}
@@ -253,11 +254,18 @@ function App() {
               key="coupleCorner"
               src={coupleCorner}
               alt=""
+              fetchpriority="high"
+              onLoad={() => setCoupleImgLoaded(true)}
               initial={{ opacity: 0, scale: 0.8, x: -20, y: 20 }}
-              animate={{ opacity: 0.8, scale: 1, x: 0, y: 0 }}
+              animate={{ 
+                opacity: coupleImgLoaded ? 0.8 : 0, 
+                scale: coupleImgLoaded ? 1 : 0.95, 
+                x: 0, 
+                y: 0 
+              }}
               exit={{ opacity: 0, scale: 0.8, x: -20, y: 20 }}
-              transition={{ duration: 0.8 }}
-              className="absolute -bottom-5 -left-5 w-40 md:w-96 mix-blend-multiply pointer-events-none"
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="absolute -bottom-5 -left-5 w-52 md:w-[28rem] mix-blend-multiply pointer-events-none"
             />
           )}
         </AnimatePresence>
@@ -292,15 +300,18 @@ function App() {
               <ChevronRight size={20} />
             </button>
           )}
-
-          <button
-            onClick={toggleMusic}
-            className="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-maroon hover:scale-110 transition-all ripple-effect overflow-hidden shadow-lg"
-            aria-label="Toggle Music"
-          >
-            {isPlaying ? <Volume2 size={20} className="animate-pulse" /> : <VolumeX size={20} className="opacity-40" />}
-          </button>
         </div>
+      </div>
+
+      {/* Bottom Right: Music Control */}
+      <div className="fixed bottom-6 right-6 z-[100] pointer-events-none">
+        <button
+          onClick={toggleMusic}
+          className="pointer-events-auto w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-maroon hover:scale-110 transition-all ripple-effect overflow-hidden shadow-lg"
+          aria-label="Toggle Music"
+        >
+          {isPlaying ? <Volume2 size={20} className="animate-pulse" /> : <VolumeX size={20} className="opacity-40" />}
+        </button>
       </div>
 
 
@@ -327,7 +338,10 @@ function App() {
                   <div className="text-center space-y-4 md:space-y-6">
                     <p className="font-cormorant italic text-maroon/70 text-lg md:text-2xl leading-relaxed font-semibold">With hearts full of love, we invite you to witness the beginning of our forever.</p>
 
-                    <h1 className="font-vibes text-maroon flex flex-col items-center leading-none py-2 md:py-8 font-normal">
+                    <h1 
+                      className="font-vibes text-maroon flex flex-col items-center leading-none py-2 md:py-8 font-medium"
+                      style={{ textShadow: '0.4px 0 currentColor' }}
+                    >
                       <span style={{ fontSize: 'clamp(2.2rem, 14vw, 8.5rem)' }}>Krithick</span>
                       <span className="opacity-40" style={{ fontSize: 'clamp(1.2rem, 6vw, 4.5rem)' }}>&</span>
                       <span style={{ fontSize: 'clamp(2.2rem, 14vw, 8.5rem)' }}>Nithu</span>
@@ -360,10 +374,7 @@ function App() {
                           <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[200%] animate-[shimmer_3s_infinite]"></div>
                         </div>
 
-                        {/* Label */}
-                        <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-48 text-center pointer-events-none">
-                          <p className="font-lato text-[9px] tracking-[0.5em] text-maroon/40 uppercase animate-bounce">Reveal The Invite</p>
-                        </div>
+
                       </button>
                     </div>
                   </div>
