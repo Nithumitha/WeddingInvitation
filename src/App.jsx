@@ -233,17 +233,17 @@ function App() {
           }}
         />
         
-        {/* Top Right Flower - Smaller on inner pages */}
+        {/* Top Right Flower - Consistent across all pages */}
         <motion.img
           src={cornerFlower}
           alt=""
           animate={{ 
-            scale: currentStep === 0 ? 1 : 0.8,
-            x: currentStep === 0 ? 0 : 20,
-            y: currentStep === 0 ? 0 : -20,
-            opacity: currentStep === 0 ? 0.8 : 0.6
+            scale: 1,
+            x: 0,
+            y: 0,
+            opacity: 0.8
           }}
-          className="absolute -top-5 -right-5 w-32 md:w-80 mix-blend-multiply pointer-events-none"
+          className="absolute -top-5 -right-5 w-40 md:w-96 mix-blend-multiply pointer-events-none"
         />
 
         {/* Bottom Left Couple - Only on Home Page */}
@@ -408,102 +408,147 @@ function App() {
                   <div className="h-[1px] w-32 bg-gold/30 mx-auto"></div>
                 </header>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
                   {/* Celebration Card 1: Reception */}
-                  <div className="relative bg-[#FFFBF0] rounded-[2rem] overflow-hidden shadow-xl border border-gold/40 group transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl">
-                    {/* Top Accent Bar - Gold */}
-                    <div className="absolute top-0 left-0 right-0 h-1.5 bg-gold"></div>
-                    
-                    <div className="p-8 md:p-10 flex flex-col items-start text-left">
-                      {/* Pill Badge - Gold Theme */}
-                      <div className="flex items-center gap-2 bg-gold/10 px-4 py-1.5 rounded-full mb-6 border border-gold/30">
-                        <Music className="text-maroon" size={16} />
-                        <span className="font-lato text-[11px] tracking-[0.2em] text-maroon font-bold uppercase">Reception</span>
-                      </div>
+                  <div className="relative bg-[#FFFBF0] rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_50px_rgba(212,175,55,0.15)] border border-gold/30 group transition-all duration-700 hover:-translate-y-3">
+                    {/* Floating Pill Badge */}
+                    <div className="absolute -top-4 left-10 bg-white px-6 py-2 rounded-full border border-gold/40 shadow-lg flex items-center gap-3 z-20 group-hover:bg-gold group-hover:text-white transition-colors duration-500">
+                      <Music className="text-maroon group-hover:text-white" size={14} />
+                      <span className="font-lato text-[10px] tracking-[0.3em] text-maroon group-hover:text-white font-bold uppercase">The Reception</span>
+                    </div>
 
-                      {/* Title - Violet */}
-                      <h3 className="font-playfair text-3xl md:text-5xl text-maroon mb-4 font-bold">Reception Ceremony</h3>
+                    {/* Clipping Layer for Background Elements */}
+                    <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden pointer-events-none">
+                      {/* Subtle Background Mandala */}
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 opacity-[0.03] group-hover:rotate-45 transition-transform duration-1000">
+                        <svg viewBox="0 0 100 100" fill="currentColor" className="text-gold">
+                          <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="0.5" fill="none" />
+                          <path d="M50 5 L50 95 M5 50 L95 50" stroke="currentColor" strokeWidth="0.5" />
+                          <circle cx="50" cy="50" r="20" stroke="currentColor" strokeWidth="0.5" fill="none" strokeDasharray="2 2" />
+                        </svg>
+                      </div>
+                    </div>
+
+                    {/* Inner Decorative Border */}
+                    <div className="absolute inset-4 border border-gold/10 rounded-[1.8rem] pointer-events-none"></div>
+
+                    <div className="relative z-10">
+                      {/* Title */}
+                      <h3 className="font-playfair text-4xl md:text-6xl text-maroon mb-6 font-bold leading-tight">
+                        Reception <br />
+                        <span className="text-2xl md:text-3xl font-light italic opacity-60">Ceremony</span>
+                      </h3>
                       
-                      {/* Description - Violet */}
-                      <p className="font-lato text-maroon/70 text-base md:text-lg mb-8 leading-relaxed">
-                        A grand evening of music, dance, and celebration to welcome the new couple into the family fold.
+                      {/* Description */}
+                      <p className="font-lato text-maroon/70 text-base md:text-lg mb-10 max-w-sm leading-relaxed">
+                        Join us for an enchanting night of dinner, melodies and heartfelt toasts.
                       </p>
 
-                      {/* Divider - Gold */}
-                      <div className="w-full h-[1px] bg-gold/40 mb-8"></div>
-
-                      {/* Info Rows */}
-                      <div className="space-y-4">
-                        <div className="flex items-center gap-4 group/info">
-                          <div className="w-10 h-10 bg-gold rounded-lg flex items-center justify-center text-maroon shadow-lg shadow-gold/20">
-                            <Calendar size={20} />
+                      {/* Info Section */}
+                      <div className="space-y-6 pt-6 border-t border-gold/20">
+                        <div className="flex items-start gap-5">
+                          <div className="mt-1 w-2 h-2 bg-gold rounded-full shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
+                          <div className="flex flex-col">
+                            <span className="font-lato text-[9px] uppercase tracking-widest text-gold font-bold mb-1">Date & Day</span>
+                            <span className="font-playfair text-xl text-maroon font-semibold">Wed, 27 May 2026</span>
                           </div>
-                          <span className="font-lato text-maroon text-lg font-semibold tracking-tight">Wednesday, 27th May 2026</span>
                         </div>
                         
-                        <div className="flex items-center gap-4 group/info">
-                          <div className="w-10 h-10 bg-gold rounded-lg flex items-center justify-center text-maroon shadow-lg shadow-gold/20">
-                            <Clock size={20} />
+                        <div className="flex items-start gap-5">
+                          <div className="mt-1 w-2 h-2 bg-gold rounded-full shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
+                          <div className="flex flex-col">
+                            <span className="font-lato text-[9px] uppercase tracking-widest text-gold font-bold mb-1">Time</span>
+                            <span className="font-playfair text-xl text-maroon font-semibold">06:30 PM Onwards</span>
                           </div>
-                          <span className="font-lato text-maroon text-lg font-semibold tracking-tight">06:30 PM Onwards</span>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   {/* Celebration Card 2: Muhurtham */}
-                  <div className="relative bg-[#FFFBF0] rounded-[2rem] overflow-hidden shadow-xl border border-gold/40 group transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl">
-                    {/* Top Accent Bar - Gold */}
-                    <div className="absolute top-0 left-0 right-0 h-1.5 bg-gold"></div>
-                    
-                    <div className="p-8 md:p-10 flex flex-col items-start text-left">
-                      {/* Pill Badge - Gold Theme */}
-                      <div className="flex items-center gap-2 bg-gold/10 px-4 py-1.5 rounded-full mb-6 border border-gold/30">
-                        <Heart className="text-maroon" size={16} />
-                        <span className="font-lato text-[11px] tracking-[0.2em] text-maroon font-bold uppercase">Wedding</span>
-                      </div>
+                  <div className="relative bg-[#FFFBF0] rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_50px_rgba(212,175,55,0.15)] border border-gold/30 group transition-all duration-700 hover:-translate-y-3">
+                    {/* Floating Pill Badge */}
+                    <div className="absolute -top-4 left-10 bg-white px-6 py-2 rounded-full border border-gold/40 shadow-lg flex items-center gap-3 z-20 group-hover:bg-gold group-hover:text-white transition-colors duration-500">
+                      <Heart className="text-maroon group-hover:text-white" size={14} />
+                      <span className="font-lato text-[10px] tracking-[0.3em] text-maroon group-hover:text-white font-bold uppercase">The Wedding</span>
+                    </div>
 
-                      {/* Title - Violet */}
-                      <h3 className="font-playfair text-3xl md:text-5xl text-maroon mb-4 font-bold">Muhurtham</h3>
+                    {/* Clipping Layer for Background Elements */}
+                    <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden pointer-events-none">
+                      {/* Subtle Background Mandala */}
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 opacity-[0.03] group-hover:rotate-45 transition-transform duration-1000">
+                        <svg viewBox="0 0 100 100" fill="currentColor" className="text-gold">
+                          <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="0.5" fill="none" />
+                          <path d="M50 5 L50 95 M5 50 L95 50" stroke="currentColor" strokeWidth="0.5" />
+                          <circle cx="50" cy="50" r="20" stroke="currentColor" strokeWidth="0.5" fill="none" strokeDasharray="2 2" />
+                        </svg>
+                      </div>
+                    </div>
+
+                    {/* Inner Decorative Border */}
+                    <div className="absolute inset-4 border border-gold/10 rounded-[1.8rem] pointer-events-none"></div>
+
+                    <div className="relative z-10">
+                      {/* Title */}
+                      <h3 className="font-playfair text-4xl md:text-6xl text-maroon mb-6 font-bold leading-tight">
+                        Divine <br />
+                        <span className="text-2xl md:text-3xl font-light italic opacity-60">Muhurtham</span>
+                      </h3>
                       
-                      {/* Description - Violet */}
-                      <p className="font-lato text-maroon/70 text-base md:text-lg mb-8 leading-relaxed">
-                        The auspicious traditional ceremony where the couple is united in the presence of the divine and elders.
+                      {/* Description */}
+                      <p className="font-lato text-maroon/70 text-base md:text-lg mb-10 max-w-sm leading-relaxed">
+                        In the witness of the sacred fire and our loved ones, we unite as one.
                       </p>
 
-                      {/* Divider - Gold */}
-                      <div className="w-full h-[1px] bg-gold/40 mb-8"></div>
-
-                      {/* Info Rows */}
-                      <div className="space-y-4">
-                        <div className="flex items-center gap-4 group/info">
-                          <div className="w-10 h-10 bg-gold rounded-lg flex items-center justify-center text-maroon shadow-lg shadow-gold/20">
-                            <Calendar size={20} />
+                      {/* Info Section */}
+                      <div className="space-y-6 pt-6 border-t border-gold/20">
+                        <div className="flex items-start gap-5">
+                          <div className="mt-1 w-2 h-2 bg-gold rounded-full shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
+                          <div className="flex flex-col">
+                            <span className="font-lato text-[9px] uppercase tracking-widest text-gold font-bold mb-1">Date & Day</span>
+                            <span className="font-playfair text-xl text-maroon font-semibold">Thu, 28 May 2026</span>
                           </div>
-                          <span className="font-lato text-maroon text-lg font-semibold tracking-tight">Thursday, 28th May 2026</span>
                         </div>
                         
-                        <div className="flex items-center gap-4 group/info">
-                          <div className="w-10 h-10 bg-gold rounded-lg flex items-center justify-center text-maroon shadow-lg shadow-gold/20">
-                            <Clock size={20} />
+                        <div className="flex items-start gap-5">
+                          <div className="mt-1 w-2 h-2 bg-gold rounded-full shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
+                          <div className="flex flex-col">
+                            <span className="font-lato text-[9px] uppercase tracking-widest text-gold font-bold mb-1">Time</span>
+                            <span className="font-playfair text-xl text-maroon font-semibold">07:30 AM - 09:00 AM</span>
                           </div>
-                          <span className="font-lato text-maroon text-lg font-semibold tracking-tight">07:30 AM - 09:00 AM</span>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Venue Section - Re-themed to Gold/Violet */}
-                <div className="max-w-4xl mx-auto relative bg-[#FFFBF0] rounded-[2rem] overflow-hidden shadow-xl border border-gold/40 group transition-all duration-500 hover:scale-[1.01]">
-                  {/* Top Accent Bar - Gold */}
-                  <div className="absolute top-0 left-0 right-0 h-1.5 bg-gold"></div>
-                  <div className="silk-texture"></div>
-                  
-                  <div className="relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-16 p-8 md:p-12">
+                {/* Venue Section - Designer Frame Style */}
+                <div className="max-w-4xl mx-auto relative bg-[#FFFBF0] rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_50px_rgba(212,175,55,0.15)] border border-gold/30 group transition-all duration-700">
+                  {/* Floating Pill Badge */}
+                  <div className="absolute -top-4 left-10 bg-white px-6 py-2 rounded-full border border-gold/40 shadow-lg flex items-center gap-3 z-20 group-hover:bg-gold group-hover:text-white transition-colors duration-500">
+                    <MapPin className="text-maroon group-hover:text-white" size={14} />
+                    <span className="font-lato text-[10px] tracking-[0.3em] text-maroon group-hover:text-white font-bold uppercase">The Venue</span>
+                  </div>
+
+                  {/* Clipping Layer for Background Elements */}
+                  <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden pointer-events-none">
+                    {/* Subtle Background Mandala */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 opacity-[0.03] group-hover:rotate-45 transition-transform duration-1000">
+                      <svg viewBox="0 0 100 100" fill="currentColor" className="text-gold">
+                        <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="0.5" fill="none" />
+                        <path d="M50 5 L50 95 M5 50 L95 50" stroke="currentColor" strokeWidth="0.5" />
+                        <circle cx="50" cy="50" r="20" stroke="currentColor" strokeWidth="0.5" fill="none" strokeDasharray="2 2" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Inner Decorative Border */}
+                  <div className="absolute inset-4 border border-gold/10 rounded-[1.8rem] pointer-events-none"></div>
+
+                  <div className="relative z-10 flex flex-col md:flex-row items-center gap-12">
                     {/* Left: Styled Map Frame */}
                     <div className="w-full md:w-2/5">
-                      <div className="relative p-2 border-2 border-gold/30 rounded-2xl bg-white shadow-xl group-hover:border-gold/60 transition-colors duration-500">
+                      <div className="relative p-2 border-2 border-gold/20 rounded-2xl bg-white shadow-2xl group-hover:border-gold/40 transition-colors duration-500">
                         <div className="relative bg-[#FFFBF0] rounded-xl aspect-[4/3] flex items-center justify-center overflow-hidden">
                           <motion.div 
                             animate={{ y: [0, -10, 0] }}
@@ -522,16 +567,17 @@ function App() {
 
                     {/* Right: Venue Details & Navigation */}
                     <div className="w-full md:w-3/5 flex flex-col items-center md:items-start">
-                      <div className="mb-8 text-center md:text-left">
-                        <div className="inline-flex items-center gap-2 bg-gold/10 px-4 py-1.5 rounded-full mb-4 border border-gold/30">
-                          <MapPin className="text-maroon" size={14} />
-                          <span className="font-lato text-[9px] tracking-[0.6em] text-maroon uppercase font-bold">The Venue</span>
-                        </div>
+                      <div className="mb-10 text-center md:text-left">
                         <h3 className="flex flex-col leading-tight">
-                          <span className="font-playfair text-xl md:text-2xl text-maroon/60 italic">The</span>
-                          <span className="font-playfair text-4xl md:text-6xl text-maroon font-bold tracking-tighter">Vaasan Mahal</span>
+                          <span className="font-playfair text-2xl md:text-3xl text-maroon/60 italic font-light">The Grand</span>
+                          <span className="font-playfair text-4xl md:text-7xl text-maroon font-bold tracking-tighter">Vaasan Mahal</span>
                         </h3>
                         <div className="h-[2px] w-24 bg-gold/30 mt-6 mx-auto md:mx-0"></div>
+                      </div>
+
+                      <div className="flex items-center gap-4 mb-10">
+                        <div className="w-2 h-2 bg-gold rounded-full shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
+                        <p className="font-lato text-maroon/70 text-lg md:text-xl">Musiri - Trichy Main Road, Musiri.</p>
                       </div>
                       
                       <motion.a
@@ -540,25 +586,40 @@ function App() {
                         href="https://www.google.com/maps/search/The+Vaasan+Mahal+Musiri"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-12 py-4 bg-gold text-maroon rounded-full font-lato text-[11px] tracking-[0.4em] uppercase font-bold shadow-xl hover:shadow-gold/40 transition-all duration-500 border border-gold/20"
+                        className="px-12 py-5 bg-gold text-maroon rounded-full font-lato text-[11px] tracking-[0.4em] uppercase font-bold shadow-xl hover:shadow-gold/40 transition-all duration-500 border border-gold/20 flex items-center gap-3"
                       >
                         Locate on Map
+                        <ChevronRight size={16} />
                       </motion.a>
                     </div>
                   </div>
                 </div>
 
-                {/* Countdown Section - Re-themed to Gold/Violet */}
-                <div className="pt-24 text-center">
-                  <div className="inline-flex items-center gap-3 bg-gold/10 px-6 py-2 rounded-full mb-8 border border-gold/30">
-                    <Clock className="text-maroon" size={16} />
-                    <span className="font-lato text-[9px] tracking-[0.6em] text-maroon uppercase font-bold">Forever begins in</span>
-                  </div>
-                  
-                  <div className="relative inline-block bg-[#FFFBF0] p-4 md:p-10 rounded-[2.5rem] shadow-2xl border border-gold/30 overflow-hidden group">
-                    {/* Top Accent Bar - Gold */}
-                    <div className="absolute top-0 left-0 right-0 h-1.5 bg-gold"></div>
-                    <div className="silk-texture"></div>
+                {/* Countdown Section - Designer Frame Style */}
+                <div className="pt-32 text-center pb-20">
+                  <div className="relative inline-block bg-[#FFFBF0] p-10 md:p-16 rounded-[3rem] shadow-[0_20px_50px_rgba(212,175,55,0.15)] border border-gold/30 group">
+                    {/* Floating Pill Badge */}
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white px-8 py-2 rounded-full border border-gold/40 shadow-lg flex items-center gap-3 z-20 group-hover:bg-gold group-hover:text-white transition-colors duration-500">
+                      <Clock className="text-maroon group-hover:text-white" size={14} />
+                      <span className="font-lato text-[10px] tracking-[0.4em] text-maroon group-hover:text-white font-bold uppercase whitespace-nowrap">Forever begins in</span>
+                    </div>
+
+                    {/* Clipping Layer for Mandala & Texture */}
+                    <div className="absolute inset-0 rounded-[3rem] overflow-hidden pointer-events-none">
+                      {/* Subtle Background Mandala */}
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 opacity-[0.03] group-hover:rotate-45 transition-transform duration-1000">
+                        <svg viewBox="0 0 100 100" fill="currentColor" className="text-gold">
+                          <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="0.5" fill="none" />
+                          <path d="M50 5 L50 95 M5 50 L95 50" stroke="currentColor" strokeWidth="0.5" />
+                          <circle cx="50" cy="50" r="20" stroke="currentColor" strokeWidth="0.5" fill="none" strokeDasharray="2 2" />
+                        </svg>
+                      </div>
+                      <div className="silk-texture"></div>
+                    </div>
+
+                    {/* Inner Decorative Border */}
+                    <div className="absolute inset-5 border border-gold/10 rounded-[2.2rem] pointer-events-none"></div>
+
                     <div className="relative z-10">
                       <Countdown targetDate="2026-05-28T07:30:00" />
                     </div>
