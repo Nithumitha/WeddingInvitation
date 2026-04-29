@@ -39,6 +39,39 @@ const GaneshaIcon = () => (
   </div>
 );
 
+const CornerMotifs = () => (
+  <>
+    <div className="corner-motif corner-motif-tl">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 20V2H20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <circle cx="2" cy="2" r="1.5" fill="currentColor"/>
+        <path d="M6 14V6H14" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round"/>
+      </svg>
+    </div>
+    <div className="corner-motif corner-motif-tr">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 20V2H20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <circle cx="2" cy="2" r="1.5" fill="currentColor"/>
+        <path d="M6 14V6H14" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round"/>
+      </svg>
+    </div>
+    <div className="corner-motif corner-motif-bl">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 20V2H20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <circle cx="2" cy="2" r="1.5" fill="currentColor"/>
+        <path d="M6 14V6H14" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round"/>
+      </svg>
+    </div>
+    <div className="corner-motif corner-motif-br">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 20V2H20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <circle cx="2" cy="2" r="1.5" fill="currentColor"/>
+        <path d="M6 14V6H14" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round"/>
+      </svg>
+    </div>
+  </>
+);
+
 
 
 const Countdown = ({ targetDate }) => {
@@ -62,9 +95,9 @@ const Countdown = ({ targetDate }) => {
   return (
     <div className="flex gap-2 md:gap-8 justify-center w-full max-w-4xl mx-auto px-2">
       {Object.entries(timeLeft).map(([label, value]) => (
-        <div key={label} className="glass-card flex-1 p-2 md:p-8 rounded-xl md:rounded-[2.5rem] flex flex-col items-center min-w-0 group">
-          <span className="text-xl md:text-6xl font-playfair text-maroon mb-1 group-hover:scale-110 transition-transform duration-500">{value}</span>
-          <span className="text-[7px] md:text-[11px] uppercase tracking-[0.1em] md:tracking-[0.4em] text-gold font-bold">{label}</span>
+        <div key={label} className="bg-[#FFFBF0] border border-gold/40 flex-1 p-3 md:p-8 rounded-2xl md:rounded-[2rem] flex flex-col items-center min-w-0 group shadow-lg transition-transform hover:scale-105">
+          <span className="text-2xl md:text-6xl font-playfair text-maroon mb-1 group-hover:scale-110 transition-transform duration-500 font-bold">{value}</span>
+          <span className="text-[7px] md:text-[11px] uppercase tracking-[0.1em] md:tracking-[0.4em] text-maroon/60 font-bold">{label}</span>
         </div>
       ))}
     </div>
@@ -375,47 +408,113 @@ function App() {
                   <div className="h-[1px] w-32 bg-gold/30 mx-auto"></div>
                 </header>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
-                  {/* Reception Card */}
-                  <div className="glass-card p-6 md:p-10 rounded-[2rem] flex flex-col items-center text-center group">
-                    <div className="w-14 h-14 md:w-20 md:h-20 bg-maroon/5 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
-                      <Music className="text-maroon" size={28} />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+                  {/* Celebration Card 1: Reception */}
+                  <div className="relative bg-[#FFFBF0] rounded-[2rem] overflow-hidden shadow-xl border border-gold/40 group transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl">
+                    {/* Top Accent Bar - Gold */}
+                    <div className="absolute top-0 left-0 right-0 h-1.5 bg-gold"></div>
+                    
+                    <div className="p-8 md:p-10 flex flex-col items-start text-left">
+                      {/* Pill Badge - Gold Theme */}
+                      <div className="flex items-center gap-2 bg-gold/10 px-4 py-1.5 rounded-full mb-6 border border-gold/30">
+                        <Music className="text-maroon" size={16} />
+                        <span className="font-lato text-[11px] tracking-[0.2em] text-maroon font-bold uppercase">Reception</span>
+                      </div>
+
+                      {/* Title - Violet */}
+                      <h3 className="font-playfair text-3xl md:text-5xl text-maroon mb-4 font-bold">Reception Ceremony</h3>
+                      
+                      {/* Description - Violet */}
+                      <p className="font-lato text-maroon/70 text-base md:text-lg mb-8 leading-relaxed">
+                        A grand evening of music, dance, and celebration to welcome the new couple into the family fold.
+                      </p>
+
+                      {/* Divider - Gold */}
+                      <div className="w-full h-[1px] bg-gold/40 mb-8"></div>
+
+                      {/* Info Rows */}
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-4 group/info">
+                          <div className="w-10 h-10 bg-gold rounded-lg flex items-center justify-center text-maroon shadow-lg shadow-gold/20">
+                            <Calendar size={20} />
+                          </div>
+                          <span className="font-lato text-maroon text-lg font-semibold tracking-tight">Wednesday, 27th May 2026</span>
+                        </div>
+                        
+                        <div className="flex items-center gap-4 group/info">
+                          <div className="w-10 h-10 bg-gold rounded-lg flex items-center justify-center text-maroon shadow-lg shadow-gold/20">
+                            <Clock size={20} />
+                          </div>
+                          <span className="font-lato text-maroon text-lg font-semibold tracking-tight">06:30 PM Onwards</span>
+                        </div>
+                      </div>
                     </div>
-                    <h3 className="font-vibes text-3xl md:text-4xl text-maroon mb-3">Reception</h3>
-                    <p className="font-cormorant text-lg text-maroon/70 mb-1">May 27, 2026</p>
-                    <p className="font-lato text-gold tracking-widest text-[9px] font-bold uppercase">6:30 PM Onwards</p>
                   </div>
 
-                  {/* Muhurtham Card */}
-                  <div className="glass-card p-6 md:p-10 rounded-[2rem] flex flex-col items-center text-center group">
-                    <div className="w-14 h-14 md:w-20 md:h-20 bg-maroon/5 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
-                      <Heart className="text-maroon" size={28} />
+                  {/* Celebration Card 2: Muhurtham */}
+                  <div className="relative bg-[#FFFBF0] rounded-[2rem] overflow-hidden shadow-xl border border-gold/40 group transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl">
+                    {/* Top Accent Bar - Gold */}
+                    <div className="absolute top-0 left-0 right-0 h-1.5 bg-gold"></div>
+                    
+                    <div className="p-8 md:p-10 flex flex-col items-start text-left">
+                      {/* Pill Badge - Gold Theme */}
+                      <div className="flex items-center gap-2 bg-gold/10 px-4 py-1.5 rounded-full mb-6 border border-gold/30">
+                        <Heart className="text-maroon" size={16} />
+                        <span className="font-lato text-[11px] tracking-[0.2em] text-maroon font-bold uppercase">Wedding</span>
+                      </div>
+
+                      {/* Title - Violet */}
+                      <h3 className="font-playfair text-3xl md:text-5xl text-maroon mb-4 font-bold">Muhurtham</h3>
+                      
+                      {/* Description - Violet */}
+                      <p className="font-lato text-maroon/70 text-base md:text-lg mb-8 leading-relaxed">
+                        The auspicious traditional ceremony where the couple is united in the presence of the divine and elders.
+                      </p>
+
+                      {/* Divider - Gold */}
+                      <div className="w-full h-[1px] bg-gold/40 mb-8"></div>
+
+                      {/* Info Rows */}
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-4 group/info">
+                          <div className="w-10 h-10 bg-gold rounded-lg flex items-center justify-center text-maroon shadow-lg shadow-gold/20">
+                            <Calendar size={20} />
+                          </div>
+                          <span className="font-lato text-maroon text-lg font-semibold tracking-tight">Thursday, 28th May 2026</span>
+                        </div>
+                        
+                        <div className="flex items-center gap-4 group/info">
+                          <div className="w-10 h-10 bg-gold rounded-lg flex items-center justify-center text-maroon shadow-lg shadow-gold/20">
+                            <Clock size={20} />
+                          </div>
+                          <span className="font-lato text-maroon text-lg font-semibold tracking-tight">07:30 AM - 09:00 AM</span>
+                        </div>
+                      </div>
                     </div>
-                    <h3 className="font-vibes text-3xl md:text-4xl text-maroon mb-3">Muhurtham</h3>
-                    <p className="font-cormorant text-lg text-maroon/70 mb-1">May 28, 2026</p>
-                    <p className="font-lato text-gold tracking-widest text-[9px] font-bold uppercase">7:30 AM - 9:00 AM</p>
                   </div>
                 </div>
 
-                {/* Venue Section - More Compact */}
-                <div className="max-w-2xl mx-auto glass-card p-5 md:p-8 rounded-[2rem] mb-20 relative overflow-hidden group reveal-on-scroll">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+                {/* Venue Section - Re-themed to Gold/Violet */}
+                <div className="max-w-4xl mx-auto relative bg-[#FFFBF0] rounded-[2rem] overflow-hidden shadow-xl border border-gold/40 group transition-all duration-500 hover:scale-[1.01]">
+                  {/* Top Accent Bar - Gold */}
+                  <div className="absolute top-0 left-0 right-0 h-1.5 bg-gold"></div>
+                  <div className="silk-texture"></div>
                   
-                  <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
+                  <div className="relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-16 p-8 md:p-12">
                     {/* Left: Styled Map Frame */}
                     <div className="w-full md:w-2/5">
-                      <div className="relative group/map">
-                        <div className="relative bg-white/5 backdrop-blur-sm rounded-xl aspect-[4/3] flex items-center justify-center border border-white/10 overflow-hidden">
+                      <div className="relative p-2 border-2 border-gold/30 rounded-2xl bg-white shadow-xl group-hover:border-gold/60 transition-colors duration-500">
+                        <div className="relative bg-[#FFFBF0] rounded-xl aspect-[4/3] flex items-center justify-center overflow-hidden">
                           <motion.div 
-                            animate={{ scale: [1, 1.05, 1] }}
+                            animate={{ y: [0, -10, 0] }}
                             transition={{ duration: 4, repeat: Infinity }}
                             className="flex flex-col items-center"
                           >
-                            <MapPin size={40} className="text-maroon mb-2 opacity-60" />
-                            <div className="w-12 h-[1px] bg-gold/30 rounded-full"></div>
+                            <MapPin size={48} className="text-maroon mb-3" />
+                            <div className="w-16 h-[2px] bg-gold/40 rounded-full"></div>
                           </motion.div>
-                          <div className="absolute bottom-2 left-0 right-0 text-center">
-                            <span className="font-lato text-[6px] uppercase tracking-[0.4em] font-bold text-maroon/30">Musiri, Trichy</span>
+                          <div className="absolute bottom-4 left-0 right-0 text-center">
+                            <span className="font-lato text-[8px] uppercase tracking-[0.4em] font-bold text-maroon/40">Musiri, Trichy</span>
                           </div>
                         </div>
                       </div>
@@ -423,34 +522,46 @@ function App() {
 
                     {/* Right: Venue Details & Navigation */}
                     <div className="w-full md:w-3/5 flex flex-col items-center md:items-start">
-                      <div className="mb-6 text-center md:text-left">
-                        <span className="font-lato text-[8px] tracking-[0.5em] text-gold uppercase font-bold mb-1 block opacity-60">Venue</span>
+                      <div className="mb-8 text-center md:text-left">
+                        <div className="inline-flex items-center gap-2 bg-gold/10 px-4 py-1.5 rounded-full mb-4 border border-gold/30">
+                          <MapPin className="text-maroon" size={14} />
+                          <span className="font-lato text-[9px] tracking-[0.6em] text-maroon uppercase font-bold">The Venue</span>
+                        </div>
                         <h3 className="flex flex-col leading-tight">
-                          <span className="font-playfair text-lg md:text-xl text-maroon/60 italic">The</span>
-                          <span className="font-playfair text-3xl md:text-4xl text-maroon font-bold tracking-tight">Vaasan Mahal</span>
+                          <span className="font-playfair text-xl md:text-2xl text-maroon/60 italic">The</span>
+                          <span className="font-playfair text-4xl md:text-6xl text-maroon font-bold tracking-tighter">Vaasan Mahal</span>
                         </h3>
-                        <div className="h-[1px] w-10 bg-gold/30 mt-3 mx-auto md:mx-0"></div>
+                        <div className="h-[2px] w-24 bg-gold/30 mt-6 mx-auto md:mx-0"></div>
                       </div>
                       
                       <motion.a
                         whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                        whileTap={{ scale: 0.98 }}
                         href="https://www.google.com/maps/search/The+Vaasan+Mahal+Musiri"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-8 py-3 bg-maroon text-gold rounded-full font-lato text-[9px] tracking-[0.4em] uppercase font-bold shadow-xl hover:shadow-maroon/20 transition-all duration-500 ripple-effect"
+                        className="px-12 py-4 bg-gold text-maroon rounded-full font-lato text-[11px] tracking-[0.4em] uppercase font-bold shadow-xl hover:shadow-gold/40 transition-all duration-500 border border-gold/20"
                       >
-                        Navigate
+                        Locate on Map
                       </motion.a>
                     </div>
                   </div>
                 </div>
 
-                {/* Countdown Section - More Compact */}
-                <div className="pt-16 border-t border-gold/10 text-center">
-                  <span className="font-lato text-[7px] tracking-[0.6em] text-gold uppercase font-bold mb-8 block">The Celebration Begins In</span>
-                  <div className="inline-block glass-card p-3 md:p-8 rounded-[1.5rem] md:rounded-[2rem] glow-shadow">
-                    <Countdown targetDate="2026-05-28T07:30:00" />
+                {/* Countdown Section - Re-themed to Gold/Violet */}
+                <div className="pt-24 text-center">
+                  <div className="inline-flex items-center gap-3 bg-gold/10 px-6 py-2 rounded-full mb-8 border border-gold/30">
+                    <Clock className="text-maroon" size={16} />
+                    <span className="font-lato text-[9px] tracking-[0.6em] text-maroon uppercase font-bold">Forever begins in</span>
+                  </div>
+                  
+                  <div className="relative inline-block bg-[#FFFBF0] p-4 md:p-10 rounded-[2.5rem] shadow-2xl border border-gold/30 overflow-hidden group">
+                    {/* Top Accent Bar - Gold */}
+                    <div className="absolute top-0 left-0 right-0 h-1.5 bg-gold"></div>
+                    <div className="silk-texture"></div>
+                    <div className="relative z-10">
+                      <Countdown targetDate="2026-05-28T07:30:00" />
+                    </div>
                   </div>
                 </div>
               </div>
