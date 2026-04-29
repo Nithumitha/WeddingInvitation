@@ -13,27 +13,25 @@ import img7 from '../assets/ourStory7.png';
 import img8 from '../assets/ourStory8.png';
 
 const stories = [
-  { id: 1, image: img1, title: "2016", text: "He saw her." },
-  { id: 2, image: img2, text: "She walked past." },
-  { id: 3, image: img3, text: "But something stayed." },
-  { id: 4, image: img4, text: "Not every story\nbegins with love.", highlightText: "But this one did." },
-  { id: 5, image: img5, title: "Years passed.", text: "Laughter.\nFights.\nMemories.", highlightText: "Love stayed." },
-  { id: 6, image: img6, title: "Distance came.", text: "But never distance\nbetween hearts." },
-  { id: 7, image: img7, title: "And somehow...", text: "they found their way\nback to each other." },
-  { id: 8, image: img8, title: "And this time—", text: "forever felt right." },
+  { id: 1, image: img1, title: "2016", text: "A chance encounter, a stolen glance.", highlightText: "He saw her for the first time." },
+  { id: 2, image: img2, title: "The Spark", text: "In a crowded room, everything else faded.", highlightText: "She walked past, but stayed in his heart." },
+  { id: 3, image: img3, title: "The Connection", text: "Quiet conversations that lasted until dawn.", highlightText: "But something deeper stayed." },
+  { id: 4, image: img4, title: "The Realization", text: "Friendship bloomed into a gentle, steady light.", highlightText: "Not every story begins with love—but this one did." },
+  { id: 5, image: img5, title: "2019-2022", text: "Through the storms and the sunshine, side by side.", highlightText: "Laughter, fights, memories—Love stayed." },
+  { id: 6, image: img6, title: "The Distance", text: "Miles couldn't touch what we had built.", highlightText: "Never a distance between our hearts." },
+  { id: 7, image: img7, title: "The Return", text: "Destiny brought us back to where it all began.", highlightText: "They found their way back to each other." },
+  { id: 8, image: img8, title: "2026", text: "Two souls, one destiny, a thousand lifetimes.", highlightText: "And this time—forever felt right." },
 ];
 
-const OurStorySection = () => {
-  const [visibleIndex, setVisibleIndex] = useState(0);
+import { useScroll, useSpring, useTransform } from 'framer-motion';
 
-  useEffect(() => {
-    if (visibleIndex < stories.length) {
-      const timer = setInterval(() => {
-        setVisibleIndex((prev) => prev + 1);
-      }, 1200);
-      return () => clearInterval(timer);
-    }
-  }, [visibleIndex]);
+const OurStorySection = () => {
+  const { scrollYProgress } = useScroll();
+  const pathLength = useSpring(scrollYProgress, { stiffness: 400, damping: 90 });
+  
+  // Map scroll progress to the dot's position (roughly 0-100% of the path)
+  const dotY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
 
   return (
     <section id="story" className="watercolor-bg py-32 px-4 relative overflow-hidden flex flex-col items-center">
@@ -75,7 +73,7 @@ const OurStorySection = () => {
 
       <div className="relative w-full max-w-6xl mx-auto">
         {/* Wiggly Dotted SVG Path - Repositioned for mobile to avoid overlap */}
-        <div className="absolute left-8 md:left-1/2 -translate-x-1/2 top-[60px] bottom-0 w-[2px]">
+        <div className="absolute left-8 md:left-1/2 -translate-x-1/2 top-[60px] bottom-0 w-[4px]">
           <svg width="400" height="100%" className="overflow-visible absolute left-1/2 -translate-x-1/2" style={{ top: 0 }}>
             <motion.path
               d="M 200 0 
@@ -85,15 +83,13 @@ const OurStorySection = () => {
                  C 280 1080, 120 1180, 200 1280 
                  C 280 1400, 120 1500, 200 1600
                  C 280 1720, 120 1820, 200 1920
-                 C 280 2040, 120 2140, 200 2240
-                 C 280 2360, 120 2460, 200 2560"
-              fill="none"
-              stroke="#d6c8bd"
-              strokeWidth="1.5"
-              className="dotted-path"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: visibleIndex / stories.length }}
-              transition={{ duration: 1.2, ease: "linear" }}
+                 C 280 2040, 120 2140, 200 2240"
+              fill="transparent"
+              stroke="#D4AF37" 
+              strokeWidth="2"
+              strokeDasharray="8 12"
+              strokeLinecap="round"
+              style={{ pathLength }}
             />
           </svg>
         </div>
@@ -108,7 +104,6 @@ const OurStorySection = () => {
               title={story.title}
               text={story.text}
               highlightText={story.highlightText}
-              isVisible={index < visibleIndex}
             />
           ))}
         </div>

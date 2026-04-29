@@ -1,48 +1,54 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const TimelineItem = ({ index, image, title, text, highlightText, isVisible }) => {
+const TimelineItem = ({ index, image, title, text, highlightText }) => {
   const isIllustrationLeft = index % 2 !== 0;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{ duration: 1.2, ease: "easeOut" }}
-      className={`relative flex flex-col md:flex-row items-start md:items-center justify-center w-full mb-12 md:mb-16 ${
+      initial={{ opacity: 0, scale: 0.8, filter: "blur(20px)" }}
+      whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 1.5, ease: [0.43, 0.13, 0.23, 0.96] }}
+      className={`relative flex flex-col md:flex-row items-center justify-between w-full mb-32 md:mb-56 ${
         isIllustrationLeft ? 'md:flex-row' : 'md:flex-row-reverse'
-      } pl-16 md:pl-0 gap-6 md:gap-0`}
+      } gap-16 md:gap-32`}
     >
-      {/* Illustration Area */}
-      <div className={`w-full md:w-[45%] flex ${isIllustrationLeft ? 'justify-start md:justify-end md:pr-12' : 'justify-start md:pl-12'}`}>
-        <div className="relative">
+      {/* Illustration Area - Floating Effect */}
+      <div className="w-full md:w-1/2 flex items-center justify-center">
+        <motion.div 
+          animate={{ y: [0, -15, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="relative group"
+        >
+          <div className="absolute inset-0 bg-maroon/5 rounded-full blur-[80px] group-hover:bg-maroon/10 transition-colors duration-1000"></div>
           <img 
             src={image} 
             alt={`Story step ${index}`} 
-            className="w-full max-w-[200px] md:max-w-[300px] h-auto object-contain mix-blend-multiply opacity-95 transition-transform duration-1000 hover:scale-105"
+            className="relative w-full max-w-[240px] md:max-w-[360px] h-auto object-contain mix-blend-multiply opacity-90 transition-all duration-1000 group-hover:scale-105"
           />
-        </div>
+        </motion.div>
       </div>
 
       {/* Center Node on the path */}
-      <div className="absolute left-8 md:left-1/2 -translate-x-1/2 top-1/2 story-line-node"></div>
+      <div className="absolute left-8 md:left-1/2 -translate-x-1/2 top-1/2 w-4 h-4 bg-white border-2 border-gold rounded-full shadow-[0_0_10px_rgba(212,175,55,0.5)] z-10"></div>
 
-      {/* Text Area */}
-      <div className={`w-full md:w-[45%] flex flex-col items-start px-0 md:px-6`}>
-        <div className={`max-w-[300px] text-left ${isIllustrationLeft ? '' : 'md:text-right'}`}>
+      {/* Text Area - Emotional Typography */}
+      <div className={`w-full md:w-1/2 flex flex-col items-start px-8 md:px-0`}>
+        <div className={`max-w-[400px] text-left ${isIllustrationLeft ? '' : 'md:text-right md:items-end'}`}>
           {title && (
-            <h3 className="font-playfair text-xl md:text-2xl text-story-text mb-2 flex items-center gap-2 opacity-90 font-bold uppercase tracking-wider">
-              {title}
-            </h3>
+            <span className="font-lato text-[10px] tracking-[0.6em] text-gold uppercase font-bold mb-4 block">
+               {title}
+            </span>
           )}
-          <div className="font-playfair text-lg md:text-xl text-story-text/90 leading-relaxed space-y-1 italic">
-            {text.split('\n').map((line, i) => (
-              <p key={i}>{line}</p>
-            ))}
-            {highlightText && (
-              <p className="text-accent-maroon font-bold mt-2 text-xl font-lato uppercase tracking-wider not-italic">{highlightText}</p>
-            )}
-          </div>
+          <h3 className="font-playfair text-3xl md:text-5xl text-maroon mb-6 leading-tight opacity-90">
+            {text}
+          </h3>
+          {highlightText && (
+            <p className="font-cormorant text-2xl md:text-3xl text-maroon/50 italic font-light leading-relaxed">
+              {highlightText}
+            </p>
+          )}
           
           {/* Decorative line */}
           <div className={`h-[1px] w-8 bg-accent-maroon/10 mt-3 ${

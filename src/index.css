@@ -46,18 +46,52 @@ body {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
-  background-color: #fbd9d3;
+  background-color: #fffaf5; /* Cream */
+  color: #4a044e; /* Deep Purple for text */
 }
 
-/* Watercolor Accents - Peach Blush Theme */
-.watercolor-bg {
-  background: radial-gradient(circle at top right, #fff1f0 0%, #fbd9d3 100%);
+/* Depth & Glassmorphism */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(74, 4, 78, 0.1);
 }
 
-.invite-card {
-  box-shadow: 
-    0 20px 50px rgba(219, 139, 139, 0.15),
-    inset 0 0 100px rgba(255, 255, 255, 0.4);
+.glow-shadow {
+  box-shadow: 0 0 20px rgba(184, 115, 51, 0.2);
+}
+
+.ripple-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(184, 115, 51, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: ripple 2s infinite;
+}
+
+@keyframes ripple {
+  0% { width: 0; height: 0; opacity: 1; }
+  100% { width: 200%; height: 200%; opacity: 0; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { filter: drop-shadow(0 0 5px rgba(184, 115, 51, 0.4)); }
+  50% { filter: drop-shadow(0 0 15px rgba(184, 115, 51, 0.8)); }
+}
+
+.glow-text {
+  animation: glow-pulse 3s infinite;
 }
 
 /* Dotted Path for Story - More delicate */
