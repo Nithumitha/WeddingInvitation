@@ -345,7 +345,7 @@ function App() {
             >
               <RosePetals />
               <Section id="home" className="bg-transparent py-0 h-full overflow-hidden flex items-center justify-center">
-                <div className="max-w-4xl w-full relative px-6">
+                <div className="max-w-4xl w-full relative px-6 -top-12 md:-top-20">
 
 
                   <GaneshaIcon />
