@@ -312,7 +312,7 @@ function App() {
 
                   <div className="flex items-center justify-center gap-4">
                     <div className="h-[1px] w-[8vmin] bg-gold/30"></div>
-                    <p className="fluid-label text-maroon font-bold">MAY 28, 2026</p>
+                    <p className="fluid-label text-gold font-black tracking-[0.3em]">MAY 28, 2026</p>
                     <div className="h-[1px] w-[8vmin] bg-gold/30"></div>
                   </div>
                 </div>
@@ -384,7 +384,7 @@ function App() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--section-gap)] mb-[var(--section-gap)]">
                   {/* Celebration Card 1: Reception */}
-                  <motion.div 
+                  <motion.div
                     whileHover={{ scale: 1.02 }}
                     className="relative bg-white/40 backdrop-blur-md rounded-[2.5rem] p-[var(--card-padding)] shadow-xl border border-white/40 group"
                   >
@@ -400,7 +400,7 @@ function App() {
                       <p className="fluid-body text-maroon/70 mb-10 max-w-sm leading-relaxed">
                         Join us for an enchanting night of dinner, melodies and heartfelt toasts.
                       </p>
-                      
+
                       <div className="space-y-6 pt-6 border-t border-gold/15">
                         <div className="flex items-center gap-5">
                           <div className="w-1.5 h-1.5 bg-gold rounded-full shadow-[0_0_8px_rgba(212,175,55,0.8)]"></div>
@@ -421,7 +421,7 @@ function App() {
                   </motion.div>
 
                   {/* Celebration Card 2: Wedding (Staggered Offset) */}
-                  <motion.div 
+                  <motion.div
                     whileHover={{ scale: 1.02 }}
                     className="relative bg-white/40 backdrop-blur-md rounded-[2.5rem] p-[var(--card-padding)] shadow-xl border border-white/40 group md:translate-y-12"
                   >
@@ -437,7 +437,7 @@ function App() {
                       <p className="fluid-body text-maroon/70 mb-10 max-w-sm leading-relaxed">
                         In the witness of the sacred fire and our loved ones, we unite as one.
                       </p>
-                      
+
                       <div className="space-y-6 pt-6 border-t border-gold/15">
                         <div className="flex items-center gap-5">
                           <div className="w-1.5 h-1.5 bg-gold rounded-full shadow-[0_0_8px_rgba(212,175,55,0.8)]"></div>
@@ -458,14 +458,14 @@ function App() {
                   </motion.div>
                 </div>
 
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   className="max-w-3xl mx-auto relative bg-white/25 backdrop-blur-xl rounded-[3rem] p-6 md:p-12 shadow-2xl border border-white/30 mt-[15vh]"
                 >
                   {/* Subtle Background Glow for Venue */}
                   <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gold/5 to-transparent pointer-events-none"></div>
-                  
+
                   <div className="absolute -top-4 left-6 bg-gold text-white px-6 py-2 rounded-full fluid-label !text-[10px] !tracking-[0.2em] shadow-lg z-20">
                     The Venue
                   </div>
@@ -492,7 +492,7 @@ function App() {
                       </div>
                       <p className="fluid-body text-maroon/70 mb-8 font-medium">T - Pettai Road, Musiri.</p>
                       <motion.a
-                        whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(212,175,55,0.4)" }} 
+                        whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(212,175,55,0.4)" }}
                         whileTap={{ scale: 0.98 }}
                         href="https://www.google.com/maps/search/The+Vaasan+Mahal+Musiri" target="_blank" rel="noopener noreferrer"
                         className="px-12 py-4 bg-gold text-white rounded-full fluid-label !text-[11px] !tracking-[0.3em] shadow-xl border border-gold/20 flex items-center gap-3"
@@ -507,7 +507,7 @@ function App() {
                 <div className="pt-[15vh] pb-[5vh] relative">
                   {/* Background Aura for Countdown */}
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg aspect-square bg-gold/5 blur-[120px] rounded-full pointer-events-none"></div>
-                  
+
                   <div className="max-w-3xl mx-auto relative z-10">
                     <div className="flex flex-col items-center mb-12">
                       <div className="bg-gold/10 text-gold px-8 py-2.5 rounded-full border border-gold/20 shadow-sm flex items-center gap-3 backdrop-blur-sm">
@@ -515,7 +515,7 @@ function App() {
                         <span className="font-lato text-[10px] tracking-[0.3em] font-bold uppercase whitespace-nowrap">Forever begins in</span>
                       </div>
                     </div>
-                    
+
                     <div className="w-full px-4">
                       <Countdown targetDate="2026-05-28T07:30:00" />
                     </div>
