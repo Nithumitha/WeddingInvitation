@@ -210,7 +210,7 @@ function App() {
             opacity: 0.8
           }}
           className="absolute -top-[2vmin] -right-[2vmin] mix-blend-multiply pointer-events-none"
-          style={{ width: 'clamp(200px, 45vmin, 550px)' }}
+          style={{ width: 'clamp(150px, 40vmin, 550px)' }}
         />
 
         {/* Bottom Left Couple - Proportional Scaling */}
@@ -232,7 +232,7 @@ function App() {
               exit={{ opacity: 0, scale: 0.8, x: -20, y: 20 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
               className="absolute -bottom-[2vmin] -left-[2vmin] mix-blend-multiply pointer-events-none"
-              style={{ width: 'clamp(200px, 45vmin, 550px)' }}
+              style={{ width: 'clamp(150px, 40vmin, 550px)' }}
             />
           )}
         </AnimatePresence>
@@ -277,25 +277,13 @@ function App() {
         </div>
       </div>
 
-      {/* Bottom Right: Music Control */}
-      <div 
-        className="fixed z-[100] pointer-events-none"
-        style={{ 
-          bottom: 'clamp(1rem, 4vmin, 2.5rem)', 
-          right: 'clamp(1rem, 4vmin, 2.5rem)' 
-        }}
-      >
-        <button
-          onClick={toggleMusic}
-          className="pointer-events-auto w-[clamp(2.5rem,8vmin,3.5rem)] h-[clamp(2.5rem,8vmin,3.5rem)] bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-maroon hover:scale-110 transition-all ripple-effect overflow-hidden shadow-lg"
-          aria-label="Toggle Music"
-        >
+      <div className="fixed z-[100] pointer-events-none" style={{ bottom: 'var(--fluid-px)', right: 'var(--fluid-px)' }}>
+        <button onClick={toggleMusic} className="pointer-events-auto w-[clamp(2.5rem,8vmin,3.5rem)] h-[clamp(2.5rem,8vmin,3.5rem)] bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center text-maroon hover:scale-110 transition-all shadow-lg">
           {isPlaying ? <Volume2 size={20} className="animate-pulse" /> : <VolumeX size={20} className="opacity-40" />}
         </button>
       </div>
 
-      {/* Page Content with Transitions */}
-      <main className="min-h-dvh w-full relative overflow-hidden bg-transparent fixed inset-0">
+      <main className={`min-h-dvh w-full flex relative overflow-hidden bg-transparent fixed inset-0`}>
         <AnimatePresence mode="wait">
           {currentStep === 0 && (
             <motion.div 
@@ -303,15 +291,15 @@ function App() {
               initial={{ opacity: 0 }} 
               animate={{ opacity: 1 }} 
               exit={{ opacity: 0 }} 
-              className="w-full h-full flex flex-col items-center justify-start pt-[25vh] pb-[10vh] px-6 gap-[4vh] overflow-y-auto overflow-x-hidden relative"
+              className="w-full h-full flex flex-col items-center px-6 overflow-hidden relative"
             >
               <RosePetals />
               
-              {/* Branding Section - Proportional to reference */}
-              <div className="w-full max-w-4xl flex flex-col items-center gap-[clamp(1.5rem,4vh,3rem)] relative z-10 shrink-0">
+              {/* Branding Section - Centered in the available space above the button */}
+              <div className="mt-auto mb-auto w-full max-w-4xl flex flex-col items-center gap-[clamp(1rem,3vh,2rem)] relative z-10 shrink-0 pb-[4vh]">
                 <GaneshaIcon />
                 
-                <div className="text-center space-y-[clamp(1.5rem,4vh,3rem)]">
+                <div className="text-center space-y-[clamp(1rem,3vh,2.5rem)]">
                   <p className="fluid-body italic text-maroon/70 font-semibold max-w-lg mx-auto leading-relaxed">
                     With hearts full of love, we invite you to witness the beginning of our forever.
                   </p>
@@ -330,8 +318,8 @@ function App() {
                 </div>
               </div>
 
-              {/* Open Button - Naturally follows the content with a guaranteed gap */}
-              <div className="relative z-20 pb-10 shrink-0">
+              {/* Open Button - Naturally follows the content with a guaranteed gap - Layered above petals */}
+              <div className="pb-[10vh] md:pb-[8vh] relative z-[60] shrink-0">
                 <button onClick={handleOpen} className="relative group cursor-pointer">
                   <div className="absolute inset-0 bg-gold/20 rounded-full animate-ping scale-150 opacity-10"></div>
                   <div className="absolute inset-0 bg-gold/10 rounded-full animate-pulse scale-125"></div>
