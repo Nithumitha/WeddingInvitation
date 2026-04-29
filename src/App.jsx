@@ -95,9 +95,9 @@ const Countdown = ({ targetDate }) => {
   return (
     <div className="flex gap-2 md:gap-8 justify-center w-full max-w-4xl mx-auto px-2">
       {Object.entries(timeLeft).map(([label, value]) => (
-        <div key={label} className="bg-[#FFFBF0] border border-gold/40 flex-1 p-3 md:p-8 rounded-2xl md:rounded-[2rem] flex flex-col items-center min-w-0 group shadow-lg transition-transform hover:scale-105">
+        <div key={label} className="bg-[#FFFBF0] border border-gold/40 flex-1 min-w-[22%] md:min-w-0 p-3 md:p-8 rounded-2xl md:rounded-[2rem] flex flex-col items-center group shadow-lg transition-transform hover:scale-105">
           <span className="text-2xl md:text-6xl font-playfair text-maroon mb-1 group-hover:scale-110 transition-transform duration-500 font-bold">{value}</span>
-          <span className="text-[7px] md:text-[11px] uppercase tracking-[0.1em] md:tracking-[0.4em] text-maroon/60 font-bold">{label}</span>
+          <span className="text-[8px] md:text-[11px] uppercase tracking-[0.1em] md:tracking-[0.4em] text-maroon/70 font-bold">{label}</span>
         </div>
       ))}
     </div>
@@ -272,11 +272,11 @@ function App() {
               fetchpriority="high"
               onLoad={() => setCoupleImgLoaded(true)}
               initial={{ opacity: 0, scale: 0.8, x: -20, y: 20 }}
-              animate={{ 
-                opacity: coupleImgLoaded ? 0.8 : 0, 
-                scale: coupleImgLoaded ? 1 : 0.95, 
-                x: 0, 
-                y: 0 
+              animate={{
+                opacity: coupleImgLoaded ? 0.8 : 0,
+                scale: coupleImgLoaded ? 1 : 0.95,
+                x: 0,
+                y: 0
               }}
               exit={{ opacity: 0, scale: 0.8, x: -20, y: 20 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
@@ -353,7 +353,7 @@ function App() {
                   <div className="text-center space-y-4 md:space-y-6">
                     <p className="font-cormorant italic text-maroon/70 text-lg md:text-2xl leading-relaxed font-semibold">With hearts full of love, we invite you to witness the beginning of our forever.</p>
 
-                    <h1 
+                    <h1
                       className="font-vibes text-maroon flex flex-col items-center leading-none py-2 md:py-8 font-medium"
                       style={{ textShadow: '0.4px 0 currentColor' }}
                     >
@@ -368,46 +368,47 @@ function App() {
                       <div className="h-[1px] w-6 md:w-12 bg-gold/50"></div>
                     </div>
 
-                    <div className="pt-4 md:pt-8 flex flex-col items-center">
-                      <button
-                        onClick={handleOpen}
-                        className="relative group cursor-pointer"
-                      >
-                        {/* Interactive Aura */}
-                        <div className="absolute inset-0 bg-gold/20 rounded-full animate-ping scale-150 opacity-10"></div>
-                        <div className="absolute inset-0 bg-gold/10 rounded-full animate-pulse scale-125"></div>
+                  </div>
+                </div>
 
-                        {/* Modern Enhanced Open Button */}
-                        <div className="relative group/btn">
-                          {/* Pulsing Halo Background */}
-                          <div className="absolute inset-[-10px] bg-gold/20 rounded-full blur-xl group-hover/btn:bg-gold/40 transition-all duration-700 animate-pulse"></div>
-                          
-                          {/* Rotating Decorative Outer Ring */}
-                          <motion.div 
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-[-6px] border border-gold/30 rounded-full border-dashed"
-                          ></motion.div>
 
-                          <div className="relative w-24 h-24 bg-gradient-to-br from-maroon to-[#3B0066] rounded-full flex items-center justify-center overflow-hidden shadow-[0_10px_30px_rgba(75,0,130,0.4)] border border-gold/40 group-hover/btn:scale-110 transition-transform duration-500">
-                            <div className="flex flex-col items-center z-10">
-                              <Sparkles className="text-gold/80 mb-1.5 animate-pulse" size={18} />
-                              <span className="font-lato text-[9px] tracking-[0.4em] text-white font-bold uppercase ml-1">Open</span>
-                            </div>
+                {/* Open Button Pushed to Bottom */}
+                <div className="absolute bottom-12 md:bottom-16 left-1/2 -translate-x-1/2 z-20">
+                  <button
+                    onClick={handleOpen}
+                    className="relative group cursor-pointer"
+                  >
+                    {/* Interactive Aura */}
+                    <div className="absolute inset-0 bg-gold/20 rounded-full animate-ping scale-150 opacity-10"></div>
+                    <div className="absolute inset-0 bg-gold/10 rounded-full animate-pulse scale-125"></div>
 
-                            {/* Shimmer Sweep Animation */}
-                            <motion.div 
-                              animate={{ x: ["-200%", "200%"] }}
-                              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
-                              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
-                            />
-                          </div>
+                    {/* Modern Enhanced Open Button - Smaller Scale */}
+                    <div className="relative group/btn">
+                      {/* Pulsing Halo Background */}
+                      <div className="absolute inset-[-8px] bg-gold/20 rounded-full blur-lg group-hover/btn:bg-gold/40 transition-all duration-700 animate-pulse"></div>
+
+                      {/* Rotating Decorative Outer Ring */}
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                        className="absolute inset-[-5px] border border-gold/30 rounded-full border-dashed"
+                      ></motion.div>
+
+                      <div className="relative w-20 h-20 bg-gradient-to-br from-maroon to-[#3B0066] rounded-full flex items-center justify-center overflow-hidden shadow-[0_10px_30px_rgba(75,0,130,0.4)] border border-gold/40 group-hover/btn:scale-110 transition-transform duration-500">
+                        <div className="flex flex-col items-center z-10">
+                          <Sparkles className="text-gold/80 mb-1 animate-pulse" size={16} />
+                          <span className="font-lato text-[8px] tracking-[0.3em] text-white font-bold uppercase ml-1">Open</span>
                         </div>
 
-
-                      </button>
+                        {/* Shimmer Sweep Animation */}
+                        <motion.div
+                          animate={{ x: ["-200%", "200%"] }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
+                        />
+                      </div>
                     </div>
-                  </div>
+                  </button>
                 </div>
               </Section>
             </motion.div>
@@ -486,7 +487,7 @@ function App() {
                         <div className="flex items-start gap-5">
                           <div className="mt-1 w-2 h-2 bg-gold rounded-full shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
                           <div className="flex flex-col">
-                            <span className="font-lato text-[9px] uppercase tracking-widest text-gold font-bold mb-1">Date & Day</span>
+                            <span className="font-lato text-[9px] uppercase tracking-widest text-gold font-bold mb-1">Day & Date</span>
                             <span className="font-playfair text-xl text-maroon font-semibold">Wed, 27 May 2026</span>
                           </div>
                         </div>
@@ -542,7 +543,7 @@ function App() {
                         <div className="flex items-start gap-5">
                           <div className="mt-1 w-2 h-2 bg-gold rounded-full shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
                           <div className="flex flex-col">
-                            <span className="font-lato text-[9px] uppercase tracking-widest text-gold font-bold mb-1">Date & Day</span>
+                            <span className="font-lato text-[9px] uppercase tracking-widest text-gold font-bold mb-1">Day & Date</span>
                             <span className="font-playfair text-xl text-maroon font-semibold">Thu, 28 May 2026</span>
                           </div>
                         </div>
@@ -551,7 +552,7 @@ function App() {
                           <div className="mt-1 w-2 h-2 bg-gold rounded-full shadow-[0_0_10px_rgba(212,175,55,0.8)]"></div>
                           <div className="flex flex-col">
                             <span className="font-lato text-[9px] uppercase tracking-widest text-gold font-bold mb-1">Time</span>
-                            <span className="font-playfair text-xl text-maroon font-semibold">07:30 AM - 09:00 AM</span>
+                            <span className="font-playfair text-xl text-maroon font-semibold">07:31 AM - 09:00 AM</span>
                           </div>
                         </div>
                       </div>
@@ -607,14 +608,14 @@ function App() {
                       <div className="mb-6 text-center md:text-left">
                         <h3 className="flex flex-col leading-tight">
                           <span className="font-playfair text-xl md:text-2xl text-maroon/60 italic font-light">The Grand</span>
-                          <span className="font-playfair text-3xl md:text-5xl text-maroon font-bold tracking-tighter">Vaasan Mahal</span>
+                          <span className="font-playfair text-3xl md:text-5xl text-maroon font-bold">Vaasan Mahal</span>
                         </h3>
                         <div className="h-[2px] w-20 bg-gold/30 mt-4 mx-auto md:mx-0"></div>
                       </div>
 
                       <div className="flex items-center gap-4 mb-8">
                         <div className="w-1.5 h-1.5 bg-gold rounded-full shadow-[0_0_8px_rgba(212,175,55,0.8)]"></div>
-                        <p className="font-lato text-maroon/70 text-base md:text-lg">Musiri - Trichy Main Road, Musiri.</p>
+                        <p className="font-lato text-maroon/70 text-base md:text-lg">T - Pettai Road, Musiri.</p>
                       </div>
 
                       <motion.a
@@ -636,7 +637,7 @@ function App() {
                 <div className="pt-32 px-4 pb-20">
                   <div className="max-w-3xl mx-auto relative bg-[#FFFBF0] p-6 md:p-16 rounded-[2.5rem] md:rounded-[3rem] shadow-[0_20px_50px_rgba(212,175,55,0.15)] border border-gold/30 group">
                     {/* Floating Pill Badge - Always highlighted on mobile */}
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-white md:bg-white md:text-maroon px-8 py-2 rounded-full border border-gold/40 shadow-lg flex items-center gap-3 z-20 md:group-hover:bg-gold md:group-hover:text-white transition-colors duration-500">
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-white md:bg-white md:text-maroon px-8 py-2 rounded-full border border-gold/40 shadow-lg flex items-center justify-center gap-3 z-20 md:group-hover:bg-gold md:group-hover:text-white transition-colors duration-500">
                       <Clock className="md:text-maroon md:group-hover:text-white text-white" size={14} />
                       <span className="font-lato text-[10px] tracking-[0.4em] font-bold uppercase whitespace-nowrap">Forever begins in</span>
                     </div>
