@@ -52,10 +52,10 @@ const Countdown = ({ targetDate }) => {
   }, [targetDate]);
 
   return (
-    <div className="flex gap-1 md:gap-8 justify-center no-wrap">
+    <div className="flex gap-1 md:gap-8 justify-center flex-nowrap">
       {Object.entries(timeLeft).map(([label, value]) => (
-        <div key={label} className="bg-white/20 backdrop-blur-xl p-3 md:p-8 rounded-[1rem] md:rounded-[2rem] border border-white/30 shadow-2xl flex flex-col items-center min-w-[68px] md:min-w-[120px] group hover:scale-105 transition-all duration-500">
-          <span className="text-2xl md:text-6xl font-playfair text-maroon mb-1 animate-pulse">{value}</span>
+        <div key={label} className="bg-white/20 backdrop-blur-xl p-2 md:p-8 rounded-[1rem] md:rounded-[2rem] border border-white/30 shadow-2xl flex flex-col items-center min-w-[64px] md:min-w-[120px] group hover:scale-105 transition-all duration-500">
+          <span className="text-xl md:text-6xl font-playfair text-maroon mb-1 animate-pulse">{value}</span>
           <span className="text-[7px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.4em] text-gold font-bold">{label}</span>
         </div>
       ))}
@@ -213,43 +213,48 @@ function App() {
                     <p className="font-lato text-gold tracking-[0.5em] uppercase text-[10px] md:text-xs mb-6 font-bold">Om</p>
                     <p className="font-cormorant italic text-maroon/70 text-xl md:text-3xl leading-relaxed font-semibold">We joyfully invite you to the wedding of</p>
 
-                    <h1 className="font-vibes text-maroon flex flex-col items-center leading-none py-8 font-normal">
-                      <span style={{ fontSize: 'clamp(3.5rem, 12vw, 8.5rem)' }}>Krithick</span>
-                      <span className="opacity-40" style={{ fontSize: 'clamp(2rem, 6vw, 4.5rem)' }}>&</span>
-                      <span style={{ fontSize: 'clamp(3.5rem, 12vw, 8.5rem)' }}>Nithu</span>
+                    <h1 className="font-vibes text-maroon flex flex-col items-center leading-none py-4 md:py-8 font-normal">
+                      <span style={{ fontSize: 'clamp(2.5rem, 12vw, 8.5rem)' }}>Krithick</span>
+                      <span className="opacity-40" style={{ fontSize: 'clamp(1.5rem, 6vw, 4.5rem)' }}>&</span>
+                      <span style={{ fontSize: 'clamp(2.5rem, 12vw, 8.5rem)' }}>Nithu</span>
                     </h1>
 
-                    <div className="flex items-center justify-center gap-4 py-6">
-                      <div className="h-[1px] w-12 bg-gold/50"></div>
-                      <p className="font-display text-maroon text-2xl tracking-widest">MAY 28, 2026</p>
-                      <div className="h-[1px] w-12 bg-gold/50"></div>
+                    <div className="flex items-center justify-center gap-4 py-2 md:py-6">
+                      <div className="h-[1px] w-8 md:w-12 bg-gold/50"></div>
+                      <p className="font-display text-maroon text-xl md:text-2xl tracking-widest uppercase">MAY 28, 2026</p>
+                      <div className="h-[1px] w-8 md:w-12 bg-gold/50"></div>
                     </div>
 
-                    <p className="font-cormorant text-2xl md:text-4xl text-maroon/60 italic font-light tracking-wide">
+                    <p className="font-cormorant text-lg md:text-4xl text-maroon/60 italic font-light tracking-wide px-4">
                       "Where love found its forever..."
                     </p>
 
-                    <div className="pt-12 flex flex-col items-center">
-                      <button
-                        onClick={handleOpen}
-                        className="relative group cursor-pointer"
-                      >
-                        {/* Pulsing Outer Rings */}
-                        <div className="absolute inset-0 bg-gold/20 rounded-full animate-ping scale-150 opacity-20"></div>
-                        <div className="absolute inset-0 bg-gold/10 rounded-full animate-pulse scale-125"></div>
+                    <div className="pt-8 md:pt-12 flex flex-col items-center">
+                    <button 
+                      onClick={handleOpen}
+                      className="relative group cursor-pointer"
+                    >
+                      {/* Interactive Aura */}
+                      <div className="absolute inset-0 bg-gold/20 rounded-full animate-ping scale-150 opacity-10"></div>
+                      <div className="absolute inset-0 bg-gold/10 rounded-full animate-pulse scale-125"></div>
 
-                        {/* The Seal Button */}
-                        <div className="relative w-24 h-24 bg-maroon rounded-full flex flex-col items-center justify-center border-4 border-gold/50 shadow-2xl group-hover:scale-110 transition-transform duration-500 overflow-hidden">
-                          <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
-                          <Sparkles className="text-gold mb-1 animate-pulse" size={24} />
-                          <span className="font-display text-[8px] tracking-[0.2em] text-gold font-bold uppercase">Open</span>
-                        </div>
-
-                        {/* Label */}
-                        <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-48 text-center">
-                          <p className="font-display text-[10px] tracking-[0.4em] text-maroon/60 uppercase animate-bounce">Tap to Reveal</p>
-                        </div>
-                      </button>
+                      {/* Redesigned Glass Seal Button */}
+                      <div className="relative w-24 h-24 md:w-32 md:h-32 bg-maroon/90 backdrop-blur-md rounded-full flex flex-col items-center justify-center border-4 border-gold/40 shadow-[0_20px_50px_rgba(74,4,78,0.3)] group-hover:scale-110 group-active:scale-95 transition-all duration-500 overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-white/10"></div>
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.2)_0%,transparent_70%)]"></div>
+                        
+                        <Sparkles className="text-gold mb-2 animate-pulse" size={24} />
+                        <span className="font-lato text-[9px] tracking-[0.3em] text-gold font-bold uppercase">Open</span>
+                        
+                        {/* Shimmer sweep */}
+                        <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[200%] animate-[shimmer_3s_infinite]"></div>
+                      </div>
+                      
+                      {/* Label */}
+                      <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-48 text-center pointer-events-none">
+                        <p className="font-lato text-[9px] tracking-[0.5em] text-maroon/40 uppercase animate-bounce">Reveal The Invite</p>
+                      </div>
+                    </button>
                     </div>
                   </div>
                 </div>

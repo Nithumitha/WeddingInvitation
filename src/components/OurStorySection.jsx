@@ -28,19 +28,19 @@ import { useScroll, useSpring, useTransform } from 'framer-motion';
 const OurStorySection = () => {
   const { scrollYProgress } = useScroll();
   const pathLength = useSpring(scrollYProgress, { stiffness: 400, damping: 90 });
-  
+
   // Map scroll progress to the dot's position (roughly 0-100% of the path)
   const dotY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
 
   return (
     <section id="story" className="watercolor-bg py-32 px-4 relative overflow-hidden flex flex-col items-center">
-      
+
 
 
       {/* Header */}
       <div className="max-w-4xl mx-auto text-center mb-16 relative z-10">
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5 }}
@@ -48,8 +48,8 @@ const OurStorySection = () => {
         >
           Our Story
         </motion.h2>
-        
-        <motion.div 
+
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 1 }}
@@ -62,7 +62,7 @@ const OurStorySection = () => {
             sealed in love <span className="text-red-200 scale-75">♥</span>
           </p>
         </motion.div>
-        
+
         {/* Ornate Divider */}
         <div className="mt-12 flex justify-center items-center gap-6 text-accent-maroon/20">
           <div className="h-[0.5px] w-16 bg-current"></div>
@@ -91,7 +91,7 @@ const OurStorySection = () => {
                  C 280 3640, 120 3740, 200 3840
                  C 280 3960, 120 4060, 200 4160"
               fill="transparent"
-              stroke="#D4AF37" 
+              stroke="#D4AF37"
               strokeWidth="2"
               strokeDasharray="8 12"
               strokeLinecap="round"
