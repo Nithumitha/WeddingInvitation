@@ -12,20 +12,20 @@ const TimelineItem = ({ index, image, title, text, highlightText }) => {
       transition={{ duration: 1.5, ease: [0.43, 0.13, 0.23, 0.96] }}
       className={`relative flex flex-col md:flex-row items-center justify-between w-full mb-32 md:mb-56 ${
         isIllustrationLeft ? 'md:flex-row' : 'md:flex-row-reverse'
-      } gap-16 md:gap-32`}
+      } gap-12 md:gap-32 pl-20 md:pl-0`}
     >
       {/* Illustration Area - Floating Effect */}
-      <div className="w-full md:w-1/2 flex items-center justify-center">
+      <div className="w-full md:w-1/2 flex items-center justify-center md:justify-center">
         <motion.div 
           animate={{ y: [0, -15, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           className="relative group"
         >
-          <div className="absolute inset-0 bg-maroon/5 rounded-full blur-[80px] group-hover:bg-maroon/10 transition-colors duration-1000"></div>
+          <div className="absolute inset-0 bg-maroon/5 rounded-full blur-[40px] md:blur-[80px] group-hover:bg-maroon/10 transition-colors duration-1000"></div>
           <img 
             src={image} 
             alt={`Story step ${index}`} 
-            className="relative w-full max-w-[240px] md:max-w-[360px] h-auto object-contain mix-blend-multiply opacity-90 transition-all duration-1000 group-hover:scale-105"
+            className="relative w-full max-w-[200px] md:max-w-[360px] h-auto object-contain mix-blend-multiply opacity-90 transition-all duration-1000 group-hover:scale-105"
           />
         </motion.div>
       </div>
@@ -34,25 +34,25 @@ const TimelineItem = ({ index, image, title, text, highlightText }) => {
       <div className="absolute left-8 md:left-1/2 -translate-x-1/2 top-1/2 w-4 h-4 bg-white border-2 border-gold rounded-full shadow-[0_0_10px_rgba(212,175,55,0.5)] z-10"></div>
 
       {/* Text Area - Emotional Typography */}
-      <div className={`w-full md:w-1/2 flex flex-col items-start px-8 md:px-0`}>
-        <div className={`max-w-[400px] text-left ${isIllustrationLeft ? '' : 'md:text-right md:items-end'}`}>
+      <div className={`w-full md:w-1/2 flex flex-col items-start px-0 md:px-0`}>
+        <div className={`max-w-[400px] text-left ${isIllustrationLeft ? 'md:text-left md:items-start' : 'md:text-right md:items-end'} flex flex-col`}>
           {title && (
             <span className="font-lato text-[10px] tracking-[0.6em] text-gold uppercase font-bold mb-4 block">
                {title}
             </span>
           )}
-          <h3 className="font-playfair text-3xl md:text-5xl text-maroon mb-6 leading-tight opacity-90">
+          <h3 className="font-playfair text-2xl md:text-5xl text-maroon mb-6 leading-tight opacity-90">
             {text}
           </h3>
           {highlightText && (
-            <p className="font-cormorant text-2xl md:text-3xl text-maroon/50 italic font-light leading-relaxed">
+            <p className="font-cormorant text-xl md:text-3xl text-maroon/50 italic font-light leading-relaxed">
               {highlightText}
             </p>
           )}
           
-          {/* Decorative line */}
-          <div className={`h-[1px] w-8 bg-accent-maroon/10 mt-3 ${
-            isIllustrationLeft ? 'mr-auto' : 'ml-auto'
+          {/* Decorative line - Desktop Only */}
+          <div className={`hidden md:block h-[1px] w-8 bg-maroon/10 mt-3 ${
+            isIllustrationLeft ? '' : 'md:ml-auto'
           }`}></div>
         </div>
       </div>

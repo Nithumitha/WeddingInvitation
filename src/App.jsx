@@ -52,11 +52,11 @@ const Countdown = ({ targetDate }) => {
   }, [targetDate]);
 
   return (
-    <div className="flex gap-2 md:gap-8 justify-center flex-wrap md:flex-nowrap">
+    <div className="flex gap-1 md:gap-8 justify-center no-wrap">
       {Object.entries(timeLeft).map(([label, value]) => (
-        <div key={label} className="bg-white/20 backdrop-blur-xl p-4 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border border-white/30 shadow-2xl flex flex-col items-center min-w-[75px] md:min-w-[120px] group hover:scale-105 transition-all duration-500">
-          <span className="text-3xl md:text-6xl font-playfair text-maroon mb-1 animate-pulse">{value}</span>
-          <span className="text-[8px] md:text-[10px] uppercase tracking-[0.4em] text-gold font-bold">{label}</span>
+        <div key={label} className="bg-white/20 backdrop-blur-xl p-3 md:p-8 rounded-[1rem] md:rounded-[2rem] border border-white/30 shadow-2xl flex flex-col items-center min-w-[68px] md:min-w-[120px] group hover:scale-105 transition-all duration-500">
+          <span className="text-2xl md:text-6xl font-playfair text-maroon mb-1 animate-pulse">{value}</span>
+          <span className="text-[7px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.4em] text-gold font-bold">{label}</span>
         </div>
       ))}
     </div>
@@ -139,12 +139,12 @@ function App() {
         <img
           src={cornerFlower}
           alt=""
-          className="absolute -top-10 -right-10 w-48 md:w-80 opacity-80"
+          className="absolute -top-5 -right-5 w-32 md:w-80 opacity-60 md:opacity-80"
         />
         <img
           src={coupleCorner}
           alt=""
-          className="absolute -bottom-10 -left-10 w-48 md:w-96 opacity-80"
+          className="absolute -bottom-5 -left-5 w-40 md:w-96 opacity-60 md:opacity-80"
         />
       </div>
 
@@ -152,7 +152,7 @@ function App() {
       <audio ref={audioRef} src={bgMusic} loop />
 
       {/* Minimal Navigation & Music - Pinned to Corners */}
-      <div className="fixed top-6 left-6 right-6 z-[100] flex justify-between items-center pointer-events-none">
+      <div className="fixed top-4 md:top-6 left-4 md:left-6 right-4 md:right-6 z-[100] flex justify-between items-center pointer-events-none">
         {/* Top Left: Back Arrow */}
         <div className="pointer-events-auto">
           {currentStep > 0 && (
