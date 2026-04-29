@@ -52,14 +52,14 @@ const stories = [
     image: img7,
     title: "The Return",
     text: "And then..",
-    highlightText: "Without a plan, without a reason—\nWe found our way back."
+    highlightText: "Without a plan, \nWithout a reason \nWe found our way back."
   },
   {
     id: 7,
     image: img8,
     title: "The Forever",
     text: "And this time..",
-    highlightText: "Two hearts, one story..\nFinally finding our forever. ❤️"
+    highlightText: "Two hearts, \none story..\nFinally finding our forever. ❤️"
   },
 ];
 

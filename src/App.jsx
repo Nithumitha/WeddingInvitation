@@ -193,9 +193,9 @@ function App() {
         <img
           src={cloudsBg}
           alt=""
-          className="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-multiply"
+          className="absolute inset-0 w-full h-full object-cover opacity-70 mix-blend-multiply"
           style={{
-            filter: 'sepia(0.6) hue-rotate(240deg) saturate(3) brightness(1.5)'
+            filter: 'sepia(0.6) hue-rotate(240deg) saturate(2.5) brightness(1.1)'
           }}
         />
 
@@ -549,15 +549,21 @@ const Countdown = ({ targetDate }) => {
   }, [targetDate]);
 
   return (
-    <div className="flex gap-[1.5vmin] justify-center w-full max-w-4xl mx-auto">
+    <div className="flex gap-[1.5vmin] justify-center w-full max-w-4xl mx-auto px-2">
       {Object.entries(timeLeft).map(([label, value]) => (
-        <div key={label} className="bg-[#FFFBF0] border border-gold/40 flex-1 py-[3vmin] px-[1vmin] rounded-[2vmin] flex flex-col items-center group shadow-md transition-all hover:shadow-xl hover:-translate-y-1">
-          <span className="fluid-h3 text-maroon font-bold leading-none mb-2">
-            {value}
-          </span>
-          <span className="fluid-label !text-[clamp(0.6rem,1.5vmin,0.85rem)] text-maroon/60 font-bold">
-            {label}
-          </span>
+        <div 
+          key={label} 
+          className="bg-[#FFFBF0] border border-gold/40 flex-1 rounded-[2vmin] flex flex-col items-center group shadow-md transition-all hover:shadow-xl hover:-translate-y-1 overflow-hidden"
+          style={{ padding: 'clamp(0.75rem, 3vmin, 1.5rem) 0' }}
+        >
+          <div className="flex flex-col items-center justify-center w-full">
+            <span className="fluid-h3 text-maroon font-bold leading-[1.1] mb-1">
+              {value}
+            </span>
+            <span className="fluid-label !text-[clamp(0.5rem,1.4vmin,0.75rem)] text-maroon/60 font-bold !tracking-[0.1em] !mb-0">
+              {label}
+            </span>
+          </div>
         </div>
       ))}
     </div>
