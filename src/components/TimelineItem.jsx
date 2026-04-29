@@ -58,13 +58,13 @@ const TimelineItem = ({ index, image, title, text, highlightText, containerRef }
           scale,
           filter: blur
         }}
-        className={`relative z-10 w-full max-w-5xl flex flex-col ${isEven ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-8 md:gap-16 px-6`}
+        className={`relative z-10 w-full max-w-5xl flex flex-col ${isEven ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-8 md:gap-16 px-8 md:px-16`}
       >
         {/* Image Side */}
         <div className="w-full md:w-1/2 flex justify-center">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="relative w-full max-w-[280px] md:max-w-full"
+            className="relative w-full max-w-[220px] md:max-w-full"
           >
             <div className="absolute inset-0 bg-gold/5 blur-3xl rounded-full -z-10 transform scale-110"></div>
             <img

@@ -203,12 +203,12 @@ function App() {
         <img
           src={cornerFlower}
           alt=""
-          className="absolute -top-5 -right-5 w-32 md:w-80 opacity-60 md:opacity-80 mix-blend-multiply"
+          className="absolute -top-10 -right-10 w-24 md:w-80 opacity-40 md:opacity-80 mix-blend-multiply"
         />
         <img
           src={coupleCorner}
           alt=""
-          className="absolute -bottom-5 -left-5 w-40 md:w-96 opacity-60 md:opacity-80 mix-blend-multiply"
+          className="absolute -bottom-10 -left-10 w-32 md:w-96 opacity-40 md:opacity-80 mix-blend-multiply"
         />
       </div>
 
