@@ -25,16 +25,26 @@ const stories = [
 
 import { useScroll, useSpring, useTransform } from 'framer-motion';
 
-const OurStorySection = () => {
-  const { scrollYProgress } = useScroll();
-  const pathLength = useSpring(scrollYProgress, { stiffness: 400, damping: 90 });
+const OurStorySection = ({ scrollContainerRef }) => {
+  const sectionRef = React.useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    container: scrollContainerRef,
+    offset: ["start start", "end end"]
+  });
+  
+  const pathLength = useSpring(scrollYProgress, { stiffness: 400, damping: 90, restDelta: 0.001 });
 
   // Map scroll progress to the dot's position (roughly 0-100% of the path)
   const dotY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
 
   return (
-    <section id="story" className="watercolor-bg py-32 px-4 relative overflow-hidden flex flex-col items-center">
+    <section 
+      id="story" 
+      ref={sectionRef}
+      className="watercolor-bg py-32 px-4 relative overflow-hidden flex flex-col items-center"
+    >
 
 
 
@@ -90,6 +100,7 @@ const OurStorySection = () => {
                  C 280 3320, 120 3420, 200 3520
                  C 280 3640, 120 3740, 200 3840
                  C 280 3960, 120 4060, 200 4160"
+              initial={{ pathLength: 0 }}
               fill="transparent"
               stroke="#D4AF37"
               strokeWidth="2"

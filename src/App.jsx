@@ -52,11 +52,11 @@ const Countdown = ({ targetDate }) => {
   }, [targetDate]);
 
   return (
-    <div className="flex gap-1 md:gap-8 justify-center flex-nowrap">
+    <div className="flex gap-0.5 md:gap-8 justify-center flex-nowrap">
       {Object.entries(timeLeft).map(([label, value]) => (
-        <div key={label} className="bg-white/20 backdrop-blur-xl p-2 md:p-8 rounded-[1rem] md:rounded-[2rem] border border-white/30 shadow-2xl flex flex-col items-center min-w-[64px] md:min-w-[120px] group hover:scale-105 transition-all duration-500">
+        <div key={label} className="bg-white/20 backdrop-blur-xl p-2 md:p-8 rounded-[0.8rem] md:rounded-[2rem] border border-white/30 shadow-2xl flex flex-col items-center min-w-[62px] md:min-w-[120px] group hover:scale-105 transition-all duration-500">
           <span className="text-xl md:text-6xl font-playfair text-maroon mb-1 animate-pulse">{value}</span>
-          <span className="text-[7px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.4em] text-gold font-bold">{label}</span>
+          <span className="text-[7px] md:text-[10px] uppercase tracking-[0.1em] md:tracking-[0.4em] text-gold font-bold">{label}</span>
         </div>
       ))}
     </div>
@@ -97,6 +97,7 @@ const RosePetals = () => {
 
 function App() {
   const [currentStep, setCurrentStep] = useState(0); // 0: Front, 1: Story, 2: Event, 3: Venue
+  const scrollContainerRef = React.useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
 
@@ -265,6 +266,7 @@ function App() {
           {currentStep === 1 && (
             <motion.div
               key="story"
+              ref={scrollContainerRef}
               initial={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
               animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
               exit={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
@@ -272,7 +274,7 @@ function App() {
               className="w-full h-full overflow-y-auto scrollbar-hide py-20"
             >
               <div className="max-w-6xl mx-auto px-4">
-                <OurStorySection />
+                <OurStorySection scrollContainerRef={scrollContainerRef} />
               </div>
             </motion.div>
           )}
@@ -348,7 +350,7 @@ function App() {
                 {/* Countdown Section - Glass UI */}
                 <div className="pt-20 border-t border-gold/10 text-center">
                   <span className="font-lato text-[8px] tracking-[0.6em] text-gold uppercase font-bold mb-12 block">The Celebration Begins In</span>
-                  <div className="inline-block glass-card p-12 rounded-[3rem] glow-shadow">
+                  <div className="inline-block glass-card p-4 md:p-12 rounded-[2rem] md:rounded-[3rem] glow-shadow">
                     <Countdown targetDate="2026-05-28T07:30:00" />
                   </div>
                 </div>
