@@ -69,9 +69,10 @@
 }
 
 .fluid-body {
-  font-family: var(--font-lato);
-  font-size: clamp(0.9rem, 2vmin, 1.1rem);
-  line-height: 1.6;
+  font-family: var(--font-cormorant);
+  font-size: clamp(1.1rem, 2.5vmin, 1.8rem);
+  line-height: 1.7;
+  font-weight: 450;
 }
 
 .fluid-label {

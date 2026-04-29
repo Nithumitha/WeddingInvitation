@@ -63,11 +63,11 @@ const TimelineItem = ({ index, image, title, text, highlightText }) => {
               {title}
             </span>
           )}
-          <h3 className="fluid-h3 text-maroon mb-2 md:mb-6 font-bold">
+          <h3 className="fluid-h3 text-maroon mb-2 md:mb-6 font-bold whitespace-pre-line">
             {text}
           </h3>
           {highlightText && (
-            <p className="fluid-body text-maroon/50 italic font-light">
+            <p className="fluid-body text-maroon/80 italic whitespace-pre-line">
               {highlightText}
             </p>
           )}

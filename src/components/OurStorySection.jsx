@@ -12,13 +12,55 @@ import img7 from '../assets/ourStory7.png';
 import img8 from '../assets/ourStory8.png';
 
 const stories = [
-  { id: 1, image: img1, title: "2016", text: "He saw me. And proposed..", highlightText: "I was annoyed. But maybe, destiny had already began." },
-  { id: 2, image: img3, title: "The Friendship", text: "Months later.. a simple \"Hi\" on Facebook.", highlightText: "One message became many… Somewhere in between we became friends." },
-  { id: 3, image: img4, title: "The Shift", text: "And slowly..", highlightText: "What started as nothing, became everything." },
-  { id: 4, image: img5, title: "The Journey", text: "Years passed.. Laughter. Fights. Memories.", highlightText: "Through it all, we stayed. And our love quietly grew." },
-  { id: 5, image: img6, title: "The Distance", text: "Then came the silence..", highlightText: "Life took us different ways. No calls. No conversations. Just distance.. But somehow, destiny never let go." },
-  { id: 6, image: img7, title: "The Return", text: "And then..", highlightText: "Without a plan, without a reason—We found our way back. Like we were always meant to." },
-  { id: 7, image: img8, title: "The Forever", text: "And this time..", highlightText: "Two hearts, one story.. Finally finding their forever. ❤️" },
+  {
+    id: 1,
+    image: img1,
+    title: "2016",
+    text: "He saw me,\nand decided to try his luck",
+    highlightText: "I was annoyed.\nMay be that was\ndestiny beginning its story."
+  },
+  {
+    id: 2,
+    image: img3,
+    title: "The Friendship",
+    text: "Months later..\na simple \"Hi\" on Facebook.",
+    highlightText: "One message \nturned into many.. \nAnd somewhere in between,\nwe became friends."
+  },
+  {
+    id: 3,
+    image: img4,
+    title: "The Shift",
+    text: "And slowly..",
+    highlightText: "What started as nothing,\nbecame everything."
+  },
+  {
+    id: 4,
+    image: img5,
+    title: "The Journey",
+    text: "Years passed..\nLaughter. Fights. Memories.",
+    highlightText: "Through it all, we stayed.\nAnd our love quietly grew."
+  },
+  {
+    id: 5,
+    image: img6,
+    title: "The Distance",
+    text: "Then came the silence..",
+    highlightText: "Life took us different ways.\nNo calls. \nNo conversations. \nJust distance..\nBut somehow, destiny never let go."
+  },
+  {
+    id: 6,
+    image: img7,
+    title: "The Return",
+    text: "And then..",
+    highlightText: "Without a plan, without a reason—\nWe found our way back."
+  },
+  {
+    id: 7,
+    image: img8,
+    title: "The Forever",
+    text: "And this time..",
+    highlightText: "Two hearts, one story..\nFinally finding our forever. ❤️"
+  },
 ];
 
 const OurStorySection = ({ scrollContainerRef }) => {
@@ -51,7 +93,7 @@ const OurStorySection = ({ scrollContainerRef }) => {
           </h2>
           <div className="flex items-center gap-6 mt-8">
             <div className="h-[1px] w-12 bg-gold/30"></div>
-            <p className="fluid-body italic text-maroon/50">
+            <p className="fluid-body italic text-maroon/80">
               A journey written in time, sealed in love
             </p>
             <div className="h-[1px] w-12 bg-gold/30"></div>
