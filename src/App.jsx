@@ -340,11 +340,11 @@ function App() {
                   <div className="h-[1px] w-32 bg-gold/30 mx-auto"></div>
                 </header>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-24">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
                   {/* Reception Card */}
-                  <div className="glass-card p-6 md:p-10 rounded-[2rem] flex flex-col items-center text-center group hover:translate-y-[-10px] transition-all duration-500">
-                    <div className="w-16 h-16 md:w-20 md:h-20 bg-maroon/5 rounded-2xl flex items-center justify-center mb-6 md:mb-8 group-hover:scale-110 transition-transform">
-                      <Music className="text-maroon" size={28} md:size={32} />
+                  <div className="glass-card p-8 md:p-12 rounded-[2.5rem] flex flex-col items-center text-center group">
+                    <div className="w-16 h-16 md:w-24 md:h-24 bg-maroon/5 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                      <Music className="text-maroon" size={32} />
                     </div>
                     <h3 className="font-vibes text-4xl md:text-5xl text-maroon mb-4">Reception</h3>
                     <p className="font-cormorant text-xl text-maroon/70 mb-2">May 27, 2026</p>
@@ -352,9 +352,9 @@ function App() {
                   </div>
 
                   {/* Muhurtham Card */}
-                  <div className="glass-card p-6 md:p-10 rounded-[2rem] flex flex-col items-center text-center group hover:translate-y-[-10px] transition-all duration-500">
-                    <div className="w-16 h-16 md:w-20 md:h-20 bg-maroon/5 rounded-2xl flex items-center justify-center mb-6 md:mb-8 group-hover:scale-110 transition-transform">
-                      <Heart className="text-maroon" size={28} md:size={32} />
+                  <div className="glass-card p-8 md:p-12 rounded-[2.5rem] flex flex-col items-center text-center group">
+                    <div className="w-16 h-16 md:w-24 md:h-24 bg-maroon/5 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                      <Heart className="text-maroon" size={32} />
                     </div>
                     <h3 className="font-vibes text-4xl md:text-5xl text-maroon mb-4">Muhurtham</h3>
                     <p className="font-cormorant text-xl text-maroon/70 mb-2">May 28, 2026</p>
@@ -362,32 +362,51 @@ function App() {
                   </div>
                 </div>
 
-                {/* Venue Section - Redesigned as a Wide Scene */}
-                <div className="glass-card p-6 md:p-12 rounded-[2rem] md:rounded-[3rem] mb-24 relative overflow-hidden group">
+                {/* Venue Section - Compact & Elegant */}
+                <div className="max-w-3xl mx-auto glass-card p-6 md:p-10 rounded-[2.5rem] mb-24 relative overflow-hidden group reveal-on-scroll">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
-                  <div className="relative z-10 flex flex-col md:flex-row items-center gap-12">
+                  
+                  <div className="relative z-10 flex flex-col md:flex-row items-center gap-10">
+                    {/* Left: Styled Map Frame */}
                     <div className="w-full md:w-1/2">
-                      <div className="bg-maroon/5 rounded-2xl aspect-video flex items-center justify-center border border-maroon/10 mb-6 overflow-hidden">
-                        <div className="flex flex-col items-center opacity-30">
-                          <MapPin size={48} className="mb-2" />
-                          <span className="font-lato text-[8px] uppercase tracking-widest font-bold">Interactive Map Preview</span>
+                      <div className="relative group/map">
+                        <div className="relative bg-white/5 backdrop-blur-sm rounded-[2rem] aspect-[4/3] flex items-center justify-center border border-white/10 overflow-hidden">
+                          <motion.div 
+                            animate={{ scale: [1, 1.05, 1] }}
+                            transition={{ duration: 4, repeat: Infinity }}
+                            className="flex flex-col items-center"
+                          >
+                            <MapPin size={48} className="text-maroon mb-2 opacity-60" />
+                            <div className="w-16 h-[1px] bg-gold/30 rounded-full"></div>
+                          </motion.div>
+                          <div className="absolute bottom-3 left-0 right-0 text-center">
+                            <span className="font-lato text-[7px] uppercase tracking-[0.4em] font-bold text-maroon/30">Musiri, Trichy</span>
+                          </div>
                         </div>
                       </div>
-                      <h3 className="font-vibes text-6xl text-maroon mb-4">The Vaasan Mahal</h3>
-                      <p className="font-lato text-maroon/50 text-[10px] tracking-[0.2em] uppercase">Musiri, Trichy</p>
                     </div>
+
+                    {/* Right: Venue Details & Navigation */}
                     <div className="w-full md:w-1/2 flex flex-col items-center md:items-start">
-                      <p className="font-cormorant text-2xl text-maroon/70 italic mb-10 text-center md:text-left leading-relaxed">
-                        "In a setting as timeless as our love, we await your presence to grace our union."
-                      </p>
-                      <a
+                      <div className="mb-8 text-center md:text-left">
+                        <span className="font-lato text-[9px] tracking-[0.5em] text-gold uppercase font-bold mb-1 block opacity-60">Venue</span>
+                        <h3 className="flex flex-col leading-tight">
+                          <span className="font-playfair text-xl md:text-2xl text-maroon/60 italic">The</span>
+                          <span className="font-playfair text-4xl md:text-5xl text-maroon font-bold tracking-tight">Vaasan Mahal</span>
+                        </h3>
+                        <div className="h-[2px] w-12 bg-gold/30 mt-4 mx-auto md:mx-0"></div>
+                      </div>
+                      
+                      <motion.a
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                         href="https://www.google.com/maps/search/The+Vaasan+Mahal+Musiri"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-12 py-5 bg-maroon text-gold rounded-full font-lato text-[11px] tracking-[0.4em] uppercase font-bold hover:scale-110 active:scale-95 transition-all shadow-2xl glow-shadow glow-text"
+                        className="px-10 py-4 bg-maroon text-gold rounded-full font-lato text-[10px] tracking-[0.4em] uppercase font-bold shadow-xl hover:shadow-maroon/20 transition-all duration-500 ripple-effect"
                       >
-                        Navigate to Venue
-                      </a>
+                        Navigate
+                      </motion.a>
                     </div>
                   </div>
                 </div>
