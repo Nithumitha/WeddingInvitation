@@ -49,36 +49,26 @@ const OurStorySection = ({ scrollContainerRef }) => {
 
 
       {/* Header */}
-      <div className="max-w-4xl mx-auto text-center mb-16 relative z-10">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5 }}
-          className="font-playfair text-5xl md:text-7xl text-accent-maroon mb-6 tracking-[0.3em] uppercase font-bold"
-        >
-          Our Story
-        </motion.h2>
-
+      {/* Header */}
+      <div className="max-w-4xl mx-auto text-center mb-24 relative z-10">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 1 }}
-          className="flex flex-col items-center gap-3"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="flex flex-col items-center gap-4"
         >
-          <p className="font-lato text-[10px] md:text-xs text-story-text/50 tracking-[0.6em] uppercase font-bold">
-            A journey written in time,
-          </p>
-          <p className="font-lato text-[10px] md:text-xs text-story-text/50 tracking-[0.6em] uppercase font-bold flex items-center gap-3">
-            sealed in love <span className="text-red-200 scale-75">♥</span>
-          </p>
+          <span className="font-lato text-[11px] md:text-xs text-gold tracking-[0.6em] uppercase font-bold opacity-60">The Narrative</span>
+          <h2 className="font-playfair text-5xl md:text-8xl text-maroon tracking-tight font-bold">
+            Our Story
+          </h2>
+          <div className="flex items-center gap-6 mt-8">
+            <div className="h-[1px] w-12 bg-gold/30"></div>
+            <p className="font-cormorant italic text-xl md:text-2xl text-maroon/50 leading-relaxed">
+              A journey written in time, sealed in love
+            </p>
+            <div className="h-[1px] w-12 bg-gold/30"></div>
+          </div>
         </motion.div>
-
-        {/* Ornate Divider */}
-        <div className="mt-12 flex justify-center items-center gap-6 text-accent-maroon/20">
-          <div className="h-[0.5px] w-16 bg-current"></div>
-          <span className="text-xl italic opacity-50">❦</span>
-          <div className="h-[0.5px] w-16 bg-current"></div>
-        </div>
       </div>
 
       <div className="relative w-full max-w-6xl mx-auto">

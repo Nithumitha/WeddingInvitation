@@ -29,7 +29,12 @@ const GaneshaIcon = () => (
     <img 
       src={vinayagarImage} 
       alt="Vinayagar" 
-      className="w-20 h-auto opacity-80 mix-blend-multiply transition-all duration-1000 hover:scale-110"
+      className="w-20 h-auto mix-blend-multiply transition-all duration-1000 hover:scale-110"
+      style={{ 
+        filter: 'contrast(1.2) brightness(1.1)',
+        maskImage: 'radial-gradient(circle, black 40%, transparent 90%)',
+        WebkitMaskImage: 'radial-gradient(circle, black 40%, transparent 90%)'
+      }}
     />
   </div>
 );
@@ -55,11 +60,11 @@ const Countdown = ({ targetDate }) => {
   }, [targetDate]);
 
   return (
-    <div className="flex gap-0.5 md:gap-8 justify-center flex-nowrap">
+    <div className="flex gap-2 md:gap-8 justify-center flex-nowrap">
       {Object.entries(timeLeft).map(([label, value]) => (
-        <div key={label} className="bg-white/20 backdrop-blur-xl p-2 md:p-8 rounded-[0.8rem] md:rounded-[2rem] border border-white/30 shadow-2xl flex flex-col items-center min-w-[62px] md:min-w-[120px] group hover:scale-105 transition-all duration-500">
-          <span className="text-xl md:text-6xl font-playfair text-maroon mb-1 animate-pulse">{value}</span>
-          <span className="text-[7px] md:text-[10px] uppercase tracking-[0.1em] md:tracking-[0.4em] text-gold font-bold">{label}</span>
+        <div key={label} className="glass-card p-4 md:p-8 rounded-2xl md:rounded-[2.5rem] flex flex-col items-center min-w-[70px] md:min-w-[130px] group">
+          <span className="text-3xl md:text-6xl font-playfair text-maroon mb-1 group-hover:scale-110 transition-transform duration-500">{value}</span>
+          <span className="text-[8px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.4em] text-gold font-bold">{label}</span>
         </div>
       ))}
     </div>
@@ -189,9 +194,9 @@ function App() {
         <img 
           src={cloudsBg} 
           alt="" 
-          className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-multiply"
+          className="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-multiply"
           style={{ 
-            filter: 'sepia(0.6) hue-rotate(240deg) saturate(3) brightness(1.2)' 
+            filter: 'sepia(0.6) hue-rotate(240deg) saturate(3) brightness(1.5)' 
           }}
         />
         
@@ -268,27 +273,26 @@ function App() {
 
                   <GaneshaIcon />
 
-                  <div className="text-center space-y-6">
+                  <div className="text-center space-y-4 md:space-y-6">
+                    <p className="font-cormorant italic text-maroon/70 text-lg md:text-2xl leading-relaxed font-semibold">We joyfully invite you to the wedding of</p>
 
-                    <p className="font-cormorant italic text-maroon/70 text-xl md:text-3xl leading-relaxed font-semibold">We joyfully invite you to the wedding of</p>
-
-                    <h1 className="font-vibes text-maroon flex flex-col items-center leading-none py-4 md:py-8 font-normal">
-                      <span style={{ fontSize: 'clamp(2.5rem, 12vw, 8.5rem)' }}>Krithick</span>
-                      <span className="opacity-40" style={{ fontSize: 'clamp(1.5rem, 6vw, 4.5rem)' }}>&</span>
-                      <span style={{ fontSize: 'clamp(2.5rem, 12vw, 8.5rem)' }}>Nithu</span>
+                    <h1 className="font-vibes text-maroon flex flex-col items-center leading-none py-2 md:py-8 font-normal">
+                      <span style={{ fontSize: 'clamp(2.2rem, 14vw, 8.5rem)' }}>Krithick</span>
+                      <span className="opacity-40" style={{ fontSize: 'clamp(1.2rem, 6vw, 4.5rem)' }}>&</span>
+                      <span style={{ fontSize: 'clamp(2.2rem, 14vw, 8.5rem)' }}>Nithu</span>
                     </h1>
 
-                    <div className="flex items-center justify-center gap-4 py-2 md:py-6">
-                      <div className="h-[1px] w-8 md:w-12 bg-gold/50"></div>
-                      <p className="font-display text-maroon text-xl md:text-2xl tracking-widest uppercase">MAY 28, 2026</p>
-                      <div className="h-[1px] w-8 md:w-12 bg-gold/50"></div>
+                    <div className="flex items-center justify-center gap-4 py-1 md:py-4">
+                      <div className="h-[1px] w-6 md:w-12 bg-gold/50"></div>
+                      <p className="font-lato text-maroon text-lg md:text-2xl tracking-widest uppercase">MAY 28, 2026</p>
+                      <div className="h-[1px] w-6 md:w-12 bg-gold/50"></div>
                     </div>
 
-                    <p className="font-cormorant text-lg md:text-4xl text-maroon/60 italic font-light tracking-wide px-4">
+                    <p className="font-cormorant text-base md:text-3xl text-maroon/60 italic font-light tracking-wide px-4">
                       "Where love found its forever..."
                     </p>
 
-                    <div className="pt-8 md:pt-12 flex flex-col items-center">
+                    <div className="pt-4 md:pt-8 flex flex-col items-center">
                       <button
                         onClick={handleOpen}
                         className="relative group cursor-pointer"

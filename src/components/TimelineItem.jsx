@@ -24,6 +24,11 @@ const TimelineItem = ({ index, image, title, text, highlightText }) => {
             src={image}
             alt={`Story step ${index}`}
             className="relative w-full max-w-[200px] md:max-w-[360px] h-auto object-contain mix-blend-multiply transition-all duration-1000 group-hover:scale-105"
+            style={{ 
+              filter: 'contrast(1.2) brightness(1.1)',
+              maskImage: 'radial-gradient(circle, black 50%, transparent 95%)',
+              WebkitMaskImage: 'radial-gradient(circle, black 50%, transparent 95%)'
+            }}
           />
         </motion.div>
       </div>
