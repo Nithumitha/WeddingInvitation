@@ -50,8 +50,9 @@
 .fluid-h1 {
   font-family: var(--font-vibes);
   font-size: clamp(2.5rem, 12vmin, 8rem);
-  line-height: 0.85;
-  letter-spacing: -0.02em;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  padding: 0.1em 0;
 }
 
 .fluid-h2 {
