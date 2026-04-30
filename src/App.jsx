@@ -172,13 +172,13 @@ function App() {
     const audio = audioRef.current;
     if (audio) {
       audio.playbackRate = 1.5;
-      
+
       const handleTimeUpdate = () => {
         if (audio.currentTime >= 140) {
           audio.currentTime = 30;
         }
       };
-      
+
       audio.addEventListener('timeupdate', handleTimeUpdate);
       return () => audio.removeEventListener('timeupdate', handleTimeUpdate);
     }
@@ -318,20 +318,48 @@ function App() {
                 <GaneshaIcon />
 
                 <div className="text-center space-y-[clamp(1rem,3vh,2.5rem)]">
-                  <p className="fluid-body italic text-maroon/70 font-semibold max-w-lg mx-auto leading-relaxed">
+                  <p className="fluid-body italic text-maroon font-semibold max-w-lg mx-auto leading-relaxed">
                     With hearts full of love, we invite you to witness the beginning of our forever.
                   </p>
 
-                  <h1 className="fluid-h1 text-maroon flex flex-col items-center">
-                    <span>Krithick</span>
-                    <span className="opacity-40 text-[0.45em] my-[1vh] leading-none">&</span>
-                    <span>Nithu</span>
+                  <h1 className="fluid-h1 flex flex-col items-center relative group">
+                    <motion.span
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1, delay: 1 }}
+                      className="bg-gradient-to-r from-[#8B6B23] via-[#FFEBB7] to-[#8B6B23] bg-[length:200%_auto] bg-clip-text text-transparent animate-[shimmer_3s_linear_infinite] drop-shadow-sm py-2 px-4"
+                    >
+                      Krithick
+                    </motion.span>
+                    <motion.span 
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 0.4, scale: 1 }}
+                      transition={{ duration: 1, delay: 1.3 }}
+                      className="text-[0.45em] my-[1vh] leading-none font-serif text-maroon"
+                    >
+                      &
+                    </motion.span>
+                    <motion.span
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1, delay: 1.6 }}
+                      className="bg-gradient-to-r from-[#8B6B23] via-[#FFEBB7] to-[#8B6B23] bg-[length:200%_auto] bg-clip-text text-transparent animate-[shimmer_3s_linear_infinite] drop-shadow-sm py-2 px-4"
+                    >
+                      Nithu
+                    </motion.span>
+                    
+                    {/* Golden Aura Glow */}
+                    <motion.div
+                      animate={{ opacity: [0.1, 0.3, 0.1] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute inset-0 blur-3xl bg-gold/5 -z-10"
+                    />
                   </h1>
 
                   <div className="flex items-center justify-center gap-4">
-                    <div className="h-[1px] w-[8vmin] bg-gold/30"></div>
-                    <p className="fluid-label text-gold font-black tracking-[0.3em]">MAY 28, 2026</p>
-                    <div className="h-[1px] w-[8vmin] bg-gold/30"></div>
+                    <div className="h-[1px] w-[8vmin] bg-maroon/20"></div>
+                    <p className="fluid-label text-maroon font-black tracking-[0.3em]">MAY 28, 2026</p>
+                    <div className="h-[1px] w-[8vmin] bg-maroon/20"></div>
                   </div>
                 </div>
               </div>
