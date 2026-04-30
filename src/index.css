@@ -52,9 +52,8 @@
 .fluid-h1 {
   font-family: var(--font-vibes);
   font-size: clamp(2.5rem, 12vmin, 8rem);
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  padding: 0.1em 0;
+  line-height: 0.85;
+  letter-spacing: -0.02em;
 }
 
 .fluid-h2 {
@@ -163,19 +162,6 @@ body {
   50% {
     filter: drop-shadow(0 0 15px rgba(184, 115, 51, 0.8));
   }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% center;
-  }
-  100% {
-    background-position: 200% center;
-  }
-}
-
-.animate-shimmer {
-  animation: shimmer 3s linear infinite;
 }
 
 .glow-text {

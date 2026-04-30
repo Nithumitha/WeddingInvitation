@@ -77,25 +77,26 @@ const OurStorySection = ({ scrollContainerRef, onNext }) => {
     <section
       id="story"
       ref={sectionRef}
-      className="bg-transparent pt-16 pb-12 px-4 relative flex flex-col items-start overflow-x-hidden"
+      className="bg-transparent pt-32 pb-12 px-4 relative flex flex-col items-center overflow-x-hidden"
     >
       {/* Header omitted for brevity */}
-      <div className="w-full max-w-6xl mx-auto mb-[var(--section-gap)] relative z-10 px-6">
+      <div className="max-w-4xl mx-auto text-center mb-[var(--section-gap)] relative z-10">
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="flex flex-col items-start gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="flex flex-col items-center gap-4"
         >
           <span className="fluid-label text-gold opacity-60">The Narrative</span>
           <h2 className="fluid-h2 text-maroon font-bold">
             Our Story
           </h2>
-          <div className="flex items-center gap-6 mt-4">
+          <div className="flex items-center gap-6 mt-8">
             <div className="h-[1px] w-12 bg-gold/30"></div>
             <p className="fluid-body italic text-maroon/80">
               A journey written in time, sealed in love
             </p>
+            <div className="h-[1px] w-12 bg-gold/30"></div>
           </div>
         </motion.div>
       </div>

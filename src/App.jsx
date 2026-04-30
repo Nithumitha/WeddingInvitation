@@ -172,13 +172,13 @@ function App() {
     const audio = audioRef.current;
     if (audio) {
       audio.playbackRate = 1.5;
-
+      
       const handleTimeUpdate = () => {
         if (audio.currentTime >= 140) {
           audio.currentTime = 30;
         }
       };
-
+      
       audio.addEventListener('timeupdate', handleTimeUpdate);
       return () => audio.removeEventListener('timeupdate', handleTimeUpdate);
     }
@@ -318,48 +318,20 @@ function App() {
                 <GaneshaIcon />
 
                 <div className="text-center space-y-[clamp(1rem,3vh,2.5rem)]">
-                  <p className="fluid-body italic text-maroon font-semibold max-w-lg mx-auto leading-relaxed">
+                  <p className="fluid-body italic text-maroon/70 font-semibold max-w-lg mx-auto leading-relaxed">
                     With hearts full of love, we invite you to witness the beginning of our forever.
                   </p>
 
-                  <h1 className="fluid-h1 flex flex-col items-center relative group">
-                    <motion.span
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 1, delay: 1 }}
-                      className="bg-gradient-to-r from-[#8B6B23] via-[#FFEBB7] to-[#8B6B23] bg-[length:200%_auto] bg-clip-text text-transparent animate-[shimmer_3s_linear_infinite] drop-shadow-sm py-2 px-4"
-                    >
-                      Krithick
-                    </motion.span>
-                    <motion.span 
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 0.4, scale: 1 }}
-                      transition={{ duration: 1, delay: 1.3 }}
-                      className="text-[0.45em] my-[1vh] leading-none font-serif text-maroon"
-                    >
-                      &
-                    </motion.span>
-                    <motion.span
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 1, delay: 1.6 }}
-                      className="bg-gradient-to-r from-[#8B6B23] via-[#FFEBB7] to-[#8B6B23] bg-[length:200%_auto] bg-clip-text text-transparent animate-[shimmer_3s_linear_infinite] drop-shadow-sm py-2 px-4"
-                    >
-                      Nithu
-                    </motion.span>
-                    
-                    {/* Golden Aura Glow */}
-                    <motion.div
-                      animate={{ opacity: [0.1, 0.3, 0.1] }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                      className="absolute inset-0 blur-3xl bg-gold/5 -z-10"
-                    />
+                  <h1 className="fluid-h1 text-maroon flex flex-col items-center">
+                    <span>Krithick</span>
+                    <span className="opacity-40 text-[0.45em] my-[1vh] leading-none">&</span>
+                    <span>Nithu</span>
                   </h1>
 
                   <div className="flex items-center justify-center gap-4">
-                    <div className="h-[1px] w-[8vmin] bg-maroon/20"></div>
-                    <p className="fluid-label text-maroon font-black tracking-[0.3em]">MAY 28, 2026</p>
-                    <div className="h-[1px] w-[8vmin] bg-maroon/20"></div>
+                    <div className="h-[1px] w-[8vmin] bg-gold/30"></div>
+                    <p className="fluid-label text-gold font-black tracking-[0.3em]">MAY 28, 2026</p>
+                    <div className="h-[1px] w-[8vmin] bg-gold/30"></div>
                   </div>
                 </div>
               </div>
@@ -422,22 +394,10 @@ function App() {
               className="absolute inset-0 overflow-y-auto scrollbar-hide py-[15vh] px-4"
             >
               <div className="max-w-5xl mx-auto px-4">
-                <header className="max-w-6xl mx-auto mb-[var(--section-gap)] px-4">
-                  <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 1.2, ease: "easeOut" }}
-                    className="flex flex-col items-start gap-4"
-                  >
-                    <span className="fluid-label text-gold opacity-60">Save The Date</span>
-                    <h2 className="fluid-h2 text-maroon font-bold">Celebration</h2>
-                    <div className="flex items-center gap-6 mt-4">
-                      <div className="h-[1px] w-12 bg-gold/30"></div>
-                      <p className="fluid-body italic text-maroon/80">
-                        The union of two souls, the joy of two families
-                      </p>
-                    </div>
-                  </motion.div>
+                <header className="text-center mb-[var(--section-gap)]">
+                  <span className="fluid-label text-gold mb-4 block">Save The Date</span>
+                  <h2 className="fluid-h2 text-maroon font-bold">Celebration</h2>
+                  <div className="h-[1px] w-32 bg-gold/30 mx-auto mt-6"></div>
                 </header>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--section-gap)] mb-[var(--section-gap)]">
