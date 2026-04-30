@@ -264,13 +264,13 @@ function App() {
         </div>
       )}
 
-      {/* Unified Stable Layer - Fixed White Boxes and Background Gaps */}
+      {/* Unified Stable Layer - Standard Height with Texture Bleed */}
       <div 
-        className="fixed -inset-y-[5%] inset-x-0 h-[110lvh] z-[-1] pointer-events-none overflow-hidden bg-[#ffdede] [transform:translate3d(0,0,0)]"
+        className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#ffdede] [transform:translate3d(0,0,0)]"
       >
-        {/* Cloud Background */}
+        {/* Cloud Background - Scaled for safety bleed without affecting layout */}
         <div 
-          className="absolute inset-0"
+          className="absolute inset-0 scale-110"
           style={{
             backgroundImage: `url(${cloudsBg})`,
             backgroundSize: 'cover',
@@ -281,7 +281,7 @@ function App() {
           }}
         />
 
-        {/* Top Right Flower - Adjusted for 5vh offset */}
+        {/* Top Right Flower */}
         <motion.img
           src={cornerFlower}
           alt=""
@@ -291,11 +291,11 @@ function App() {
             y: 0,
             opacity: 0.8
           }}
-          className="absolute top-[calc(5vh-2vmin)] -right-[2vmin] mix-blend-multiply pointer-events-none"
+          className="absolute -top-[2vmin] -right-[2vmin] mix-blend-multiply pointer-events-none"
           style={{ width: 'clamp(150px, 40vmin, 550px)' }}
         />
 
-        {/* Bottom Left Couple - Adjusted for 5vh offset */}
+        {/* Bottom Left Couple */}
         <AnimatePresence>
           {currentStep === 0 && (
             <motion.img
@@ -312,7 +312,7 @@ function App() {
               }}
               exit={{ opacity: 0, scale: 0.8, x: -20, y: 20 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="absolute bottom-[calc(5vh-2vmin)] -left-[2vmin] mix-blend-multiply pointer-events-none"
+              className="absolute -bottom-[2vmin] -left-[2vmin] mix-blend-multiply pointer-events-none"
               style={{ width: 'clamp(150px, 40vmin, 550px)' }}
             />
           )}
