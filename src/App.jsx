@@ -148,32 +148,36 @@ function App() {
   const audioRef = useRef(null);
 
   useEffect(() => {
-    const imagesToLoad = [
-      cloudsBg, 
-      cornerFlower, 
-      coupleCorner, 
-      vinayagarImage,
-      story1, story2, story3, story4, story5, story6, story7, story8
-    ];
-    let loadedCount = 0;
+    // 1. Critical Assets (Must load before showing the Home page)
+    const criticalImages = [cloudsBg, cornerFlower, coupleCorner, vinayagarImage, story1];
+    let criticalLoaded = 0;
 
-    const checkAllLoaded = () => {
-      loadedCount++;
-      if (loadedCount === imagesToLoad.length) {
-        // Also wait for fonts
+    const checkCriticalLoaded = () => {
+      criticalLoaded++;
+      if (criticalLoaded === criticalImages.length) {
         if (document.fonts) {
           document.fonts.ready.then(() => setAssetsLoaded(true));
         } else {
           setAssetsLoaded(true);
         }
+        // 2. Background Assets (Load quietly while user is on Home page)
+        preloadBackgroundAssets();
       }
     };
 
-    imagesToLoad.forEach(src => {
+    const preloadBackgroundAssets = () => {
+      const backgroundImages = [story2, story3, story4, story5, story6, story7, story8];
+      backgroundImages.forEach(src => {
+        const img = new Image();
+        img.src = src;
+      });
+    };
+
+    criticalImages.forEach(src => {
       const img = new Image();
       img.src = src;
-      img.onload = checkAllLoaded;
-      img.onerror = checkAllLoaded;
+      img.onload = checkCriticalLoaded;
+      img.onerror = checkCriticalLoaded;
     });
   }, []);
 
