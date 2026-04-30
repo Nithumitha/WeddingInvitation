@@ -136,8 +136,32 @@ function App() {
   const [currentStep, setCurrentStep] = useState(0); // 0: Front, 1: Story, 2: Event, 3: Venue
   const scrollContainerRef = React.useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [coupleImgLoaded, setCoupleImgLoaded] = useState(false);
+  const [assetsLoaded, setAssetsLoaded] = useState(false);
   const audioRef = useRef(null);
+
+  useEffect(() => {
+    const imagesToLoad = [cloudsBg, cornerFlower, coupleCorner, vinayagarImage];
+    let loadedCount = 0;
+
+    const checkAllLoaded = () => {
+      loadedCount++;
+      if (loadedCount === imagesToLoad.length) {
+        // Also wait for fonts
+        if (document.fonts) {
+          document.fonts.ready.then(() => setAssetsLoaded(true));
+        } else {
+          setAssetsLoaded(true);
+        }
+      }
+    };
+
+    imagesToLoad.forEach(src => {
+      const img = new Image();
+      img.src = src;
+      img.onload = checkAllLoaded;
+      img.onerror = checkAllLoaded;
+    });
+  }, []);
 
   const steps = [
     { id: 'front', label: 'Home' },
@@ -203,13 +227,26 @@ function App() {
     if (isPlaying) {
       audioRef.current.pause();
     } else {
+      // If playing for the first time or before the 30s mark, jump to 30s
+      if (audioRef.current.currentTime < 30) {
+        audioRef.current.currentTime = 30;
+      }
       audioRef.current.play();
     }
     setIsPlaying(!isPlaying);
   };
 
   return (
-    <div className="min-h-dvh relative overflow-x-hidden">
+    <>
+      {/* Loading Spinner Overlay (Mirroring wedding-invitation) */}
+      {!assetsLoaded && (
+        <div className="loading-spinner-overlay">
+          <div className="spinner"></div>
+          <p className="loading-text">Preparing Invitation...</p>
+        </div>
+      )}
+
+      <div className="min-h-dvh relative overflow-x-hidden">
 
       {/* Elegant Corner Decorations & Cloud Background */}
       <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#ffdede] w-full h-full">
@@ -245,11 +282,10 @@ function App() {
               src={coupleCorner}
               alt=""
               fetchpriority="high"
-              onLoad={() => setCoupleImgLoaded(true)}
               initial={{ opacity: 0, scale: 0.8, x: -20, y: 20 }}
               animate={{
-                opacity: coupleImgLoaded ? 0.8 : 0,
-                scale: coupleImgLoaded ? 1 : 0.95,
+                opacity: 0.8,
+                scale: 1,
                 x: 0,
                 y: 0
               }}
@@ -561,8 +597,9 @@ function App() {
             </motion.div>
           )}
         </AnimatePresence>
-      </main>
-    </div>
+        </main>
+      </div>
+    </>
   );
 }
 
