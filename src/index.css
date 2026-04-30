@@ -36,8 +36,6 @@
 :root {
   font-family: 'Cormorant Garamond', serif;
   color: #1a1a1a;
-  scroll-behavior: smooth;
-  /* Cross-platform color and text resets */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;

@@ -55,7 +55,8 @@ const CornerMotifs = () => (
 
 
 const RosePetals = () => {
-  const petalsCount = 12; // Premium, non-cluttered limit
+  const isMobile = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
+  const petalsCount = isMobile ? 6 : 12; 
   const petals = Array.from({ length: petalsCount });
 
   return (
@@ -152,18 +153,23 @@ function App() {
     if (currentStep > 0) setCurrentStep(prev => prev - 1);
   };
 
-  // Lock scroll on Home Page
+  // Scroll to top on step change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentStep]);
+
+  // Lock scroll on Home Page only
   useEffect(() => {
     if (currentStep === 0) {
       document.body.style.overflow = 'hidden';
       document.body.style.touchAction = 'none';
     } else {
-      document.body.style.overflow = 'unset';
-      document.body.style.touchAction = 'unset';
+      document.body.style.overflow = 'auto';
+      document.body.style.touchAction = 'auto';
     }
     return () => {
-      document.body.style.overflow = 'unset';
-      document.body.style.touchAction = 'unset';
+      document.body.style.overflow = 'auto';
+      document.body.style.touchAction = 'auto';
     };
   }, [currentStep]);
 
@@ -203,10 +209,10 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen relative overflow-x-hidden">
+    <div className="min-h-dvh relative overflow-x-hidden">
 
       {/* Elegant Corner Decorations & Cloud Background */}
-      <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#ffdede]">
+      <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#ffdede] w-full h-full">
         {/* Colorful Cloud Layer */}
         <img
           src={cloudsBg}
@@ -301,7 +307,7 @@ function App() {
         </button>
       </div>
 
-      <main className={`min-h-dvh w-full flex relative overflow-hidden bg-transparent fixed inset-0`}>
+      <main className="w-full flex flex-col relative bg-transparent z-[50] [will-change:transform] [-webkit-overflow-scrolling:touch] overflow-x-hidden">
         <AnimatePresence mode="wait">
           {currentStep === 0 && (
             <motion.div
@@ -309,7 +315,7 @@ function App() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="w-full h-full flex flex-col items-center px-6 overflow-hidden relative"
+              className="w-full min-h-dvh flex flex-col items-center px-6 overflow-hidden relative shrink-0"
             >
               <RosePetals />
 
@@ -371,12 +377,11 @@ function App() {
           {currentStep === 1 && (
             <motion.div
               key="story"
-              ref={scrollContainerRef}
-              initial={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
-              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
-              transition={{ duration: 1.2, ease: [0.43, 0.13, 0.23, 0.96] }}
-              className="w-full h-full overflow-y-auto scrollbar-hide pt-[10vh] pb-0"
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.8 }}
+              className="w-full relative py-[10vh]"
             >
               <div className="max-w-6xl mx-auto px-4">
                 <OurStorySection scrollContainerRef={scrollContainerRef} onNext={nextStep} />
@@ -390,8 +395,8 @@ function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="absolute inset-0 overflow-y-auto scrollbar-hide py-[15vh] px-4"
+              transition={{ duration: 0.8 }}
+              className="w-full relative py-[15vh] px-4"
             >
               <div className="max-w-5xl mx-auto px-4">
                 <header className="text-center mb-[var(--section-gap)]">
