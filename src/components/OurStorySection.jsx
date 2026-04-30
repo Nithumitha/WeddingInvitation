@@ -77,7 +77,7 @@ const OurStorySection = ({ scrollContainerRef, onNext }) => {
     <section
       id="story"
       ref={sectionRef}
-      className="bg-transparent pt-32 pb-0 px-4 relative flex flex-col items-center overflow-x-hidden"
+      className="bg-transparent pt-32 pb-12 px-4 relative flex flex-col items-center overflow-x-hidden"
     >
       {/* Header omitted for brevity */}
       <div className="max-w-4xl mx-auto text-center mb-[var(--section-gap)] relative z-10">
