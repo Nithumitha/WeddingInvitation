@@ -8,13 +8,13 @@ import coupleCorner from './assets/coupleCornerImage.webp';
 import vinayagarImage from './assets/vinayagarImage.webp';
 import cloudsBg from './assets/grayscaleClouds.webp';
 import story1 from './assets/ourStory1.webp';
-import story2 from './assets/ourStory2.png';
 import story3 from './assets/ourStory3.webp';
 import story4 from './assets/ourStory4.webp';
 import story5 from './assets/ourStory5.webp';
 import story6 from './assets/ourStory6.webp';
 import story7 from './assets/ourStory7.webp';
 import story8 from './assets/ourStory8.webp';
+import mahalImg from './assets/mahal.png';
 
 // --- Sub-components (Moved to bottom or removed duplicates) ---
 
@@ -166,7 +166,7 @@ function App() {
     };
 
     const preloadBackgroundAssets = () => {
-      const backgroundImages = [story2, story3, story4, story5, story6, story7, story8];
+      const backgroundImages = [story3, story4, story5, story6, story7, story8, mahalImg];
       backgroundImages.forEach(src => {
         const img = new Image();
         img.src = src;
@@ -556,10 +556,13 @@ function App() {
                     <div className="w-full md:w-1/3">
                       <div className="relative p-2 border border-white/40 rounded-2xl bg-white/30 backdrop-blur-md shadow-inner">
                         <div className="relative bg-[#FFFBF0]/60 rounded-xl aspect-[16/9] md:aspect-square flex items-center justify-center overflow-hidden">
-                          <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity }} className="flex flex-col items-center">
-                            <MapPin size={32} className="text-maroon mb-2" />
-                            <div className="w-12 h-[1.5px] bg-gold/40 rounded-full"></div>
-                          </motion.div>
+                          <motion.img 
+                            src={mahalImg} 
+                            alt="Vaasan Mahal"
+                            animate={{ scale: [1, 1.05, 1] }} 
+                            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} 
+                            className="w-full h-full object-cover mix-blend-multiply opacity-90"
+                          />
                         </div>
                       </div>
                     </div>
