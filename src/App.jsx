@@ -178,13 +178,13 @@ function App() {
     const audio = audioRef.current;
     if (audio) {
       audio.playbackRate = 1.5;
-      
+
       const handleTimeUpdate = () => {
         if (audio.currentTime >= 140) {
           audio.currentTime = 30;
         }
       };
-      
+
       audio.addEventListener('timeupdate', handleTimeUpdate);
       return () => audio.removeEventListener('timeupdate', handleTimeUpdate);
     }
