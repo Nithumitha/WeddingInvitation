@@ -16,8 +16,8 @@ const stories = [
     id: 1,
     image: img1,
     title: "2016",
-    text: "He saw me,\nand decided to try his luck",
-    highlightText: "I was annoyed.\nMay be that was\ndestiny beginning its story."
+    text: "He saw me,\nand tried his luck.",
+    highlightText: "I wasn't impressed.\nLittle did I know,\ndestiny had already began."
   },
   {
     id: 2,
@@ -59,7 +59,7 @@ const stories = [
     image: img8,
     title: "The Forever",
     text: "And this time..",
-    highlightText: "Two hearts, \none story..\nFinally finding our forever. ❤️"
+    highlightText: "Two hearts, \none story,\n finally choosing forever. ❤️"
   },
 ];
 
