@@ -295,8 +295,8 @@ function App() {
             >
               <RosePetals />
 
-              {/* Branding Section - Centered in the available space above the button */}
-              <div className="mt-auto mb-auto w-full max-w-4xl flex flex-col items-center gap-[clamp(1rem,3vh,2rem)] relative z-10 shrink-0 pb-[4vh]">
+              {/* Branding Section - Moved slightly lower for better visual balance */}
+              <div className="mt-[12vh] mb-auto w-full max-w-4xl flex flex-col items-center gap-[clamp(1rem,3vh,2rem)] relative z-10 shrink-0 pb-[4vh]">
                 <GaneshaIcon />
 
                 <div className="text-center space-y-[clamp(1rem,3vh,2.5rem)]">

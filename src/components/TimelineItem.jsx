@@ -24,7 +24,7 @@ const TimelineItem = ({ index, image, title, text, highlightText }) => {
             src={image}
             alt={`Story step ${index}`}
             className="relative h-auto object-contain mix-blend-multiply transition-all duration-1000 group-hover:scale-105"
-            style={{ 
+            style={{
               width: 'clamp(120px, 40vmin, 400px)',
               filter: 'contrast(1.2) brightness(1.1)',
               maskImage: 'radial-gradient(circle, black 50%, transparent 95%)',
@@ -45,9 +45,9 @@ const TimelineItem = ({ index, image, title, text, highlightText }) => {
         >
           {/* Inner Glow */}
           <div className="absolute inset-0 bg-gold/20 animate-pulse"></div>
-          
+
           {/* Outer Ring */}
-          <motion.div 
+          <motion.div
             animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
             transition={{ duration: 2, repeat: Infinity }}
             className="absolute -inset-2 border border-gold/30 rounded-full"
