@@ -7,6 +7,13 @@ import cornerFlower from './assets/cornerFlowerImage.png';
 import coupleCorner from './assets/coupleCornerImage.png';
 import vinayagarImage from './assets/vinayagarImage.jpg';
 import cloudsBg from './assets/grayscaleClouds.png';
+import story1 from './assets/story1.jpg';
+import story2 from './assets/story2.jpg';
+import story3 from './assets/story3.jpg';
+import story4 from './assets/story4.jpg';
+import story5 from './assets/story5.jpg';
+import story6 from './assets/story6.jpg';
+import story7 from './assets/story7.jpg';
 
 // --- Sub-components (Moved to bottom or removed duplicates) ---
 
@@ -140,7 +147,13 @@ function App() {
   const audioRef = useRef(null);
 
   useEffect(() => {
-    const imagesToLoad = [cloudsBg, cornerFlower, coupleCorner, vinayagarImage];
+    const imagesToLoad = [
+      cloudsBg, 
+      cornerFlower, 
+      coupleCorner, 
+      vinayagarImage,
+      story1, story2, story3, story4, story5, story6, story7
+    ];
     let loadedCount = 0;
 
     const checkAllLoaded = () => {
