@@ -394,10 +394,22 @@ function App() {
               className="absolute inset-0 overflow-y-auto scrollbar-hide py-[15vh] px-4"
             >
               <div className="max-w-5xl mx-auto px-4">
-                <header className="text-center mb-[var(--section-gap)]">
-                  <span className="fluid-label text-gold mb-4 block">Save The Date</span>
-                  <h2 className="fluid-h2 text-maroon font-bold">Celebration</h2>
-                  <div className="h-[1px] w-32 bg-gold/30 mx-auto mt-6"></div>
+                <header className="max-w-6xl mx-auto mb-[var(--section-gap)] px-4">
+                  <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
+                    className="flex flex-col items-start gap-4"
+                  >
+                    <span className="fluid-label text-gold opacity-60">Save The Date</span>
+                    <h2 className="fluid-h2 text-maroon font-bold">Celebration</h2>
+                    <div className="flex items-center gap-6 mt-4">
+                      <div className="h-[1px] w-12 bg-gold/30"></div>
+                      <p className="fluid-body italic text-maroon/80">
+                        The union of two souls, the joy of two families
+                      </p>
+                    </div>
+                  </motion.div>
                 </header>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--section-gap)] mb-[var(--section-gap)]">

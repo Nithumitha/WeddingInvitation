@@ -11,7 +11,7 @@ const TimelineItem = ({ index, image, title, text, highlightText }) => {
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 1.5, ease: [0.43, 0.13, 0.23, 0.96] }}
       className={`relative flex flex-col md:flex-row ${isIllustrationLeft ? 'md:flex-row' : 'md:flex-row-reverse'
-        } items-center md:justify-between w-full h-auto md:h-[clamp(350px,70vh,600px)] gap-8 md:gap-[5vmin] pb-16 md:pb-0`}
+        } items-start md:justify-between w-full h-auto md:h-[clamp(350px,70vh,600px)] gap-8 md:gap-[5vmin] pb-16 md:pb-0`}
     >
       {/* Illustration Area - Floating Effect */}
       <div className="w-full md:w-1/2 flex items-center justify-center pl-12 md:pl-0">
@@ -35,7 +35,7 @@ const TimelineItem = ({ index, image, title, text, highlightText }) => {
       </div>
 
       {/* Center Node on the path - Fixed to the left on mobile */}
-      <div className="absolute left-6 md:left-1/2 -translate-x-1/2 top-0 md:top-1/2 z-20">
+      <div className="absolute left-6 md:left-1/2 -translate-x-1/2 top-0 md:top-8 z-20">
         <motion.div
           initial={{ scale: 0, rotate: 45 }}
           whileInView={{ scale: 1, rotate: 45 }}
