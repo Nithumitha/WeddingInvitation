@@ -264,7 +264,7 @@ function App() {
         </div>
       )}
 
-      {/* Unified Fixed Background & Decoration Layer - Outside everything for stability */}
+      {/* Unified Stable Layer - Fixed White Boxes and Background Gaps */}
       <div 
         className="fixed -inset-y-[5%] inset-x-0 h-[110lvh] z-[-1] pointer-events-none overflow-hidden bg-[#ffdede] [transform:translate3d(0,0,0)]"
       >
@@ -281,7 +281,7 @@ function App() {
           }}
         />
 
-        {/* Top Right Flower */}
+        {/* Top Right Flower - Adjusted for 5vh offset */}
         <motion.img
           src={cornerFlower}
           alt=""
@@ -291,11 +291,11 @@ function App() {
             y: 0,
             opacity: 0.8
           }}
-          className="absolute -top-[2vmin] -right-[2vmin] mix-blend-multiply pointer-events-none"
+          className="absolute top-[calc(5vh-2vmin)] -right-[2vmin] mix-blend-multiply pointer-events-none"
           style={{ width: 'clamp(150px, 40vmin, 550px)' }}
         />
 
-        {/* Bottom Left Couple */}
+        {/* Bottom Left Couple - Adjusted for 5vh offset */}
         <AnimatePresence>
           {currentStep === 0 && (
             <motion.img
@@ -312,7 +312,7 @@ function App() {
               }}
               exit={{ opacity: 0, scale: 0.8, x: -20, y: 20 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="absolute -bottom-[2vmin] -left-[2vmin] mix-blend-multiply pointer-events-none"
+              className="absolute bottom-[calc(5vh-2vmin)] -left-[2vmin] mix-blend-multiply pointer-events-none"
               style={{ width: 'clamp(150px, 40vmin, 550px)' }}
             />
           )}
