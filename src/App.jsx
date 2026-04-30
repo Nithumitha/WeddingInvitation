@@ -396,7 +396,7 @@ function App() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.8 }}
-              className="w-full relative py-[15vh] px-4"
+              className="w-full relative pt-[6vh] pb-[15vh] px-4"
             >
               <div className="max-w-5xl mx-auto px-4">
                 <header className="text-center mb-[var(--section-gap)]">
