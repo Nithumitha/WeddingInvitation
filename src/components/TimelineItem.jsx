@@ -18,7 +18,8 @@ const TimelineItem = ({ index, image, title, text, highlightText }) => {
         <motion.div
           animate={{ y: [0, -15, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="relative group"
+          className="relative group rounded-full overflow-hidden"
+          style={{ backgroundColor: '#ffdede' }}
         >
           <img
             src={image}
@@ -26,9 +27,9 @@ const TimelineItem = ({ index, image, title, text, highlightText }) => {
             className="relative h-auto object-contain mix-blend-multiply transition-all duration-1000 group-hover:scale-105"
             style={{
               width: 'clamp(120px, 40vmin, 400px)',
-              filter: 'contrast(1.2) brightness(1.1)',
-              maskImage: 'radial-gradient(circle, black 50%, transparent 95%)',
-              WebkitMaskImage: 'radial-gradient(circle, black 50%, transparent 95%)'
+              filter: 'contrast(1.25) brightness(1.05) saturate(1.1)',
+              maskImage: 'radial-gradient(circle, black 60%, transparent 98%)',
+              WebkitMaskImage: 'radial-gradient(circle, black 60%, transparent 98%)'
             }}
           />
         </motion.div>

@@ -7,13 +7,14 @@ import cornerFlower from './assets/cornerFlowerImage.png';
 import coupleCorner from './assets/coupleCornerImage.png';
 import vinayagarImage from './assets/vinayagarImage.jpg';
 import cloudsBg from './assets/grayscaleClouds.png';
-import story1 from './assets/story1.jpg';
-import story2 from './assets/story2.jpg';
-import story3 from './assets/story3.jpg';
-import story4 from './assets/story4.jpg';
-import story5 from './assets/story5.jpg';
-import story6 from './assets/story6.jpg';
-import story7 from './assets/story7.jpg';
+import story1 from './assets/ourStory1.png';
+import story2 from './assets/ourStory2.png';
+import story3 from './assets/ourStory3.png';
+import story4 from './assets/ourStory4.png';
+import story5 from './assets/ourStory5.png';
+import story6 from './assets/ourStory6.png';
+import story7 from './assets/ourStory7.png';
+import story8 from './assets/ourStory8.png';
 
 // --- Sub-components (Moved to bottom or removed duplicates) ---
 
@@ -152,7 +153,7 @@ function App() {
       cornerFlower, 
       coupleCorner, 
       vinayagarImage,
-      story1, story2, story3, story4, story5, story6, story7
+      story1, story2, story3, story4, story5, story6, story7, story8
     ];
     let loadedCount = 0;
 
@@ -261,19 +262,24 @@ function App() {
 
       <div className="min-h-dvh relative overflow-x-hidden">
 
-      {/* Elegant Corner Decorations & Cloud Background */}
-      <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#ffdede] w-full h-full">
-        {/* Colorful Cloud Layer */}
-        <img
-          src={cloudsBg}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover opacity-40"
+      {/* Unified Fixed Background & Decoration Layer */}
+      <div 
+        className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#ffdede] [will-change:transform] [transform:translateZ(0)]"
+      >
+        {/* Cloud Background */}
+        <div 
+          className="absolute inset-0"
           style={{
+            backgroundImage: `url(${cloudsBg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            opacity: 0.4,
             filter: 'sepia(0.4) hue-rotate(240deg) saturate(1.5) brightness(1.2)'
           }}
         />
 
-        {/* Top Right Flower - Proportional Scaling */}
+        {/* Top Right Flower */}
         <motion.img
           src={cornerFlower}
           alt=""
@@ -287,7 +293,7 @@ function App() {
           style={{ width: 'clamp(150px, 40vmin, 550px)' }}
         />
 
-        {/* Bottom Left Couple - Proportional Scaling */}
+        {/* Bottom Left Couple */}
         <AnimatePresence>
           {currentStep === 0 && (
             <motion.img
