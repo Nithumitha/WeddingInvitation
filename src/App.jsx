@@ -264,11 +264,9 @@ function App() {
         </div>
       )}
 
-      <div className="min-h-dvh relative overflow-x-hidden">
-
-      {/* Unified Fixed Background & Decoration Layer */}
+      {/* Unified Fixed Background & Decoration Layer - Outside everything for stability */}
       <div 
-        className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#ffdede] [will-change:transform] [transform:translateZ(0)]"
+        className="fixed -inset-y-[5%] inset-x-0 h-[110lvh] z-[-1] pointer-events-none overflow-hidden bg-[#ffdede] [transform:translate3d(0,0,0)]"
       >
         {/* Cloud Background */}
         <div 
@@ -320,6 +318,8 @@ function App() {
           )}
         </AnimatePresence>
       </div>
+
+      <div className="min-h-dvh relative overflow-x-hidden">
 
       {/* Audio Element */}
       <audio ref={audioRef} src={bgMusic} loop />
