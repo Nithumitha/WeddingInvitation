@@ -369,10 +369,10 @@ function App() {
           {currentStep === 2 && (
             <motion.div
               key="event"
-              initial={{ opacity: 0, scale: 1.1, filter: "blur(15px)" }}
-              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 0.9, filter: "blur(15px)" }}
-              transition={{ duration: 1.4, ease: [0.43, 0.13, 0.23, 0.96] }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               className="absolute inset-0 overflow-y-auto scrollbar-hide py-[15vh] px-4"
             >
               <div className="max-w-5xl mx-auto px-4">
@@ -495,7 +495,7 @@ function App() {
                         whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(212,175,55,0.4)" }}
                         whileTap={{ scale: 0.98 }}
                         href="https://www.google.com/maps/search/The+Vaasan+Mahal+Musiri" target="_blank" rel="noopener noreferrer"
-                        className="px-12 py-4 bg-gold text-white rounded-full fluid-label !text-[11px] !tracking-[0.3em] shadow-xl border border-gold/20 flex items-center gap-3"
+                        className="px-8 md:px-12 py-4 bg-gold text-white rounded-full fluid-label !text-[11px] !tracking-[0.3em] shadow-xl border border-gold/20 flex items-center gap-3 whitespace-nowrap"
                       >
                         Locate on Map <ChevronRight size={16} />
                       </motion.a>
