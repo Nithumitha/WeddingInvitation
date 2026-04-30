@@ -3,18 +3,18 @@ import { Calendar, MapPin, Heart, Clock, Music, ArrowDown, Sparkles, Volume2, Vo
 import { motion, AnimatePresence } from 'framer-motion';
 import bgMusic from './assets/bg-music.mp3';
 import OurStorySection from './components/OurStorySection';
-import cornerFlower from './assets/cornerFlowerImage.png';
-import coupleCorner from './assets/coupleCornerImage.png';
-import vinayagarImage from './assets/vinayagarImage.jpg';
-import cloudsBg from './assets/grayscaleClouds.png';
-import story1 from './assets/ourStory1.png';
+import cornerFlower from './assets/cornerFlowerImage.webp';
+import coupleCorner from './assets/coupleCornerImage.webp';
+import vinayagarImage from './assets/vinayagarImage.webp';
+import cloudsBg from './assets/grayscaleClouds.webp';
+import story1 from './assets/ourStory1.webp';
 import story2 from './assets/ourStory2.png';
-import story3 from './assets/ourStory3.png';
-import story4 from './assets/ourStory4.png';
-import story5 from './assets/ourStory5.png';
-import story6 from './assets/ourStory6.png';
-import story7 from './assets/ourStory7.png';
-import story8 from './assets/ourStory8.png';
+import story3 from './assets/ourStory3.webp';
+import story4 from './assets/ourStory4.webp';
+import story5 from './assets/ourStory5.webp';
+import story6 from './assets/ourStory6.webp';
+import story7 from './assets/ourStory7.webp';
+import story8 from './assets/ourStory8.webp';
 
 // --- Sub-components (Moved to bottom or removed duplicates) ---
 
