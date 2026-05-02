@@ -264,23 +264,8 @@ function App() {
         </div>
       )}
 
-      {/* Unified Stable Layer - Standard Height with Texture Bleed */}
-      <div 
-        className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#ffdede] [transform:translate3d(0,0,0)]"
-      >
-        {/* Cloud Background - Scaled for safety bleed without affecting layout */}
-        <div 
-          className="absolute inset-0 scale-110"
-          style={{
-            backgroundImage: `url(${cloudsBg})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            opacity: 0.4,
-            filter: 'sepia(0.4) hue-rotate(240deg) saturate(1.5) brightness(1.2)'
-          }}
-        />
-
+      {/* Fixed Corner Decorations - Locked to Viewport Corners */}
+      <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
         {/* Top Right Flower */}
         <motion.img
           src={cornerFlower}

@@ -30,7 +30,7 @@ const stories = [
     id: 3,
     image: img4,
     title: "The Shift",
-    text: "And slowly..",
+    text: "Somewhere along the way..",
     highlightText: "What started as nothing,\nbecame everything."
   },
   {
