@@ -17,7 +17,7 @@ const stories = [
     image: img1,
     title: "2016",
     text: "He saw me,\nand tried his luck.",
-    highlightText: "I wasn't impressed.\nLittle did I know,\ndestiny had already began."
+    highlightText: "I wasn't impressed.\nLittle did I know,\ndestiny had already begun."
   },
   {
     id: 2,
@@ -36,28 +36,28 @@ const stories = [
   {
     id: 4,
     image: img5,
-    title: "The Journey",
+    title: "2016 - 2020",
     text: "Years passed..\nLaughter. Fights. Memories.",
     highlightText: "Through it all, we stayed.\nAnd our love quietly grew."
   },
   {
     id: 5,
     image: img6,
-    title: "The Distance",
+    title: "2021 — 2023",
     text: "Then came the silence..",
-    highlightText: "Life took us different ways.\nNo calls. \nNo conversations. \nJust distance..\nBut somehow, destiny never let go."
+    highlightText: "Life took us different ways.\nNo calls. \nNo conversations. \nJust distance.."
   },
   {
     id: 6,
     image: img7,
-    title: "The Return",
-    text: "And then..",
-    highlightText: "Without a plan, \nWithout a reason \nWe found our way back."
+    title: "2024",
+    text: "Destiny brought us back..",
+    highlightText: "Without a plan, \nWithout a reason \nWe found our way back to eachother."
   },
   {
     id: 7,
     image: img8,
-    title: "The Forever",
+    title: "2026",
     text: "And this time..",
     highlightText: "Two hearts, \none story,\n finally choosing forever. ❤️"
   },

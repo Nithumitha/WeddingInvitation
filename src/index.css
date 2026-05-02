@@ -44,6 +44,8 @@
   /* Fluid Sizing Variables */
   --fluid-px: clamp(1rem, 4vmin, 2.5rem);
   --section-py: clamp(4rem, 10vh, 12rem);
+  --fluid-h3: clamp(1.65rem, 4.5vmin, 2.8rem);
+  --fluid-body: clamp(0.95rem, 2.8vmin, 1.15rem);
 }
 
 /* Fluid Typography System */
@@ -62,7 +64,7 @@
 
 .fluid-h3 {
   font-family: var(--font-playfair);
-  font-size: clamp(1.8rem, 5vmin, 3.2rem);
+  font-size: var(--fluid-h3);
   line-height: 1.2;
 }
 

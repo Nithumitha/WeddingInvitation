@@ -60,7 +60,7 @@ const TimelineItem = ({ index, image, title, text, highlightText }) => {
       <div className="w-full md:w-1/2 flex flex-col items-start pl-12 md:px-0">
         <div className={`w-full max-w-none md:max-w-[45vmin] ${isIllustrationLeft ? 'text-left md:items-start' : 'text-left md:text-right md:items-end'} flex flex-col`}>
           {title && (
-            <span className="fluid-label text-gold mb-2 md:mb-4 block">
+            <span className="fluid-label text-[#8B6B00] mb-2 md:mb-4 block font-bold">
               {title}
             </span>
           )}
