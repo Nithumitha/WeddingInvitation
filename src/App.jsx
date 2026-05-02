@@ -264,35 +264,52 @@ function App() {
         </div>
       )}
 
-      {/* Unified Master Background - Reference Stability + Perfect Blending */}
-      <div className="fixed inset-0 z-[-15] bg-[#ffdede] pointer-events-none overflow-hidden [transform:translate3d(0,0,0)]">
-        {/* Cloud Texture with 10% safety bleed */}
-        <div 
-          className="absolute -inset-[5%] opacity-40"
+      {/* Unified Stable Layer - Standard Height with Texture Bleed */}
+      <div
+        className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#ffdede] [transform:translate3d(0,0,0)]"
+      >
+        {/* Cloud Background - Scaled for safety bleed without affecting layout */}
+        <div
+          className="absolute inset-0 scale-110"
           style={{
             backgroundImage: `url(${cloudsBg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            filter: 'sepia(0.4) hue-rotate(240deg) saturate(1.5) brightness(1.2)',
+            backgroundRepeat: 'no-repeat',
+            opacity: 0.4,
+            filter: 'sepia(0.4) hue-rotate(240deg) saturate(1.5) brightness(1.2)'
           }}
         />
 
-        {/* Fixed Corner Decorations - Blended against the unified layer */}
+        {/* Top Right Flower */}
         <motion.img
           src={cornerFlower}
           alt=""
+          animate={{
+            scale: 1,
+            x: 0,
+            y: 0,
+            opacity: 0.8
+          }}
           className="absolute -top-[2vmin] -right-[2vmin] mix-blend-multiply pointer-events-none"
           style={{ width: 'clamp(150px, 40vmin, 550px)' }}
         />
 
+        {/* Bottom Left Couple */}
         <AnimatePresence>
           {currentStep === 0 && (
             <motion.img
               key="coupleCorner"
               src={coupleCorner}
               alt=""
+              fetchpriority="high"
               initial={{ opacity: 0, scale: 0.8, x: -20, y: 20 }}
-              animate={{ opacity: 0.8, scale: 1, x: 0, y: 0 }}
+              animate={{
+                opacity: 0.8,
+                scale: 1,
+                x: 0,
+                y: 0
+              }}
               exit={{ opacity: 0, scale: 0.8, x: -20, y: 20 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
               className="absolute -bottom-[2vmin] -left-[2vmin] mix-blend-multiply pointer-events-none"
@@ -304,8 +321,8 @@ function App() {
 
       <div className="relative overflow-x-hidden">
 
-        {/* Audio Element - Persistent across all pages for consistent speed and timing */}
-        <audio ref={audioRef} src={bgMusic} loop preload="auto" crossOrigin="anonymous" />
+        {/* Audio Element */}
+        <audio ref={audioRef} src={bgMusic} loop />
 
         {/* Minimal Navigation & Music - Fluid Spacing */}
         <div
