@@ -264,52 +264,35 @@ function App() {
         </div>
       )}
 
-      {/* Unified Stable Layer - Standard Height with Texture Bleed */}
-      <div
-        className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#ffdede] [transform:translate3d(0,0,0)]"
-      >
-        {/* Cloud Background - Scaled for safety bleed without affecting layout */}
-        <div
-          className="absolute inset-0 scale-110"
+      {/* Unified Master Background - Reference Stability + Perfect Blending */}
+      <div className="fixed inset-0 z-[-15] bg-[#ffdede] pointer-events-none overflow-hidden [transform:translate3d(0,0,0)]">
+        {/* Cloud Texture with 10% safety bleed */}
+        <div 
+          className="absolute -inset-[5%] opacity-40"
           style={{
             backgroundImage: `url(${cloudsBg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            opacity: 0.4,
-            filter: 'sepia(0.4) hue-rotate(240deg) saturate(1.5) brightness(1.2)'
+            filter: 'sepia(0.4) hue-rotate(240deg) saturate(1.5) brightness(1.2)',
           }}
         />
 
-        {/* Top Right Flower */}
+        {/* Fixed Corner Decorations - Blended against the unified layer */}
         <motion.img
           src={cornerFlower}
           alt=""
-          animate={{
-            scale: 1,
-            x: 0,
-            y: 0,
-            opacity: 0.8
-          }}
           className="absolute -top-[2vmin] -right-[2vmin] mix-blend-multiply pointer-events-none"
           style={{ width: 'clamp(150px, 40vmin, 550px)' }}
         />
 
-        {/* Bottom Left Couple */}
         <AnimatePresence>
           {currentStep === 0 && (
             <motion.img
               key="coupleCorner"
               src={coupleCorner}
               alt=""
-              fetchpriority="high"
               initial={{ opacity: 0, scale: 0.8, x: -20, y: 20 }}
-              animate={{
-                opacity: 0.8,
-                scale: 1,
-                x: 0,
-                y: 0
-              }}
+              animate={{ opacity: 0.8, scale: 1, x: 0, y: 0 }}
               exit={{ opacity: 0, scale: 0.8, x: -20, y: 20 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
               className="absolute -bottom-[2vmin] -left-[2vmin] mix-blend-multiply pointer-events-none"
@@ -319,10 +302,10 @@ function App() {
         </AnimatePresence>
       </div>
 
-      <div className="min-h-dvh relative overflow-x-hidden">
+      <div className="relative overflow-x-hidden">
 
-        {/* Audio Element */}
-        <audio ref={audioRef} src={bgMusic} loop />
+        {/* Audio Element - Persistent across all pages for consistent speed and timing */}
+        <audio ref={audioRef} src={bgMusic} loop preload="auto" crossOrigin="anonymous" />
 
         {/* Minimal Navigation & Music - Fluid Spacing */}
         <div
@@ -374,12 +357,12 @@ function App() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="w-full min-h-dvh flex flex-col items-center px-6 overflow-hidden relative shrink-0"
+                className="w-full min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden relative shrink-0"
               >
                 <RosePetals />
 
-                {/* Branding Section - Moved slightly lower for better visual balance */}
-                <div className="mt-[12vh] mb-auto w-full max-w-4xl flex flex-col items-center gap-[clamp(1rem,3vh,2rem)] relative z-10 shrink-0 pb-[4vh]">
+                {/* Branding Section - Centered for perfect visual balance (Reference Style) */}
+                <div className="w-full max-w-4xl flex flex-col items-center gap-[clamp(1rem,3vh,2rem)] relative z-10 shrink-0">
                   <GaneshaIcon />
 
                   <div className="text-center space-y-[clamp(1rem,3vh,2.5rem)]">
@@ -402,7 +385,7 @@ function App() {
                 </div>
 
                 {/* Open Button - Naturally follows the content with a guaranteed gap - Layered above petals */}
-                <div className="pb-[10vh] md:pb-[8vh] relative z-[60] shrink-0">
+                <div className="mt-8 md:mt-12 relative z-[60] shrink-0">
                   <button onClick={handleOpen} className="relative group cursor-pointer">
                     <div className="absolute inset-0 bg-gold/20 rounded-full animate-ping scale-150 opacity-10"></div>
                     <div className="absolute inset-0 bg-gold/10 rounded-full animate-pulse scale-125"></div>
